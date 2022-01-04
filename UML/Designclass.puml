@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+abstract class Field{
+name: String
+position: int
+LandOnField(Player): void
+}
+abstract class Purchaseablefield{
+Player: owner
+price: int
+}
+class Deed{
+houseamount: int
+}
+class Ferry{
+
+}
+class ChanceField{
+}
+class SodaCompany{
+}
+class FreeParkingField{
+}
+class Board{
+}
+class JailField
+class Startfield
+class Account{
+int: balance
+changeBalance(int): void
+}
+class Player{
+name: String
+account: Account
+}
+class Gamehandler{
+board: Board
+players: Player[]
+rafflecup: RaffleCup
+generateplayers(int): void
+playgame(): void
+}
+class Die{
+int: value
+int: maxvaule
+roll(): void
+}
+class RaffleCup{
+dies: Die[]
+roll(): void
+
+}
+class chanceCardDeck{
+
+}
+
+
+RaffleCup "1" o- "2" Die
+Gamehandler "1" o-- "1" RaffleCup
+Gamehandler "1" o-- "1" Board
+Gamehandler"1" o-- "3..6"Player
+Player "1" o- "1" Account
+Field<|--Startfield
+Field<|--JailField
+Board "1" o-- "   40" Field
+Field<|--FreeParkingField
+Purchaseablefield<|--SodaCompany
+Purchaseablefield<|--Ferry
+Field<|--Purchaseablefield
+Purchaseablefield <|-- Deed
+Field<|--ChanceField
+
+
+
+
+@enduml
