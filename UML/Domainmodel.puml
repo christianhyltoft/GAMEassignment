@@ -1,27 +1,28 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class Board {
+}
+class Bank {
+}
+class Player{
+}
+class Account {
+}
+class Game {
+}
+class ChanceCard {
+}
+class Die {
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
+Player "3..6" -- "1" Bank
+Player "1" o-- "1" Account
+Die "2" -- "1" Game
+Game "1" -- "3..6" Player
+Game "1" -- "1" Board
+ChanceCard "*" -- "1" Board
+
 
 @enduml
