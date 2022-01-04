@@ -1,22 +1,29 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-
+skinparam classAttributeIconSize 0
 
 abstract class Field{
-name: String
-position: int
+#name: String
+#position: int
 LandOnField(Player): void
 }
-abstract class Purchaseablefield{
-Player: owner
-price: int
+abstract class PurchaseAbleField
+{
+#Player: owner
+#price: int
 }
 class Deed{
-houseamount: int
+-houseAmount: int
+-bonusRentPerHouse: int
+buildHouse(): void
 }
 class Ferry{
 
+}
+class Series{
+-owner: Player
+-deeds: Deed[]
 }
 class ChanceField{
 }
@@ -29,35 +36,41 @@ class Board{
 class JailField
 class Startfield
 class Account{
-int: balance
+-int: balance
 changeBalance(int): void
 }
 class Player{
-name: String
-account: Account
+-name: String
+-account: Account
+-{static} playerNumber: int
 }
 class Gamehandler{
-board: Board
-players: Player[]
-rafflecup: RaffleCup
-generateplayers(int): void
-playgame(): void
+-board: Board
+-players: Player[]
+-raffleCup: RaffleCup
+playGame(): void
+-generatePlayers(int): void
 }
 class Die{
-int: value
-int: maxvaule
+-int: value
+-int: maxValue
 roll(): void
 }
 class RaffleCup{
-dies: Die[]
+-dies: Die[]
 roll(): void
 
 }
-class chanceCardDeck{
-
+class ChanceCardDeck{
+chanceCard(): void
 }
+class GoToJailField{
+}
+Series "1" o- "0..1" Player
 
-
+Series "1" o- "2..3" Deed
+Player -> Field
+ChanceCardDeck "1" -o "1..*" ChanceField
 RaffleCup "1" o- "2" Die
 Gamehandler "1" o-- "1" RaffleCup
 Gamehandler "1" o-- "1" Board
@@ -65,12 +78,13 @@ Gamehandler"1" o-- "3..6"Player
 Player "1" o- "1" Account
 Field<|--Startfield
 Field<|--JailField
+Field<|--GoToJailField
 Board "1" o-- "   40" Field
 Field<|--FreeParkingField
-Purchaseablefield<|--SodaCompany
-Purchaseablefield<|--Ferry
-Field<|--Purchaseablefield
-Purchaseablefield <|-- Deed
+PurchaseAbleField<|--SodaCompany
+PurchaseAbleField<|--Ferry
+Field<|--PurchaseAbleField
+PurchaseAbleField <|-- Deed
 Field<|--ChanceField
 
 
