@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+(*) --> "Land on ferry"
+if "owned" then
+   --> [true] "Pay the owner "
+   -down->(*)
+else
+-->[false]  "Do you want to buy this ferry?"
+if ""
+--> [no] "ok"
+->(*)
+else
+-->[yes] "Do you have enough money"
+endif
+if""
+->[yes] "you now own this field"
+->(*)
+else
+-->[no] "You dont have enough money"
+->(*)
+endif
+
+
+
+
+
+
+@enduml
