@@ -30,6 +30,7 @@ class ChanceField{
 class SodaCompany{
 }
 class FreeParkingField{
+-int: MoneyOnParking
 }
 class Board{
 }
