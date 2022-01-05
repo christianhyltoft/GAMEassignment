@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+-Land on tax field
+-Pat tax
+
+stop
+
+@enduml
