@@ -1,0 +1,17 @@
+~~~~~~ Pay or receive money from bank ~~~~~~
+1-p-1000-You did not stop at a “stop” sign, pay a fine of 1000 kr.
+1-p-300-Pay for a 300kr car wash.
+1-p-200-Pay 200kr for a delivery of beer crates.
+2-p-3000-Pay 3000kr to the bank for your car repair.
+1-p-1000-You have bought 4 new tires for your car, pay 1000kr.
+1-p-200-You got a parking ticket, pay a 200kr fine.
+1-p-1000-Pay 1000kr for your car insurance.
+1-p-200-You have been abroad and bought too many cigarettes. Pay 200kr in customs.
+1-p-200-Dentist bill, pay 200kr.
+1-m-500-You have won the lottery, receive 500kr.
+3-m-1000-You receive your dividends. receive 1000kr from the bank.
+1-m-3000-The municipality has remitted a quarterly tax. Withdraw 3000kr from the bank.
+1-m-1000-You had a row of 11 correct when betting. Receive 1000 kr.
+1-m-1000-Due to the general increase in expenses, you have received a salary increase. Receive 1000kr.
+1-m-1000-You have sold some old furniture at an auction. Receive 1000 kr from the bank.
+1-m-200-The value of your own backyard farm is 200 kr, which you receive from the bank.
