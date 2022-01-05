@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+start
+-Land on go to jail
+-You get jailed
+
+
+
+stop
+
+@enduml

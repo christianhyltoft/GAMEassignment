@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+(*) --> "You are jailed"
+-->"Do you have a get out of jail free card?"
+if "" then
+ --> [yes] "Do you want to use it?"
+ if ""
+ -->[yes]"You are now out of jail"
+   -down----->(*)
+   else
+   -->[no]"where you in jail last turn?"
+   endif
+else
+-->[no]  "where you in jail last turn?"
+if ""
+-->[no]"Roll with the dice"
+if ""
+-->[2 of a kind]"You are now out of jail"
+else
+-->[no]"You are still in jail wait to till you next turn"
+-->(*)
+endif
+else
+-->[yes]"where you in jail the two last turns?"
+if ""
+-->[yes]"You are now out of jail"
+else
+-->[no]"Do you want to roll with the die or pay 1000 kr."
+if ""
+-->[roll]"Roll with the dice"
+else
+-->[pay]"you paid 1000 kr. a"
+-->"You are now out of jail"
+
+
+
+@enduml
