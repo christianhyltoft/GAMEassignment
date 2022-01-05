@@ -2,20 +2,29 @@
 'https://plantuml.com/class-diagram
 
 
-class Board {
+object Board {
 }
-class Bank {
+object Bank {
 }
-class Player{
+object Player{
 }
-class Account {
+object Account {
 }
-class Game {
+object Game {
 }
-class ChanceCard {
+object ChanceCard {
 }
-class Die {
+object Die {
 }
+object Field{
+}
+object Ferry{
+}
+object Deed{
+
+}
+object GoToJail
+
 
 Player "3..6" -- "1" Bank
 Player "1" o-- "1" Account
@@ -23,6 +32,7 @@ Die "2" -- "1" Game
 Game "1" -- "3..6" Player
 Game "1" -- "1" Board
 ChanceCard "*" -- "1" Board
+Board "1" o-- "2" Ferry
 
 
 @enduml
