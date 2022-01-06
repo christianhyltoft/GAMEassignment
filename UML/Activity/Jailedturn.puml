@@ -14,11 +14,11 @@ if "" then
 else
 -->[no]  "where you in jail last turn?"
 if ""
--->[no]"Roll with the dice"
+-->[no]"Roll with the dice and get to of a kind"
 if ""
--->[2 of a kind]"You are now out of jail"
+-->[success]"You are now out of jail"
 else
--->[no]"You are still in jail wait to till you next turn"
+-->[failure]"You are still in jail wait to till you next turn"
 -->(*)
 endif
 else
