@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Game/Main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Game/test/javaTest/javaTest" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/Game/test/javaTest" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/Game/Main/Game" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/classes" />
       <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
