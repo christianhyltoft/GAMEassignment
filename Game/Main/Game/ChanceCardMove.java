@@ -1,6 +1,12 @@
 public class ChanceCardMove extends ChanceCard{
-
-    public ChanceCardMove(int chanceCardAmount, String chanceCardText, int chanceCardID) {
+private Field[] myFields;
+    public ChanceCardMove(int chanceCardAmount, String chanceCardText, int chanceCardID, Field[] myFields) {
         super(chanceCardAmount, chanceCardText, chanceCardID);
+        this.myFields = myFields;
+    }
+    public void DrawCard(Player player){
+        for (int i = 0; i < ; i++) {
+            
+        }
     }
 }
