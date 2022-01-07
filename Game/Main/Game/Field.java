@@ -21,6 +21,7 @@ public abstract class Field {
 
     public void landOn() {
 
+
     }
 
 
