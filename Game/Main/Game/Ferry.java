@@ -14,7 +14,10 @@ public class Ferry extends PurchaseableField{
     public void setRent(int rent) {
         this.rent = rent;
     }
-    public void landOn(){
+    @Override
+    public void landOn(Player player){
+        super.landOn(player);
+        player.changeBalance(rent);
 
     }
 }

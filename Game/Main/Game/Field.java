@@ -20,6 +20,7 @@ public abstract class Field {
     }
 
     public void landOn(Player player) {
+        System.out.println(message);
 
 
     }
