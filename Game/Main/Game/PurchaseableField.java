@@ -25,7 +25,7 @@ public abstract class PurchaseableField extends Field {
     }
 
     @Override
-    public void landOn() {
+    public void landOn(Player player) {
 
     }
 }

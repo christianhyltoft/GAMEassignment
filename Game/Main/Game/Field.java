@@ -19,7 +19,7 @@ public abstract class Field {
         return name;
     }
 
-    public void landOn() {
+    public void landOn(Player player) {
 
 
     }
