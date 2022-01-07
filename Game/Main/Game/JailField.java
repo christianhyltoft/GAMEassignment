@@ -3,8 +3,7 @@ public class JailField extends Field{
     public String message;
 
     public JailField(String name, String message){
-        this.message = message;
-        this.name = name;
+        super(name, message);
     }
 
 }
