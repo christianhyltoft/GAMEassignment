@@ -1,8 +1,8 @@
-public class Ferry extends PurchaseableField{
+public class FieldFerry extends FieldPurchaseAble {
     private int rent;
 
-    public Ferry(String name, String message, int buyprice, int rent){
-        super(name,message,buyprice);
+    public FieldFerry(String name, String message, int buyprice,int moortgageValue, int rent){
+        super(name,message,buyprice,moortgageValue);
         this.rent=rent;
     }
 
