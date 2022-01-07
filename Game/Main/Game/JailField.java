@@ -7,7 +7,7 @@ public class JailField extends Field{
     }
     @Override
     public void landOn(){
-        System.out.println(message);
+        System.out.println("You landed on the field "+ name + message);
     }
 
 
