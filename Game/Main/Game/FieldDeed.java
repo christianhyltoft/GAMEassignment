@@ -2,14 +2,14 @@ public class FieldDeed extends FieldPurchaseAble {
     int rent;
     int amountOfHouses;
     int bonusrentperHouse;
-    public FieldDeed(String name, String message, int buyprice, int rent, int bonusrentperHouse){
-        super(name,message,buyprice);
+    public FieldDeed(String name, String message, int buyprice,int mortgageValue, int rent, int bonusrentperHouse){
+        super(name,message,buyprice,mortgageValue);
         this.rent=rent;
         this.bonusrentperHouse=bonusrentperHouse;
     }
     @Override
     public void landOn(Player player){
-        System.out.println(message);
+        super.landOn(player);
         player.changeBalance(rent+bonusrentperHouse*amountOfHouses);
 
     }

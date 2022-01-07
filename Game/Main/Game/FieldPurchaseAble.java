@@ -1,8 +1,9 @@
 public abstract class FieldPurchaseAble extends Field {
     protected Player owner;
     protected int buyprice;
+    protected int mortgageValue;
 
-    public FieldPurchaseAble(String name, String message, int buyprice) {
+    public FieldPurchaseAble(String name, String message, int buyprice, int mortgageValue) {
         super(name, message);
         this.buyprice = buyprice;
     }
@@ -26,6 +27,7 @@ public abstract class FieldPurchaseAble extends Field {
 
     @Override
     public void landOn(Player player) {
+        super.landOn(player);
 
     }
 }
