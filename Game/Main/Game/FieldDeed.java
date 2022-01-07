@@ -14,4 +14,27 @@ public class FieldDeed extends FieldPurchaseAble {
 
     }
 
+    public int getRent() {
+        return rent;
+    }
+
+    public void setRent(int rent) {
+        this.rent = rent;
+    }
+
+    public int getAmountOfHouses() {
+        return amountOfHouses;
+    }
+
+    public void setAmountOfHouses(int amountOfHouses) {
+        this.amountOfHouses = amountOfHouses;
+    }
+
+    public int getBonusrentperHouse() {
+        return bonusrentperHouse;
+    }
+
+    public void setBonusrentperHouse(int bonusrentperHouse) {
+        this.bonusrentperHouse = bonusrentperHouse;
+    }
 }
