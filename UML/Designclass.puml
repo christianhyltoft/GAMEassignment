@@ -36,13 +36,11 @@ class Board{
 }
 class JailField
 class Startfield
-class Account{
--int: balance
-changeBalance(int): void
-}
+
 class Player{
 -name: String
--account: Account
+-int: balance
+changeBalance(int): void
 -{static} playerNumber: int
 }
 class Gamehandler{
