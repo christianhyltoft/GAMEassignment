@@ -1,8 +1,8 @@
-public abstract class PurchaseableField extends Field {
+public abstract class FieldPurchaseAble extends Field {
     protected Player owner;
     protected int buyprice;
 
-    public PurchaseableField(String name, String message, int buyprice) {
+    public FieldPurchaseAble(String name, String message, int buyprice) {
         super(name, message);
         this.buyprice = buyprice;
     }
