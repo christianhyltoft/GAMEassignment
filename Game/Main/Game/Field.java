@@ -1,21 +1,29 @@
 public abstract class Field {
-    final String name;
+    protected String name;
+    protected String message;
 
-    public Field(String name, int position) {
+    public Field(String name, String message) {
         this.name = name;
+        this.message = message;
     }
 
-    public Field(String name) {
-        this.name = name;
+    public String getMessage() {
+        return message;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public String getName() {
         return name;
     }
-    public void landOn(){
+
+    public void landOn() {
 
     }
+
+
 }
 
 
