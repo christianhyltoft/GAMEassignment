@@ -5,5 +5,10 @@ public class JailField extends Field{
     public JailField(String name, String message){
         super(name, message);
     }
+    @Override
+    public void landOn(){
+        System.out.println(message);
+    }
+
 
 }
