@@ -1,4 +1,4 @@
-public class Field {
+public abstract class Field {
     final String name;
 
     public Field(String name, int position) {
