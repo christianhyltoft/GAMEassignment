@@ -1,15 +1,15 @@
-2-START-Move to START.
 2-x-Move three fields backwards.
 1-x-Move three fields forwards.
-1-x-Move to Frederiksberg Allé. If you pass START receive 4000kr.
 1-x-Take the nearest ferry and pay the owner twice the rental he is obligated to receive. If the ferry is not yet owned by a player, you can buy it from the bank.
 1-x-Take the nearest ferry. If you pass START receive 4000 kr
 *** (den 2 ovenstående er underlig. Vær opmærksom på det) ***
-1-x-Move to Mols-Linien, if you pass START receive 4000 kr.
-1-x-Move to Grønningen. If you pass START receive 4000 kr.
-1-x-Move to Vimmelskaftet. If you pass START receive 4000 kr.
-1-x-Move to Strandvejen. If you pass START receive 4000 kr.
-1-x-Move to Rådhuspladsen.
-2-x-Go straight to jail. If you pass START you will NOT receive 4000 kr.
+1-x-Move to "Frederiksberg Allé". If you pass START receive 4000kr.
+1-x-Move to "Mols-Linien", if you pass START receive 4000 kr.
+1-x-Move to "Grønningen". If you pass START receive 4000 kr.
+1-x-Move to "Vimmelskaftet". If you pass START receive 4000 kr.
+1-x-Move to "Strandvejen". If you pass START receive 4000 kr.
+1-x-Move to "Rådhuspladsen".
+2-x-Move to "START".
+2-x-Go straight to "jail". If you pass START you will NOT receive 4000 kr.
 
 ~~~~~~ Move your character ~~~~~~

@@ -5,8 +5,12 @@ private Field[] myFields;
         this.myFields = myFields;
     }
     public void DrawCard(Player player){
-        for (int i = 0; i <2 ; i++) {
-            
+        String[] fieldname = chanceCardText.split("\"",2);
+        // move to non-ferry property.
+        for (int i = 0; i < myFields.length; i++) {
+            if (myFields[i].getName().equals(fieldname[1])){
+                player.setPosition(i);
+            }
         }
     }
 }

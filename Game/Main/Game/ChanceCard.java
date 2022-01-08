@@ -9,7 +9,8 @@ public abstract class ChanceCard {
         this.chanceCardID = chanceCardID;
         this.chanceCardText = chanceCardText;
     }
-    public void DrawCard(Player player){
+
+    public void DrawCard(Player player) {
         System.out.println(chanceCardText);
     }
 }
