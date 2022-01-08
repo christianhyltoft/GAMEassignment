@@ -5,7 +5,7 @@ private Field[] myFields;
         this.myFields = myFields;
     }
     public void DrawCard(Player player){
-        for (int i = 0; i < ; i++) {
+        for (int i = 0; i <2 ; i++) {
             
         }
     }
