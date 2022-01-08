@@ -5,11 +5,10 @@ public class FieldDeed extends FieldPurchaseAble {
     private int rent3;
     private int rent4;
     private int rent5;
-    private int mortgagevalue;
 
     private int amountOfHouses;
 
-    public FieldDeed(String name, String message, int buyprice,int mortgageValue, int rent, int bonusrentperHouse){
+    public FieldDeed(String name, String message, int buyprice,int mortgageValue, int rent){
         super(name,message,buyprice,mortgageValue);
         this.rent=rent;
 
