@@ -8,38 +8,37 @@ public class FieldDeed extends FieldPurchaseAble {
 
     private int amountOfHouses;
 
-    public FieldDeed(String name, String message, int buyprice,int mortgageValue, int rent, int rent1, int rent2, int rent3, int rent4, int rent5){
-        super(name,message,buyprice,mortgageValue);
-        this.rent=rent;
-        this.rent1=rent1;
-        this.rent2=rent2;
-        this.rent3=rent3;
-        this.rent4=rent4;
-        this.rent5=rent5;
-        this.amountOfHouses=0;
+    public FieldDeed(String name, String message, int buyprice, int mortgageValue, int rent, int rent1, int rent2, int rent3, int rent4, int rent5) {
+        super(name, message, buyprice, mortgageValue);
+        this.rent = rent;
+        this.rent1 = rent1;
+        this.rent2 = rent2;
+        this.rent3 = rent3;
+        this.rent4 = rent4;
+        this.rent5 = rent5;
+        this.amountOfHouses = 0;
 
 
     }
+
     @Override
-    public void landOn(Player player){
+    public void landOn(Player player) {
         super.landOn(player);
 
-        if (owner==null){
-            String yesno="";
+        if (owner == null) {
+            String yesno = "";
             //GUI skal spørge om man vil købe grunden eller ej
 
-            if (yesno.equals("yes")){
+            if (yesno.equals("yes")) {
                 setOwner(player);
                 player.changeBalance(-buyprice);
             }
 
-        }
-        else {
+        } else {
 
-            if (player==owner){
+            if (player == owner) {
                 //Udskriv message+messageowned til GUI
-            }
-            else {
+            } else {
                 owner.changeBalance(currentRent());
                 player.changeBalance(-currentRent());
 
@@ -47,8 +46,9 @@ public class FieldDeed extends FieldPurchaseAble {
         }
 
     }
-    public int currentRent(){
-        switch (amountOfHouses){
+
+    public int currentRent() {
+        switch (amountOfHouses) {
             case 0:
                 return rent;
             case 1:
