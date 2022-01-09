@@ -43,6 +43,31 @@ class Player{
 changeBalance(int): void
 -{static} playerNumber: int
 }
+class ChanceCardGetOutOfJail{
+}
+class ChanceCardMatadorGrant {
+-int moneyAmount
+}
+class ChanceCardMove {
+-myFields: Field[]
+}
+class ChanceCardPayBasedOnProperty {
+-int houseAmount
+-int hotelAmount
+}
+class ChanceCardPayOrReceive {
+- int: moneyAmount
+}
+class ChanceCardReceiveMoneyFromPlayers {
+-int: moneyAmount
+-players: Player[]
+}
+class ChanceCard{
+DrawCard(): void
+#int chanceCardAmount
+#int chanceCardID
+#String chanceCardText
+}
 class Gamehandler{
 -board: Board
 -players: Player[]
@@ -60,16 +85,21 @@ class RaffleCup{
 roll(): void
 
 }
-class ChanceCardDeck{
-chanceCard(): void
-}
+
 class GoToJailField{
 }
 Series "1" o- "0..1" Player
 
 Series "1" o- "2..3" Deed
 Player -> Field
-ChanceCardDeck "1" -o "1..*" ChanceField
+ChanceCard "1" -o "1..*" ChanceField
+ChanceCardGetOutOfJail  -o ChanceCard
+ChanceCardMove -o ChanceCard
+ChanceCardPayBasedOnProperty -o ChanceCard
+ChanceCardPayOrReceive -o ChanceCard
+ChanceCardReceiveMoneyFromPlayers -o ChanceCard
+ChanecCardMatadorGrant "1" -o "*" ChanceCard
+
 RaffleCup "1" o- "2" Die
 Gamehandler "1" o-- "1" RaffleCup
 Gamehandler "1" o-- "1" Board

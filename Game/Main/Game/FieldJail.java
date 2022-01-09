@@ -1,8 +1,7 @@
-public class JailField extends Field{
-    public String name;
-    public String message;
+public class FieldJail extends Field{
 
-    public JailField(String name, String message){
+
+    public FieldJail(String name, String message){
         super(name, message);
     }
     @Override

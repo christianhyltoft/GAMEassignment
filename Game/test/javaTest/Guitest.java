@@ -2,6 +2,7 @@
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Ownable;
 import gui_fields.GUI_Player;
+import gui_fields.GUI_Street;
 import gui_main.GUI;
 
 import java.awt.*;
@@ -36,6 +37,17 @@ public class Guitest {
         GUI_Ownable ownable = (GUI_Ownable) field;
         ownable.setOwnerName(p1.getName());
         mygui.showMessage("hattemand");
+        String chosenbutton=mygui.getUserButtonPressed("click a button","buy", "dont buy");
+        mygui.setChanceCard("Du har trukket sjovt chancekord");
+        mygui.displayChanceCard();
+        // Caster felt 1 til GUI_Street
+        GUI_Street street = (GUI_Street) field;
+        street.setHotel(true);
+        Thread.sleep(1000);
+
+        street.setHouses(4);
+
+
     }
 
 }

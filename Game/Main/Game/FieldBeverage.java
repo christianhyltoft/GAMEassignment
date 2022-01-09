@@ -1,23 +1,18 @@
-public class FieldFerry extends FieldPurchaseAble {
+public class FieldBeverage extends FieldPurchaseAble {
+    private int rollAmount;
+    private int ownedAmount;
     private int rent;
-
-    public FieldFerry(String name, String message, int buyprice,int moortgageValue, int rent){
-        super(name,message,buyprice,moortgageValue);
-        this.rent=rent;
-    }
-
-
-    public int getRent() {
-        return rent;
-    }
-
-    public void setRent(int rent) {
+    public FieldBeverage(String name, String message, int buyprice, int mortgageValue) {
+        super(name, message, buyprice, mortgageValue);
+        this.rollAmount = rollAmount;
+        this.ownedAmount = ownedAmount;
         this.rent = rent;
     }
 
     @Override
-    public void landOn(Player player){
+    public void landOn(Player player) {
         super.landOn(player);
+
         if (owner == null) {
             String yesno = "";
             //GUI skal spørge om man vil købe grunden eller ej
@@ -31,12 +26,14 @@ public class FieldFerry extends FieldPurchaseAble {
 
             if (player == owner) {
                 //Udskriv message+messageowned til GUI
-            }
-            else {
+            } else {
                 owner.changeBalance(rent);
                 player.changeBalance(-rent);
+
             }
         }
 
     }
+
+
 }
