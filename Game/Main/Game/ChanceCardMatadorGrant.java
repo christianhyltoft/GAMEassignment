@@ -5,7 +5,7 @@ public class ChanceCardMatadorGrant extends ChanceCard {
         super(chanceCardAmount, chanceCardText, chanceCardID);
         this.moneyAmount = moneyAmount;
     }
-
+    @Override
     public void DrawCard(Player myPlayer) {
         if (myPlayer.getBalance()<= 15000){
             myPlayer.changeBalance(moneyAmount);
