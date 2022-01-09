@@ -1,9 +1,12 @@
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 
 public class BoardgenerateTest {
-    public static void main(String[] args) throws IOException {
-        Board myBoard= new Board();
+    @Test
+    public static void boardtest() throws IOException {
+        Board myBoard = new Board();
     }
 
 
-    }
+}
