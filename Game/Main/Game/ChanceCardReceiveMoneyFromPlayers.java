@@ -9,7 +9,7 @@ public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
         this.players = players;
 
     }
-@Override
+    @Override
     public void DrawCard(Player myPlayer) {
        super.DrawCard(myPlayer);
         for (int i = 0; i < players.length; i++) {

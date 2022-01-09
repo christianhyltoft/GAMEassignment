@@ -1,6 +1,5 @@
 public class FieldStart extends Field{
-    public String name;
-    public String message;
+
 
     public FieldStart(String name, String message){
         super(name, message);
