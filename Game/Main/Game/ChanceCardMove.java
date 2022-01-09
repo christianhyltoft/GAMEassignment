@@ -4,6 +4,7 @@ private Field[] myFields;
         super(chanceCardAmount, chanceCardText, chanceCardID);
         this.myFields = myFields;
     }
+    @Override
     public void DrawCard(Player player){
         String[] fieldname = chanceCardText.split("\"",2);
         // move to non-ferry property.

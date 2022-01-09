@@ -5,7 +5,7 @@ public class ChanceCardPayOrReceive extends ChanceCard{
         super(chanceCardAmount, chanceCardText, chanceCardID);
         this.moneyAmount = moneyAmount;
     }
-
+    @Override
     public void DrawCard(Player myPlayer) {
     myPlayer.changeBalance(moneyAmount);
     }
