@@ -1,6 +1,8 @@
 import gui_fields.GUI_Player;
 import gui_main.GUI;
 
+import java.io.IOException;
+
 public class Gamehandler {
     Board myboard;
     Player[] players;
@@ -9,7 +11,7 @@ public class Gamehandler {
     GUI_Player[] playersgui;
 
 
-    public Gamehandler() {
+    public Gamehandler() throws IOException {
         GUI mygui = new GUI();
         this.amountOfPlayers = Integer.parseInt(mygui.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
@@ -19,10 +21,12 @@ public class Gamehandler {
             players[i] = new Player(Settings.STARTING_MONEY, input, 0);
             playersgui[i]= new GUI_Player(input,Settings.STARTING_MONEY);
             mygui.addPlayer(playersgui[i]);
+            myboard= new Board();
 
 
 
         }
+
 
 
 

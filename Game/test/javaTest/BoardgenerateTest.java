@@ -1,8 +1,9 @@
 import java.io.IOException;
 
-public class Gamehandlertest {
+public class BoardgenerateTest {
     public static void main(String[] args) throws IOException {
-        Gamehandler g1=new Gamehandler();
+        Board myBoard= new Board();
+    }
+
 
     }
-}

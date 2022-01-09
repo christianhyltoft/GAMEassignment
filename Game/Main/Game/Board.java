@@ -1,7 +1,12 @@
+import java.io.IOException;
+
 public class Board {
     private Field[] boardAr;
+    TxtReader reader= new TxtReader();
 
-    public Board(String[] generator) {
+    public Board() throws IOException {
+
+        String[] generator=reader.reader("Fields.txt");
         boardAr = new Field[generator.length];
         for (int i = 0; i < boardAr.length; i++) {
             boardAr[i] = makeField(i, generator);
@@ -13,6 +18,7 @@ public class Board {
 
     private Field makeField(int i, String[] generator) {
         String[] generate1field = generator[i].split("-");
+        System.out.println(generate1field.length);
         switch (generate1field[0]) {
             case "Start":
                 return new FieldStart(generate1field[1], "message");
@@ -29,7 +35,7 @@ public class Board {
             case "Ferry":
                 return new FieldFerry(generate1field[1],"message",Integer.parseInt(generate1field[2]),Integer.parseInt(generate1field[3]),Integer.parseInt(generate1field[4]));
             case "Beverage":
-                return new FieldBeverage(generate1field[1],"message");
+                return new FieldBeverage(generate1field[1],"message",Integer.parseInt(generate1field[2]),Integer.parseInt(generate1field[3]));
 
 
         }
