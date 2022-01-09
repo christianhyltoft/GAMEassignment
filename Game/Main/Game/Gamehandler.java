@@ -28,4 +28,14 @@ public class Gamehandler {
 
 
     }
+    public void playGame(){
+
+    }
+    private void taketurn(){
+
+    }
+    private void detectLoser(){
+
+    }
+
 }

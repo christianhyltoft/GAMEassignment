@@ -1,12 +1,10 @@
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
-    private int rent;
     public FieldBeverage(String name, String message, int buyprice, int mortgageValue) {
         super(name, message, buyprice, mortgageValue);
         this.rollAmount = rollAmount;
         this.ownedAmount = ownedAmount;
-        this.rent = rent;
     }
 
     @Override
@@ -27,8 +25,6 @@ public class FieldBeverage extends FieldPurchaseAble {
             if (player == owner) {
                 //Udskriv message+messageowned til GUI
             } else {
-                owner.changeBalance(rent);
-                player.changeBalance(-rent);
 
             }
         }
