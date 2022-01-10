@@ -30,6 +30,11 @@ public class FieldBeverage extends FieldPurchaseAble {
         }
 
     }
+    @Override
+    public String toString(){
+        return "You are feeling very thirsty and need a break. Take a "+this.name+" and enjoy";
+    }
+
 
 
 }
