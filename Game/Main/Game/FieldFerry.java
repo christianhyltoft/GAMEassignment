@@ -39,4 +39,8 @@ public class FieldFerry extends FieldPurchaseAble {
         }
 
     }
+    @Override
+    public String toString(){
+        return "Welcome onboard on "+this.name;
+    }
 }

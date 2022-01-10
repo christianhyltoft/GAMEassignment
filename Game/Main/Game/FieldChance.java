@@ -6,6 +6,6 @@ public class FieldChance extends Field{
     }
     @Override
     public String toString(){
-        return "You landed on field"+this.name;
+        return "Lets test your luck... "+this.name;
     }
 }
