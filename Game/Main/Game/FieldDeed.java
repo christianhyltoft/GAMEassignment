@@ -33,7 +33,7 @@ public class FieldDeed extends FieldPurchaseAble {
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to but this field", "yes", "no");
+            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field", "yes", "no");
 
             if (buy.equals("yes")) {
                 setOwner(player);

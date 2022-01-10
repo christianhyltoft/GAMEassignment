@@ -25,7 +25,7 @@ public abstract class Field {
 
     }
     public String toString(){
-        return "You landed on field"+this.name;
+        return "You landed on: "+this.name;
     }
 
 
