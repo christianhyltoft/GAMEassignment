@@ -3,7 +3,7 @@ Start-Start-
 Property-Rødovrevej-1200-600-50-250-750-2250-4000-6000-1000
 Chance-Chancecard
 Property-Hvidovrevej-1200-600-50-250-750-2250-4000-6000-1000
-Skat-Betal indkomstskat-4000-10
+Tax-Betal indkomstskat-4000-10
 Ferry-Scandlines Helsingør-4000-2000-500-1000-2000-4000
 Property-Roskildevej-2000-1000-100-600-1800-5400-8000-11000-1000
 Chance-Chancecard
@@ -29,7 +29,7 @@ Property-Bredgade-5200-2600-450-2200-6600-16000-19500-23000-3000
 Property-Kgs. Nytorv-5200-2600-450-2200-6000-16000-19500-23000-3000
 Beverage-CocaCola-3000-1500
 Property-Østergade-5600-2800-500-2400-7200-17000-20500-24000-3000
-MoveToJail-GoToJail
+MoveToJail-MoveToJail
 Property-Amagertorv-6000-3000-550-2600-7800-18000-22000-25000-4000
 Property-Vimmelskaftet-6000-3000-550-2600-7800-18000-22000-25000-4000
 Chance-Chancecard
@@ -37,5 +37,5 @@ Property-Nygade-6400-3200-600-3000-9000-20000-24000-28000-4000
 Ferry-Scandlines Rødby-4000-2000-500-1000-2000-4000
 Chance-Chancecard
 Property-Frederiksberggade-7000-3500-700-3500-10000-22000-26000-30000-4000
-Skat-Ekstraordinær statsskat-2000-0
+Tax-Ekstraordinær statsskat-2000-0
 Property-Rådhuspladsen-8000-4000-1000-4000-12000-28000-34000-40000-4000

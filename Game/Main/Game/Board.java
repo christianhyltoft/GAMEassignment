@@ -20,7 +20,7 @@ public class Board {
         System.out.println(generate1field.length);
         switch (generate1field[0]) {
             case "Start":
-                return new FieldStart(generate1field[1], "Start");
+                return new FieldStart(generate1field[0], "Start");
             case "Chance":
                 return new FieldChance(generate1field[1], "Chance");
             case "Jail":
@@ -28,9 +28,9 @@ public class Board {
             case "Parking":
                 return new FieldParking(generate1field[1],"Parking");
             case "MoveToJail":
-                return new FieldGoToJail(generate1field[1], "GoToJail");
-            case "Skat":
-                return new FieldTax(generate1field[1],"Skat",Integer.parseInt(generate1field[2]),Integer.parseInt(generate1field[3]));
+                return new FieldGoToJail(generate1field[1], "MoveToJail");
+            case "Tax":
+                return new FieldTax(generate1field[1],"Tax",Integer.parseInt(generate1field[2]),Integer.parseInt(generate1field[3]));
             case "Property":
                 return new FieldDeed(generate1field[1], "Property", Integer.parseInt(generate1field[2]), Integer.parseInt(generate1field[3]), Integer.parseInt(generate1field[4]), Integer.parseInt(generate1field[5]), Integer.parseInt(generate1field[6]), Integer.parseInt(generate1field[7]), Integer.parseInt(generate1field[8]), Integer.parseInt(generate1field[9]), Integer.parseInt(generate1field[10]));
             case "Ferry":

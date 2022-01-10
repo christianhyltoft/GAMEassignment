@@ -52,7 +52,7 @@ public class Gamehandler {
                 case "Chance":
                     this.gui_fields[i] = (GUI_Chance) this.gui_fields[i];
                     break;
-                case "Skat":
+                case "Tax":
                     this.gui_fields[i] = (GUI_Tax) this.gui_fields[i];
                     break;
                 case "Ferry":
