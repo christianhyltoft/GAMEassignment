@@ -16,6 +16,9 @@ public class GUI_Playerex extends GUI_Player {
 
         super(name, balance, car);
     }
+    public void update(){
+
+    }
 
 
 }
