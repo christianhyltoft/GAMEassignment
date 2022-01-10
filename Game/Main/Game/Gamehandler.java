@@ -89,6 +89,9 @@ public class Gamehandler {
     private void taketurn(Player player) {
         getMyGUI().showMessage("Roll the dice");
         rafflecup.roll();
+        player.changePosition(rafflecup.sum());
+        this.myboard.getBoardAr()[player.getPosition()].landOn(player,controller);
+
 
 
 
