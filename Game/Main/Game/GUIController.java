@@ -3,8 +3,8 @@ import gui_main.GUI;
 
 public class GUIController {
 
-    GUI myGUI;
-    GUI_Player[] myPlayers;
+    private GUI myGUI;
+    private GUI_Player[] myPlayers;
 
     GUIController(GUI myGUI, GUI_Player[] myPlayers){
         this.myGUI = myGUI;
