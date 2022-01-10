@@ -11,10 +11,12 @@ public class Gamehandler {
     private GUI myGUI = new GUI();
     private GUI_Player[] playersgui;
     private GUI_Field[] gui_fields;
+    private GUI_Ownable[] gui_ownables;
 
     private Rafflecup rafflecup=new Rafflecup(2,6);
 
     private GUIController controller;
+
 
 
     public Gamehandler() throws IOException {
@@ -29,6 +31,10 @@ public class Gamehandler {
             myGUI.addPlayer(playersgui[i]);
             playersgui[i].getCar().setPosition(myGUI.getFields()[0]);
 
+
+        }
+        for (int i = 0; i < myGUI.getFields().length; i++) {
+            myGUI.getFields()[i].setDescription(myboard.getBoardAr()[i].toString());
 
         }
         gui_fields = myGUI.getFields();

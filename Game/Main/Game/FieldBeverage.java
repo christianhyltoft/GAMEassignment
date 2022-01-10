@@ -30,6 +30,11 @@ public class FieldBeverage extends FieldPurchaseAble {
         }
 
     }
+    @Override
+    public String toString(){
+        return "This is a danish classic, come and try a "+this.name+" and enjoy";
+    }
+
 
 
 }

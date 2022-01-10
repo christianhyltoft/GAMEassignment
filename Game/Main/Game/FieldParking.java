@@ -9,4 +9,7 @@ public class FieldParking extends Field{
 
 
     }
+    public String toString(){
+        return "Here at "+this.name + " you might get lucky with the last parking spot";
+    }
 }
