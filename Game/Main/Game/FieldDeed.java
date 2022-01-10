@@ -136,5 +136,8 @@ public class FieldDeed extends FieldPurchaseAble {
         return houseprice;
     }
 
+    public String toString(){
+        return "This is the very nice "+this.name+". It is a very nice place";
+    }
 
 }
