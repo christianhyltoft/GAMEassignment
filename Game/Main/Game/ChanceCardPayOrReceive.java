@@ -1,13 +1,14 @@
-public class ChanceCardPayOrReceive extends ChanceCard{
+public class ChanceCardPayOrReceive extends ChanceCard {
+
     private int moneyAmount;
 
-    public ChanceCardPayOrReceive(int chanceCardAmount, String chanceCardText, int chanceCardID) {
-        super(chanceCardAmount, chanceCardText, chanceCardID);
+    public ChanceCardPayOrReceive(int moneyAmount, String chanceCardText) {
+        super(chanceCardText);
         this.moneyAmount = moneyAmount;
     }
 
     @Override
     public void DrawCard(Player myPlayer) {
-    myPlayer.changeBalance(moneyAmount);
+        myPlayer.changeBalance(moneyAmount);
     }
 }

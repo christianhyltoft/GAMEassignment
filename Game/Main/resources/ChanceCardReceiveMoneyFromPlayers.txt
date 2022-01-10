@@ -2,5 +2,3 @@
 1-200-It is your birthday. Receive 200 kr from every other player.
 1-500-You have paid for a get-together. Oddly enough, everyone pays you back instantaneously. Receive 500 kr from all players.
 1-500-You're going to host a family-party, and receive a subsidy of 500 kr from each player.
-
-~~~~~~ Receive money from players ~~~~~~

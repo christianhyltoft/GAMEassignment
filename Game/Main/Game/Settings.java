@@ -1,6 +1,6 @@
 public final class Settings {
 
-    private Settings(){
+    private Settings() {
 
     }
 
@@ -10,5 +10,8 @@ public final class Settings {
     // Players
     public static final int MAX_PLAYERS = 6;
     public static final int MIN_PLAYERS = 3;
+
+    public static final String[] ChanceCardDataBase = {"ChanceCardGetOutOfJail.txt", "ChanceCardMatadorGrant.txt", "ChanceCardMoveYourCharacter.txt",
+                                "ChanceCardPayBasedOnProperty.txt", "ChanceCardPayOrReceiveMoneyFromBank.txt", "ChanceCardReceiveMoneyFromPlayers.txt" };
 
 }

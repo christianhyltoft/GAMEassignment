@@ -1,4 +1,5 @@
-1-p-1000-You did not stop at a “stop” sign, pay a fine of 1000 kr.
+16
+1-p-1000-You did not stop at a stop sign, pay a fine of 1000 kr.
 1-p-300-Pay for a 300kr car wash.
 1-p-200-Pay 200kr for a delivery of beer crates.
 2-p-3000-Pay 3000kr to the bank for your car repair.
@@ -14,6 +15,3 @@
 1-r-1000-Due to the general increase in expenses, you have received a salary increase. Receive 1000kr.
 1-r-1000-You have sold some old furniture at an auction. Receive 1000 kr from the bank.
 1-r-200-The value of your own backyard farm is 200 kr, which you receive from the bank.
-
-
-~~~~~~ Pay or receive money from bank ~~~~~~

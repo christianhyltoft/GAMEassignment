@@ -1,7 +1,7 @@
 public class ChanceCardMove extends ChanceCard{
 private Field[] myFields;
-    public ChanceCardMove(int chanceCardAmount, String chanceCardText, int chanceCardID, Field[] myFields) {
-        super(chanceCardAmount, chanceCardText, chanceCardID);
+    public ChanceCardMove(String chanceCardText, Field[] myFields) {
+        super(chanceCardText);
         this.myFields = myFields;
     }
     @Override
