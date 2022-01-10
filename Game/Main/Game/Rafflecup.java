@@ -40,4 +40,12 @@ public class Rafflecup {
         }
         return true;
     }
+
+    public Die[] getCup() {
+        return cup;
+    }
+
+    public void setCup(Die[] cup) {
+        this.cup = cup;
+    }
 }

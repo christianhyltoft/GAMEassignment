@@ -7,6 +7,10 @@ class RafflecupTest {
 
     @Test
     void sameFacesUpOnAllDice() {
+        rafflecupTest.getCup()[0].setValue(6);
+        rafflecupTest.getCup()[1].setValue(6);
+        assertTrue(rafflecupTest.sameFacesUpOnAllDice());
+
 
     }
 }
