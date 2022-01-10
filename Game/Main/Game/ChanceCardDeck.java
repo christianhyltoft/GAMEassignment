@@ -37,7 +37,7 @@ public class ChanceCardDeck {
             }
         }
         if (chanceCardTextFile == "ChanceCardGetOutOfJail.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 4);
+            String[] chanceCardData = chanceCardLine.split("-", 2);
         }
         if (chanceCardTextFile == "ChanceCardMatadorGrant.txt") {
             String[] chanceCardData = chanceCardLine.split("-", 3);
@@ -53,9 +53,25 @@ public class ChanceCardDeck {
         }
         if (chanceCardTextFile == "ChanceCardPayBasedOnProperty.txt") {
             String[] chanceCardData = chanceCardLine.split("-", 4);
+            int cardAmount = Integer.parseInt(chanceCardData[0]);
+            int housePrice = Integer.parseInt(chanceCardData[1]);
+            int hotelPrice = Integer.parseInt(chanceCardData[2]);
+            String text = chanceCardData[3];
+            for (int i = 0; i < cardAmount; i++) {
+                ChanceCard payBasedOnProperty = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text);
+                // here we must add the chance card to the ChanceCard[] above.
+            }
+
         }
         if (chanceCardTextFile == "ChanceCardReceiveMoneyFromPlayers.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 4);
+            String[] chanceCardData = chanceCardLine.split("-", 3);
+            int cardAmount = Integer.parseInt(chanceCardData[0]);
+            int moneyAmount = Integer.parseInt(chanceCardData[1]);
+            String text = chanceCardData[2];
+            for (int i = 0; i < cardAmount; i++) {
+                ChanceCard receiveMoneyFromPlayers = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text);
+                // here we must add the chance card to the ChanceCard[] above.
+            }
         }
 
     }
