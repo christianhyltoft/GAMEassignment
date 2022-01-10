@@ -13,10 +13,9 @@ public class Gamehandler {
     private GUI_Field[] gui_fields;
     private GUI_Ownable[] gui_ownables;
 
-    private Rafflecup rafflecup=new Rafflecup(2,6);
+    private Rafflecup rafflecup = new Rafflecup(2, 6);
 
     private GUIController controller;
-
 
 
     public Gamehandler() throws IOException {
@@ -39,44 +38,8 @@ public class Gamehandler {
         }
         gui_fields = myGUI.getFields();
         controller = new GUIController(myGUI, playersgui);
-        castingFields();
 
         myGUI.showMessage("The game vil start when you press ok");
-    }
-
-    public void castingFields() {
-        if (this.gui_fields.length != this.myboard.getBoardAr().length) {
-            myGUI.showMessage("Cant start properly there is a wrong amount of fields the amount must be 40 to play with graphical interface");
-            return;
-        }
-        for (int i = 0; i < this.gui_fields.length; i++) {
-            switch (myboard.getBoardAr()[i].getFieldtype()) {
-                case "Start":
-                    this.gui_fields[i] = (GUI_Start) this.gui_fields[i];
-                    break;
-                case "Property":
-                    this.gui_fields[i] = (GUI_Street) this.gui_fields[i];
-                    break;
-                case "Chance":
-                    this.gui_fields[i] = (GUI_Chance) this.gui_fields[i];
-                    break;
-                case "Tax":
-                    this.gui_fields[i] = (GUI_Tax) this.gui_fields[i];
-                    break;
-                case "Ferry":
-                    this.gui_fields[i] = (GUI_Shipping) this.gui_fields[i];
-                    break;
-                case "Jail":
-                    this.gui_fields[i] = (GUI_Jail) this.gui_fields[i];
-                    break;
-                case "Beverage":
-                    this.gui_fields[i] = (GUI_Brewery) this.gui_fields[i];
-
-
-            }
-
-
-        }
     }
 
 
@@ -93,14 +56,13 @@ public class Gamehandler {
     }
 
     private void taketurn(Player player) {
-        getMyGUI().showMessage("Roll the dice");
+        myGUI.showMessage("Roll the dice");
         rafflecup.roll();
         player.changePosition(rafflecup.sum());
-        this.myboard.getBoardAr()[player.getPosition()].landOn(player,controller);
-
-
-
-
+        myGUI.setDice(rafflecup.getCup()[0].getValue(),rafflecup.getCup()[1].getValue());
+        myGUI.showMessage("Move your car: ");
+        playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[rafflecup.sum()]);
+        this.myboard.getBoardAr()[player.getPosition()].landOn(player, controller);
 
 
     }
