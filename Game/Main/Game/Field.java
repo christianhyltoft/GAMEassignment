@@ -20,7 +20,7 @@ public abstract class Field {
     }
 
     public void landOn(Player player, GUIController gui) {
-        System.out.println(Fieldtype);
+        gui.getMyGUI().showMessage("You landed on"+this.name);
 
 
     }

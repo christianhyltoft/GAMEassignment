@@ -1,3 +1,5 @@
+import gui_fields.GUI_Street;
+
 public class FieldDeed extends FieldPurchaseAble {
     private int rent;
     private final int rent1;
@@ -18,8 +20,7 @@ public class FieldDeed extends FieldPurchaseAble {
         this.rent4 = rent4;
         this.rent5 = rent5;
         this.amountOfHouses = 0;
-        this.houseprice=houseprice;
-
+        this.houseprice = houseprice;
 
 
     }
@@ -28,26 +29,31 @@ public class FieldDeed extends FieldPurchaseAble {
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
 
+        GUI_Street ownable = (GUI_Street) gui.getMyGUI().getFields()[player.getPosition()];
+
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
+            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to but this field", "yes", "no");
 
-
-            if (true) {
+            if (buy.equals("yes")) {
                 setOwner(player);
+                ownable.setOwnerName(player.getName());
                 player.changeBalance(-this.buyprice);
+                gui.getMyGUI().showMessage("You now own this field");
+
 
             }
 
         } else {
 
             if (player == owner) {
-
+                gui.getMyGUI().showMessage("You own this field so nothing happens");
 
 
             } else {
 
-                int rentNow=currentRent();
-                        owner.changeBalance(rentNow);
+                int rentNow = currentRent();
+                owner.changeBalance(rentNow);
                 player.changeBalance(-rentNow);
 
 

@@ -151,4 +151,12 @@ public class Gamehandler {
     public void setGui_fields(GUI_Field[] gui_fields) {
         this.gui_fields = gui_fields;
     }
+
+    public GUIController getController() {
+        return controller;
+    }
+
+    public void setController(GUIController controller) {
+        this.controller = controller;
+    }
 }
