@@ -1,5 +1,4 @@
-import gui_fields.GUI_Ownable;
-import gui_fields.GUI_Player;
+import gui_fields.*;
 import gui_main.GUI;
 
 import java.io.IOException;
@@ -7,35 +6,67 @@ import java.io.IOException;
 public class Gamehandler {
     private Board myboard;
     private Player[] players;
-    private GUI mygui;
     private int amountOfPlayers;
+
+    private GUI myGUI = new GUI();
     private GUI_Player[] playersgui;
-    GUIController controller;
+    private GUI_Field[] gui_fields;
+
+    private GUIController controller;
 
 
     public Gamehandler() throws IOException {
-        GUI mygui = new GUI();
-        this.amountOfPlayers = Integer.parseInt(mygui.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
+        this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
         myboard = new Board();
         for (int i = 0; i < this.amountOfPlayers; i++) {
-            String input = mygui.getUserString("Enter name of player: " + (i + 1));
+            String input = myGUI.getUserString("Enter name of player: " + (i + 1));
             players[i] = new Player(Settings.STARTING_MONEY, input, 0);
             playersgui[i] = new GUI_Player(input, Settings.STARTING_MONEY);
-            mygui.addPlayer(playersgui[i]);
-            playersgui[i].getCar().setPosition(mygui.getFields()[0]);
+            myGUI.addPlayer(playersgui[i]);
+            playersgui[i].getCar().setPosition(myGUI.getFields()[0]);
 
 
         }
-        controller = new GUIController(mygui, playersgui);
-        GUI_Ownable ownable = (GUI_Ownable) mygui.getFields()[1];
+        gui_fields = myGUI.getFields();
+        controller = new GUIController(myGUI, playersgui);
+        castingFields();
 
-        mygui.showMessage("The game vil start when you press ok");
+        myGUI.showMessage("The game vil start when you press ok");
     }
 
     public void castingFields() {
-        for (int i = 0; i < 2; i++) {
+        if (this.gui_fields.length != this.myboard.getBoardAr().length) {
+            myGUI.showMessage("Cant start properly there is a wrong amount of fields the amount must be 40 to play with graphical interface");
+            return;
+        }
+        for (int i = 0; i < this.gui_fields.length; i++) {
+            switch (myboard.getBoardAr()[i].getFieldtype()) {
+                case "Start":
+                    this.gui_fields[i] = (GUI_Start) this.gui_fields[i];
+                    break;
+                case "Property":
+                    this.gui_fields[i] = (GUI_Street) this.gui_fields[i];
+                    break;
+                case "Chance":
+                    this.gui_fields[i] = (GUI_Chance) this.gui_fields[i];
+                    break;
+                case "Skat":
+                    this.gui_fields[i] = (GUI_Tax) this.gui_fields[i];
+                    break;
+                case "Ferry":
+                    this.gui_fields[i] = (GUI_Shipping) this.gui_fields[i];
+                    break;
+                case "Jail":
+                    this.gui_fields[i] = (GUI_Jail) this.gui_fields[i];
+                    break;
+                case "Beverage":
+                    this.gui_fields[i] = (GUI_Brewery) this.gui_fields[i];
+
+
+            }
+
 
         }
     }
@@ -89,12 +120,12 @@ public class Gamehandler {
         this.players = players;
     }
 
-    public GUI getMygui() {
-        return mygui;
+    public GUI getMyGUI() {
+        return myGUI;
     }
 
-    public void setMygui(GUI mygui) {
-        this.mygui = mygui;
+    public void setMyGUI(GUI myGUI) {
+        this.myGUI = myGUI;
     }
 
     public int getAmountOfPlayers() {
@@ -111,5 +142,13 @@ public class Gamehandler {
 
     public void setPlayersgui(GUI_Player[] playersgui) {
         this.playersgui = playersgui;
+    }
+
+    public GUI_Field[] getGui_fields() {
+        return gui_fields;
+    }
+
+    public void setGui_fields(GUI_Field[] gui_fields) {
+        this.gui_fields = gui_fields;
     }
 }

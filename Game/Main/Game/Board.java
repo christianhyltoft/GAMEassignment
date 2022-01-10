@@ -25,7 +25,9 @@ public class Board {
                 return new FieldChance(generate1field[1], "Chance");
             case "Jail":
                 return new FieldJail(generate1field[1], "Jail");
-            case "GoToJail":
+            case "Parking":
+                return new FieldParking(generate1field[1],"Parking");
+            case "MoveToJail":
                 return new FieldGoToJail(generate1field[1], "GoToJail");
             case "Skat":
                 return new FieldTax(generate1field[1],"Skat",Integer.parseInt(generate1field[2]),Integer.parseInt(generate1field[3]));
