@@ -23,6 +23,6 @@ public class FieldTax extends Field{
     }
     @Override
     public String toString(){
-        return "If you land on this field, you will feel the wrath of the danish tax authorities!";
+        return this.name+"If you land on this field, you will feel the wrath of the danish tax authorities!";
     }
 }
