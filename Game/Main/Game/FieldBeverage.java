@@ -8,8 +8,8 @@ public class FieldBeverage extends FieldPurchaseAble {
     }
 
     @Override
-    public void landOn(Player player) {
-        super.landOn(player);
+    public void landOn(Player player, GUIController gui) {
+        super.landOn(player, gui);
 
         if (owner == null) {
             String yesno = "";

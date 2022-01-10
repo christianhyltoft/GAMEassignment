@@ -19,7 +19,7 @@ public abstract class Field {
         return name;
     }
 
-    public void landOn(Player player) {
+    public void landOn(Player player, GUIController gui) {
         System.out.println(message);
 
 

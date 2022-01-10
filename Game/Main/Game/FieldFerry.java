@@ -16,8 +16,8 @@ public class FieldFerry extends FieldPurchaseAble {
     }
 
     @Override
-    public void landOn(Player player){
-        super.landOn(player);
+    public void landOn(Player player, GUIController gui){
+        super.landOn(player, gui);
         if (owner == null) {
             String yesno = "";
             //GUI skal spørge om man vil købe grunden eller ej

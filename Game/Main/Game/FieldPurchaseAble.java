@@ -28,8 +28,8 @@ public abstract class FieldPurchaseAble extends Field {
     }
 
     @Override
-    public void landOn(Player player) {
-        super.landOn(player);
+    public void landOn(Player player, GUIController gui) {
+        super.landOn(player, gui);
 
     }
     public void mortgage(Player player){

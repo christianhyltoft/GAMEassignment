@@ -9,7 +9,7 @@ public class FieldTax extends Field{
         this.taxdecimal=taxdecimal;
     }
     @Override
-    public void landOn(Player player){
+    public void landOn(Player player, GUIController gui){
         System.out.println("You landed on the field "+ name+"." + message);
 
         if ((player.getBalance()*taxdecimal)/100>taxAmount){

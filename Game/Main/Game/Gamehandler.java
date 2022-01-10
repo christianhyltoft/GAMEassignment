@@ -5,12 +5,12 @@ import gui_main.GUI;
 import java.io.IOException;
 
 public class Gamehandler {
-   private Board myboard;
-   private Player[] players;
-   private static GUI mygui;
-   private int amountOfPlayers;
-   private static GUI_Player[] playersgui;
-
+    private Board myboard;
+    private Player[] players;
+    private static GUI mygui;
+    private int amountOfPlayers;
+    private static GUI_Player[] playersgui;
+    GUIController controller;
 
 
     public Gamehandler() throws IOException {
@@ -28,7 +28,8 @@ public class Gamehandler {
 
 
         }
-        GUI_Ownable ownable=(GUI_Ownable) mygui.getFields()[1];
+        controller = new GUIController(mygui, playersgui);
+        GUI_Ownable ownable = (GUI_Ownable) mygui.getFields()[1];
 
         mygui.showMessage("The game vil start when you press ok");
     }
@@ -41,8 +42,6 @@ public class Gamehandler {
             }
 
 
-
-
         } while (true);
 
     }
@@ -52,9 +51,9 @@ public class Gamehandler {
 
     }
 
-    private static boolean detectLoser (Player players){
+    private static boolean detectLoser(Player players) {
         //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.
-        if(players.getBalance() < 0){
+        if (players.getBalance() < 0) {
             players = null;
             return true;
 
