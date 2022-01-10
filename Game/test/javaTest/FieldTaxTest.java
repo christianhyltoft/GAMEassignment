@@ -9,10 +9,10 @@ class FieldTaxTest {
 
     @Test
     void landOn() {
-        ftest.landOn(ptest);
+        ftest.landOn(ptest,null);
         assertEquals(360000,ptest.getBalance());
 
-        ftest.landOn(ptest2);
+        ftest.landOn(ptest2,null);
         assertEquals(2000,ptest2.getBalance());
 
 

@@ -1,15 +1,15 @@
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
-    public FieldBeverage(String name, String message, int buyprice, int mortgageValue) {
-        super(name, message, buyprice, mortgageValue);
+    public FieldBeverage(String name, String FieldType, int buyprice, int mortgageValue) {
+        super(name, FieldType, buyprice, mortgageValue);
         this.rollAmount = rollAmount;
         this.ownedAmount = ownedAmount;
     }
 
     @Override
-    public void landOn(Player player) {
-        super.landOn(player);
+    public void landOn(Player player, GUIController gui) {
+        super.landOn(player, gui);
 
         if (owner == null) {
             String yesno = "";

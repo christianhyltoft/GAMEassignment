@@ -10,7 +10,7 @@ import java.awt.*;
 public class Guitest {
     public static void main(String[] args) throws InterruptedException{
         //Test af guiens kommandoer
-        GUI mygui=new GUI();
+        GUI mygui = new GUI();
         GUI_Player p1= new GUI_Player("sten",30000);
         GUI_Player p2= new GUI_Player("sten1",30000);
         GUI_Player p3= new GUI_Player("sten2",30000);

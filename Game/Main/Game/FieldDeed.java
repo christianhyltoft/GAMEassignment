@@ -9,8 +9,8 @@ public class FieldDeed extends FieldPurchaseAble {
 
     private int amountOfHouses;
 
-    public FieldDeed(String name, String message, int buyprice, int mortgageValue, int rent, int rent1, int rent2, int rent3, int rent4, int rent5, int houseprice) {
-        super(name, message, buyprice, mortgageValue);
+    public FieldDeed(String name, String FieldType, int buyprice, int mortgageValue, int rent, int rent1, int rent2, int rent3, int rent4, int rent5, int houseprice) {
+        super(name, FieldType, buyprice, mortgageValue);
         this.rent = rent;
         this.rent1 = rent1;
         this.rent2 = rent2;
@@ -25,8 +25,8 @@ public class FieldDeed extends FieldPurchaseAble {
     }
 
     @Override
-    public void landOn(Player player) {
-        super.landOn(player);
+    public void landOn(Player player, GUIController gui) {
+        super.landOn(player, gui);
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
@@ -37,7 +37,7 @@ public class FieldDeed extends FieldPurchaseAble {
                 setOwner(player);
                 player.changeBalance(-this.buyprice);
                 Gamehandler.getMygui().getUserButtonPressed("You now own this field","ok");
-                Gamehandler.getPlayersgui()[player.getNumber()].setBalance(-this.buyprice);
+                Gamehandler.getPlayersgui()[player.getNumber()].setBalance(Gamehandler.getPlayersgui()[player.getNumber()].getBalance()-this.buyprice);
             }
 
         } else {
@@ -52,6 +52,9 @@ public class FieldDeed extends FieldPurchaseAble {
                         owner.changeBalance(rentNow);
                 player.changeBalance(-rentNow);
                 Gamehandler.getMygui().getUserButtonPressed(this.owner+" owns this field and you must pay that player: "+rentNow,"ok");
+                Gamehandler.getPlayersgui()[player.getNumber()].setBalance(Gamehandler.getPlayersgui()[player.getNumber()].getBalance()-rentNow);
+                Gamehandler.getPlayersgui()[this.owner.getNumber()].setBalance(Gamehandler.getPlayersgui()[this.owner.getNumber()].getBalance()-rentNow);
+
             }
         }
 
