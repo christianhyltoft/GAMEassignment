@@ -13,10 +13,9 @@ public class Board {
 
         }
 
-
     }
 
-    private Field makeField(int i, String[] generator) {
+   private Field makeField(int i, String[] generator) {
         String[] generate1field = generator[i].split("-");
         System.out.println(generate1field.length);
         switch (generate1field[0]) {
