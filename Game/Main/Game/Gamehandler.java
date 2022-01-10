@@ -12,6 +12,8 @@ public class Gamehandler {
     private GUI_Player[] playersgui;
     private GUI_Field[] gui_fields;
 
+    private Rafflecup rafflecup=new Rafflecup(2,6);
+
     private GUIController controller;
 
 
@@ -85,6 +87,11 @@ public class Gamehandler {
     }
 
     private void taketurn(Player player) {
+        getMyGUI().showMessage("Roll the dice");
+        rafflecup.roll();
+
+
+
 
 
     }

@@ -58,4 +58,11 @@ public class Player {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    public void changePosition(int move){
+        this.position+=move;
+        if (this.position>=Settings.BOARD_SIZE){
+            this.position-=40;
+        }
+    }
 }
