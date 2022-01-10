@@ -18,18 +18,19 @@ public class Gamehandler {
         this.amountOfPlayers = Integer.parseInt(mygui.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
+        myboard = new Board();
         for (int i = 0; i < this.amountOfPlayers; i++) {
             String input = mygui.getUserString("Enter name of player: " + (i + 1));
             players[i] = new Player(Settings.STARTING_MONEY, input, 0);
             playersgui[i] = new GUI_Player(input, Settings.STARTING_MONEY);
             mygui.addPlayer(playersgui[i]);
-            myboard = new Board();
+            playersgui[i].getCar().setPosition(mygui.getFields()[0]);
 
 
         }
         GUI_Ownable ownable=(GUI_Ownable) mygui.getFields()[1];
 
-
+        mygui.showMessage("The game vil start when you press ok");
     }
 
     public void playGame() {
