@@ -42,4 +42,11 @@ public class Board {
 
     }
 
+    public Field[] getBoardAr() {
+        return boardAr;
+    }
+
+    public void setBoardAr(Field[] boardAr) {
+        this.boardAr = boardAr;
+    }
 }
