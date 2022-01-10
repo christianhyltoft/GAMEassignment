@@ -7,9 +7,9 @@ import java.io.IOException;
 public class Gamehandler {
     private Board myboard;
     private Player[] players;
-    private static GUI mygui;
+    private GUI mygui;
     private int amountOfPlayers;
-    private static GUI_Player[] playersgui;
+    private GUI_Player[] playersgui;
     GUIController controller;
 
 
@@ -34,6 +34,13 @@ public class Gamehandler {
         mygui.showMessage("The game vil start when you press ok");
     }
 
+    public void castingFields() {
+        for (int i = 0; i < 2; i++) {
+
+        }
+    }
+
+
     public void playGame() {
         do {
             for (int i = 0; i < players.length; i++) {
@@ -55,7 +62,7 @@ public class Gamehandler {
         //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.
         if (players.getBalance() < 0) {
             players = null;
-            this.controller.getMyGUI().showMessage(players.getName()+" has lost the game.");
+            this.controller.getMyGUI().showMessage(players.getName() + " has lost the game.");
             return true;
 
         }
@@ -82,12 +89,12 @@ public class Gamehandler {
         this.players = players;
     }
 
-    public static GUI getMygui() {
+    public GUI getMygui() {
         return mygui;
     }
 
-    public static void setMygui(GUI mygui) {
-        Gamehandler.mygui = mygui;
+    public void setMygui(GUI mygui) {
+        this.mygui = mygui;
     }
 
     public int getAmountOfPlayers() {
@@ -98,11 +105,11 @@ public class Gamehandler {
         this.amountOfPlayers = amountOfPlayers;
     }
 
-    public static GUI_Player[] getPlayersgui() {
+    public GUI_Player[] getPlayersgui() {
         return playersgui;
     }
 
-    public static void setPlayersgui(GUI_Player[] playersgui) {
-        Gamehandler.playersgui = playersgui;
+    public void setPlayersgui(GUI_Player[] playersgui) {
+        this.playersgui = playersgui;
     }
 }

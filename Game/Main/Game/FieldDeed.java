@@ -30,20 +30,18 @@ public class FieldDeed extends FieldPurchaseAble {
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
-            String yesno=Gamehandler.getMygui().getUserButtonPressed("Du you want to but this field","Yes ","no");
 
 
-            if (yesno.equals("yes")) {
+            if (true) {
                 setOwner(player);
                 player.changeBalance(-this.buyprice);
-                Gamehandler.getMygui().getUserButtonPressed("You now own this field","ok");
-                Gamehandler.getPlayersgui()[player.getNumber()].setBalance(Gamehandler.getPlayersgui()[player.getNumber()].getBalance()-this.buyprice);
+
             }
 
         } else {
 
             if (player == owner) {
-                Gamehandler.getMygui().getUserButtonPressed("You own this field","ok");
+
 
 
             } else {
@@ -51,9 +49,7 @@ public class FieldDeed extends FieldPurchaseAble {
                 int rentNow=currentRent();
                         owner.changeBalance(rentNow);
                 player.changeBalance(-rentNow);
-                Gamehandler.getMygui().getUserButtonPressed(this.owner+" owns this field and you must pay that player: "+rentNow,"ok");
-                Gamehandler.getPlayersgui()[player.getNumber()].setBalance(Gamehandler.getPlayersgui()[player.getNumber()].getBalance()-rentNow);
-                Gamehandler.getPlayersgui()[this.owner.getNumber()].setBalance(Gamehandler.getPlayersgui()[this.owner.getNumber()].getBalance()-rentNow);
+
 
             }
         }
