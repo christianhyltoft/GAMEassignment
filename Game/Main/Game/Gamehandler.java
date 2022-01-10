@@ -52,8 +52,14 @@ public class Gamehandler {
 
     }
 
-    private void detectLoser() {
+    private static boolean detectLoser (Player players){
+        //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.
+        if(players.getBalance() < 0){
+            players = null;
+            return true;
 
+        }
+        return false;
     }
 
     public Board getMyboard() {
