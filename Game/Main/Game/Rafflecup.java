@@ -18,9 +18,11 @@ public class Rafflecup {
     }
 
     public int sum() {
-        int[] values = roll();
-        return IntStream.of(values).sum();
-
+        int sum = 0;
+        for (int i = 0; i < cup.length; i++) {
+            sum += cup[i].getValue();
+        }
+        return sum;
     }
 
     public int[] roll() {
