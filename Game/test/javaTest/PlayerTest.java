@@ -15,6 +15,16 @@ class PlayerTest {
         ptest.changePosition(6);
         assertEquals(5,ptest.getPosition());
 
+        ptest.setPosition(39);
+        ptest.changePosition(1);
+        assertEquals(0,ptest.getPosition());
+
+        //Tester grænser
+        ptest.setPosition(38);
+        ptest.changePosition(1);
+        assertEquals(39,ptest.getPosition());
+
+
 
 
 

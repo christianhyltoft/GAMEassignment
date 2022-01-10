@@ -40,6 +40,7 @@ public class FieldDeed extends FieldPurchaseAble {
                 ownable.setOwnerName(player.getName());
                 player.changeBalance(-this.buyprice);
                 gui.getMyGUI().showMessage("You now own this field");
+                ownable.setRent("The rent is: "+ this.rent);
 
 
             }
@@ -78,6 +79,20 @@ public class FieldDeed extends FieldPurchaseAble {
                 return rent5;
         }
         return 0;
+    }
+
+    public void buildHouse(Player player, GUIController gui) {
+        if (this.amountOfHouses == 1) {
+            gui.getMyGUI().showMessage("There is one house on this property ");
+        }
+        else {
+            gui.getMyGUI().showMessage("There are: ");
+
+        }
+
+        int amount = gui.getMyGUI().getUserInteger("How many houses do you want to build", 1, 5);
+
+
     }
 
     public int getRent() {

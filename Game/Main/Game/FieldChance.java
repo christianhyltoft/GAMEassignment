@@ -4,4 +4,8 @@ public class FieldChance extends Field{
 
 
     }
+    @Override
+    public String toString(){
+        return "You landed on field"+this.name;
+    }
 }

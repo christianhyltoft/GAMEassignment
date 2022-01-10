@@ -31,6 +31,10 @@ public class Gamehandler {
 
 
         }
+        for (int i = 0; i < myGUI.getFields().length; i++) {
+            myGUI.getFields()[i].setDescription(myboard.getBoardAr()[i].toString());
+
+        }
         gui_fields = myGUI.getFields();
         controller = new GUIController(myGUI, playersgui);
         castingFields();
