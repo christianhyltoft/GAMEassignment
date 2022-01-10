@@ -10,7 +10,7 @@ public class ChanceCardPayBasedOnProperty extends ChanceCard {
     }
    /*
    @override
-   public void DrawCard(Player myPlayer){
+   public void DrawCard(Player myPlayer, GUIController GUI){
         myPlayer.changeBalance(houseAmount*husprisen + hotelAmount*hotelprisen);
         }
          !SKAL RETTES EFTER! */

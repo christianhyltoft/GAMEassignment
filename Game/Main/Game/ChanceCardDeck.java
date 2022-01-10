@@ -33,14 +33,23 @@ public class ChanceCardDeck {
             }
             for (int i = 0; i < cardAmount; i++) {
                 ChanceCardPayOrReceive payOrReceiveCard = new ChanceCardPayOrReceive(moneyAmount, text);
-                
+                // here we must add the chance card to the ChanceCard[] above.
             }
         }
         if (chanceCardTextFile == "ChanceCardGetOutOfJail.txt") {
             String[] chanceCardData = chanceCardLine.split("-", 4);
         }
         if (chanceCardTextFile == "ChanceCardMatadorGrant.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 4);
+            String[] chanceCardData = chanceCardLine.split("-", 3);
+            int cardAmount = Integer.parseInt(chanceCardData[0]);
+            int moneyAmount = Integer.parseInt(chanceCardData[1]);
+            String text = chanceCardData[3];
+
+            for (int i = 0; i < cardAmount; i++) {
+                ChanceCardMatadorGrant matadorGrant = new ChanceCardMatadorGrant(moneyAmount, text);
+                // here we must add the chance card to the ChanceCard[] above.
+            }
+
         }
         if (chanceCardTextFile == "ChanceCardPayBasedOnProperty.txt") {
             String[] chanceCardData = chanceCardLine.split("-", 4);

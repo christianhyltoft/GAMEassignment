@@ -10,8 +10,7 @@ public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
 
     }
     @Override
-    public void DrawCard(Player myPlayer) {
-       super.DrawCard(myPlayer);
+    public void DrawCard(Player myPlayer, GUIController GUI) {
         for (int i = 0; i < players.length; i++) {
             if (players[i] != myPlayer){
                 myPlayer.changeBalance(moneyAmount);

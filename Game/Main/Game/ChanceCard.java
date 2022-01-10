@@ -7,7 +7,8 @@ public abstract class ChanceCard {
         this.chanceCardText = chanceCardText;
     }
 
-    public void DrawCard(Player player) {
+    public void DrawCard(Player player, GUIController GUI) {
+
         System.out.println(chanceCardText);
     }
 
