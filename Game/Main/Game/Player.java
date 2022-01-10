@@ -2,6 +2,8 @@ public class Player {
 
     private int balance;
     private String name;
+    private static int playernumber=0;
+    private int number;
 
     private int position;
     private Field[] ownedFields;
@@ -10,6 +12,8 @@ public class Player {
         this.balance = balance;
         this.name = name;
         this.position = position;
+        this.number=playernumber;
+        playernumber++;
     }
 
     public int getBalance() {
@@ -45,5 +49,13 @@ public class Player {
     }
     public void changeBalance(int change){
         this.balance+=change;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }
