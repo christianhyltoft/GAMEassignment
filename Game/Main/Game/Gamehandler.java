@@ -62,6 +62,10 @@ public class Gamehandler {
         return false;
     }
 
+    //private boolean detectWinner (){
+    //}
+
+
     public Board getMyboard() {
         return myboard;
     }
