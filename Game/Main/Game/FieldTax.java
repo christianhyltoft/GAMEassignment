@@ -8,7 +8,7 @@ public class FieldTax extends Field{
         this.taxAmount = taxAmount;
         this.taxDecimal = taxDecimal;
     }
-    
+
     @Override
     public void landOn(Player player, GUIController gui){
         gui.getMyGUI().showMessage("You landed on the field " + name + "." + Fieldtype);
@@ -21,6 +21,6 @@ public class FieldTax extends Field{
 
     @Override
     public String toString(){
-        return this.name+" If you land on this field, you will feel the wrath of the danish tax authorities!";
+        return this.name + " If you land on this field, you will feel the wrath of the danish tax authorities!";
     }
 }
