@@ -1,0 +1,389 @@
+@startuml
+
+title __GAME's Class Diagram__\n
+
+  namespace GAME {
+    class Board {
+        - boardAr : Field[]
+        + Board()
+        + getBoardAr()
+        + getMyDeck()
+        + setBoardAr()
+        - makeField()
+    }
+  }
+  
+
+  namespace GAME  {
+    abstract class ChanceCard {
+        # chanceCardAmount : int
+        # chanceCardText : String
+        + ChanceCard()
+        + DrawCard()
+    }
+  }
+  
+
+  namespace GAME  {
+    class ChanceCardDeck {
+        - chanceCardDeck : ChanceCard[]
+        - count : int
+        - myFields : Field[]
+        + ChanceCardDeck()
+        + DrawCard()
+        + ShuffleDeck()
+        - ChanceCardCreator()
+    }
+  }
+  
+
+  namespace GAME  {
+    class ChanceCardGetOutOfJail {
+        + ChanceCardGetOutOfJail()
+    }
+  }
+  
+
+  namespace GAME  {
+    class ChanceCardMatadorGrant {
+        - moneyAmount : int
+        + ChanceCardMatadorGrant()
+        + DrawCard()
+    }
+  }
+  
+
+  namespace GAME  {
+    class ChanceCardMove {
+        - myFields : Field[]
+        + ChanceCardMove()
+        + DrawCard()
+    }
+  }
+  
+
+  namespace GAME  {
+    class ChanceCardPayBasedOnProperty {
+        - hotelAmount : int
+        - houseAmount : int
+        + ChanceCardPayBasedOnProperty()
+    }
+  }
+  
+
+  namespace GAME  {
+    class ChanceCardPayOrReceive {
+        - moneyAmount : int
+        + ChanceCardPayOrReceive()
+        + DrawCard()
+    }
+  }
+  
+
+  namespace GAME  {
+    class ChanceCardReceiveMoneyFromPlayers {
+        - moneyAmount : int
+        - players : Player[]
+        + ChanceCardReceiveMoneyFromPlayers()
+        + DrawCard()
+    }
+  }
+  
+
+  namespace GAME  {
+    class Die {
+        - faceAmount : int
+        - value : int
+        + Die()
+        + getFaceAmount()
+        + getValue()
+        + roll()
+        + setFaceAmount()
+        + setValue()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    abstract class Field {
+        # Fieldtype : String
+        # name : String
+        + Field()
+        + getFieldtype()
+        + getName()
+        + landOn()
+        + setFieldtype()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldBeverage {
+        - ownedAmount : int
+        - rollAmount : int
+        + FieldBeverage()
+        + landOn()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldChance {
+        + FieldChance()
+        + landOn()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldDeed {
+        - amountOfHouses : int
+        - houseprice : int
+        - rent : int
+        - rent1 : int
+        - rent2 : int
+        - rent3 : int
+        - rent4 : int
+        - rent5 : int
+        + FieldDeed()
+        + buildHouse()
+        + currentRent()
+        + getAmountOfHouses()
+        + getHouseprice()
+        + getRent()
+        + getRent1()
+        + getRent2()
+        + getRent3()
+        + getRent4()
+        + getRent5()
+        + landOn()
+        + setAmountOfHouses()
+        + setRent()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldFerry {
+        - rent : int
+        + FieldFerry()
+        + getRent()
+        + landOn()
+        + setRent()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldGoToJail {
+        + FieldGoToJail()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldJail {
+        + FieldJail()
+        + landOn()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldParking {
+        + FieldParking()
+        + landOn()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    abstract class FieldPurchaseAble {
+        # buyPrice : int
+        # messageOwned : String
+        # messageUnowned : String
+        # mortgageValue : int
+        + FieldPurchaseAble()
+        + buyMortgagedProperty()
+        + getBuyprice()
+        + getOwner()
+        + landOn()
+        + mortgage()
+        + setBuyprice()
+        + setOwner()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldStart {
+        + FieldStart()
+        + landOn()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class FieldTax {
+        - taxAmount : int
+        - taxDecimal : int
+        + FieldTax()
+        + landOn()
+        + toString()
+    }
+  }
+  
+
+  namespace GAME  {
+    class GUIController {
+        - myGUI : GUI
+        - myPlayers : GUI_Player[]
+        + getMyGUI()
+        + getMyPlayers()
+        ~ GUIController()
+    }
+  }
+  
+
+  namespace GAME  {
+    class GUI_Playerex {
+        + GUI_Playerex()
+        + GUI_Playerex()
+        + GUI_Playerex()
+        + update()
+    }
+  }
+  
+
+  namespace GAME  {
+    class Gamehandler {
+        - amountOfPlayers : int
+        - myGUI : GUI
+        - players : Player[]
+        - playersgui : GUI_Player[]
+        + Gamehandler()
+        + getAmountOfPlayers()
+        + getController()
+        + getMyGUI()
+        + getMyboard()
+        + getPlayers()
+        + getPlayersgui()
+        + playGame()
+        + setAmountOfPlayers()
+        + setController()
+        + setMyGUI()
+        + setMyboard()
+        + setPlayers()
+        + setPlayersgui()
+        - detectLoser()
+        - taketurn()
+    }
+  }
+  
+
+  namespace GAME  {
+    class Main1 {
+    }
+  }
+  
+
+  namespace GAME  {
+    class Player {
+        - balance : int
+        - name : String
+        - number : int
+        - ownedFields : Field[]
+        {static} - playernumber : int
+        - position : int
+        + changeBalance()
+        + changePosition()
+        + getBalance()
+        + getName()
+        + getNumber()
+        + getOwnedFields()
+        + getPosition()
+        + setBalance()
+        + setName()
+        + setNumber()
+        + setOwnedFields()
+        + setPosition()
+        ~ Player()
+    }
+  }
+  
+
+  namespace GAME  {
+    class Rafflecup {
+        - cup : Die[]
+        + Rafflecup()
+        + getCup()
+        + roll()
+        + rollar()
+        + sameFacesUpOnAllDice()
+        + setCup()
+        + sum()
+    }
+  }
+  
+
+  namespace GAME  {
+    class Settings {
+        {static} + BOARD_SIZE : int
+        {static} + ChanceCardDataBase : String[]
+        {static} + ChanceCardDataBase2 : String
+        {static} + MAX_PLAYERS : int
+        {static} + MIN_PLAYERS : int
+        {static} + STARTING_MONEY : int
+        {static} + fields : GUI_Field[]
+        - Settings()
+    }
+  }
+  
+
+  namespace GAME  {
+    class TxtReader {
+        + reader()
+    }
+  }
+  
+
+  Board o-- ChanceCardDeck : myDeck
+  Board o-- TxtReader : reader
+  ChanceCardGetOutOfJail -up-|> ChanceCard
+  ChanceCardMatadorGrant -up-|> ChanceCard
+  ChanceCardMove -up-|> ChanceCard
+  ChanceCardPayBasedOnProperty -up-|> ChanceCard
+  ChanceCardPayOrReceive -up-|> ChanceCard
+  ChanceCardReceiveMoneyFromPlayers -up-|> ChanceCard
+  Field o-- Board : parent
+  FieldBeverage -up-|> FieldPurchaseAble
+  FieldChance -up-|> Field
+  FieldDeed -up-|> FieldPurchaseAble
+  FieldFerry -up-|> FieldPurchaseAble
+  FieldGoToJail -up-|> Field
+  FieldJail -up-|> Field
+  FieldParking -up-|> Field
+  FieldPurchaseAble -up-|> Field
+  FieldPurchaseAble o-- Player : owner
+  FieldStart -up-|> Field
+  FieldTax -up-|> Field
+  GUI_Playerex -up-|> gui_fields.GUI_Player
+  GUI_Playerex o-- Player : player
+  Gamehandler o-- GUIController : controller
+  Gamehandler o-- Board : myboard
+  Gamehandler o-- Rafflecup : rafflecup
+
+
+right footer
+
+@enduml
