@@ -6,7 +6,6 @@ public class FieldParking extends Field{
 
     @Override
     public void landOn(Player player, GUIController gui) {
-        System.out.println(Fieldtype);
     }
 
     public String toString(){
