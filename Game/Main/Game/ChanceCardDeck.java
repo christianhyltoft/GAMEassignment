@@ -9,6 +9,7 @@ public class ChanceCardDeck {
     private int count;
 
     public ChanceCardDeck(Field[] myFields) {
+        this.chanceCardDeck = new ChanceCard[42];
         this.myFields = myFields;
         count = 0;
 
