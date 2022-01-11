@@ -2,15 +2,15 @@ public abstract class FieldPurchaseAble extends Field {
 
     protected Player owner;
 
-    protected int buyprice;
+    protected int buyPrice;
     protected int mortgageValue;
 
     protected String messageOwned;
     protected String messageUnowned;
 
-    public FieldPurchaseAble(String name, String FieldType, int buyprice, int mortgageValue) {
+    public FieldPurchaseAble(String name, String FieldType, int buyPrice, int mortgageValue) {
         super(name, FieldType);
-        this.buyprice = buyprice;
+        this.buyPrice = buyPrice;
     }
 
 
@@ -23,11 +23,11 @@ public abstract class FieldPurchaseAble extends Field {
     }
 
     public int getBuyprice() {
-        return buyprice;
+        return buyPrice;
     }
 
     public void setBuyprice(int buyprice) {
-        this.buyprice = buyprice;
+        this.buyPrice = buyprice;
     }
 
     @Override
@@ -38,7 +38,7 @@ public abstract class FieldPurchaseAble extends Field {
     public void mortgage(Player player){
         player.changeBalance(-mortgageValue);
     }
-    public void buymortgagedproperty(Player player){
+    public void buyMortgagedProperty(Player player){
         player.changeBalance(mortgageValue);
     }
 }
