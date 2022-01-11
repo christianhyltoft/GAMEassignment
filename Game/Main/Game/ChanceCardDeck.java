@@ -92,9 +92,14 @@ public class ChanceCardDeck {
     public void ShuffleDeck(){
         Random rng = new Random();
 
-        for(int i = 0; i < 1000)
-        int card1 = rng.nextInt(chanceCardDeck.length);
-        int card2 = rng.nextInt(chanceCardDeck.length);
+        for(int i = 0; i < 1000; i++){
+            int card1 = rng.nextInt(chanceCardDeck.length);
+            int card2 = rng.nextInt(chanceCardDeck.length);
+
+            ChanceCard temp = chanceCardDeck[card1];
+            chanceCardDeck[card1] = chanceCardDeck[card2];
+            chanceCardDeck[card2] = temp;
+        }
     }
 
     public ChanceCard DrawCard() {

@@ -64,6 +64,4 @@ public final class Settings {
             new GUI_Tax("Extra-\nordinary\nStateTax", "Pay 2000", "Pay extraordinary\nStateTax: kr. 2000,-", Color.GRAY, Color.BLACK),
             new GUI_Street("Rådhuspladsen", "Cost:  8000", "Rådhuspladsen", "Rent:  1000", new Color(150, 60, 150), Color.WHITE),
     };
-
-    private
 }
