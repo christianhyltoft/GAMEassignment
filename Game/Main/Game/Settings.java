@@ -22,11 +22,11 @@ public final class Settings {
 
     public static GUI_Field[] fields = new GUI_Field[]{
 
-            new GUI_Start("Start", "Receive: 4000", "Receive: 4000,-\nwhen you pass this field", Color.RED, Color.BLACK),
+            new GUI_Start("Start", "Get:\n4000", "Receive: 4000,-\nwhen you pass this field", Color.RED, Color.BLACK),
             new GUI_Street("Rødovrevej", "Cost:  1200", "Rødovrevej", "Rent:  50", new Color(75, 155, 225), Color.BLACK),
             new GUI_Chance("?", "Chance", "Take a chance card.", new Color(204, 204, 204), Color.BLACK),
             new GUI_Street("Hvidovrevej", "Cost:  1200", "Hvidovrevej", "Rent:  50", new Color(75, 155, 225), Color.BLACK),
-            new GUI_Tax("Pay\ntax", "10% el. 200", "Pay your tax\n10% or 4000", Color.GRAY, Color.BLACK),
+            new GUI_Tax("Pay\ntax", "10% or 4000", "Pay your tax\n10% or 4000", Color.GRAY, Color.BLACK),
             new GUI_Shipping("default", "Øresund", "Cost:  4000", "Øresundsredderiet", "Rent:  500", Color.WHITE, Color.BLACK),
             new GUI_Street("Roskildevej", "Cost:  2000", "Roskildevej", "Rent:  100", new Color(255, 135, 120), Color.BLACK),
             new GUI_Chance("?", "Chance", "Take a chance card.", new Color(204, 204, 204), Color.BLACK),
