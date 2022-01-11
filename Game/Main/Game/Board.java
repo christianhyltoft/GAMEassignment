@@ -3,11 +3,9 @@ import java.io.IOException;
 public class Board {
 
     private Field[] boardAr;
-    private ChanceCard[] chanceDeck;
     private TxtReader reader;
 
-    public Board(ChanceCard[] chanceDeck) throws IOException {
-        this.chanceDeck = chanceDeck;
+    public Board() throws IOException {
         reader = new TxtReader();
 
         String[] generator = reader.reader("Fields.txt");
@@ -23,7 +21,7 @@ public class Board {
             case "Start":
                 return new FieldStart(generate1field[0], "Start");
             case "Chance":
-                return new FieldChance(generate1field[1], "Chance", chanceDeck);
+                return new FieldChance(generate1field[1], "Chance");
             case "Jail":
                 return new FieldJail(generate1field[1], "Jail");
             case "Parking":
