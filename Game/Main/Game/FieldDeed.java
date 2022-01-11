@@ -43,7 +43,7 @@ public class FieldDeed extends FieldPurchaseAble {
                 player.changeBalance(-this.buyprice);
                 gui.getMyGUI().showMessage("You now own this field");
                 ownable.setRent("The rent is: " + this.rent);
-                ownable.setTextColor(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
+                ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
                 gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyprice);
 
 

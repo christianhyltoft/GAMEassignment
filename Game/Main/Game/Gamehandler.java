@@ -1,6 +1,7 @@
 import gui_fields.*;
 import gui_main.GUI;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class Gamehandler {
@@ -18,6 +19,7 @@ public class Gamehandler {
 
 
     public Gamehandler() throws IOException {
+        Color[] carcolors= new Color[]{Color.cyan,Color.MAGENTA,Color.PINK};
         this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
