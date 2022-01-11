@@ -27,7 +27,7 @@ public class ChanceCardDeck {
     }
 
     private void ChanceCardCreator(String cardText){
-        String[] splitText = cardText.split("-", 4);
+        String[] splitText = cardText.split("-", 5);
         String chanceCardType = splitText[0];
         int cardAmount = Integer.parseInt(splitText[1]);
 
