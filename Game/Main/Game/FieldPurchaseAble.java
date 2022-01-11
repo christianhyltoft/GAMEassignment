@@ -8,8 +8,8 @@ public abstract class FieldPurchaseAble extends Field {
     protected String messageOwned;
     protected String messageUnowned;
 
-    public FieldPurchaseAble(String name, String FieldType, int buyPrice, int mortgageValue) {
-        super(name, FieldType);
+    public FieldPurchaseAble(String name, String FieldType, Board parent, int buyPrice, int mortgageValue) {
+        super(name, FieldType, parent);
         this.buyPrice = buyPrice;
     }
 

@@ -26,6 +26,8 @@ public class Gamehandler {
         playersgui = new GUI_Player[this.amountOfPlayers];
 
         myboard = new Board();
+        myCardDeck = new ChanceCardDeck(myboard.getBoardAr());
+
 
         for (int i = 0; i < this.amountOfPlayers; i++) {
             String input = myGUI.getUserString("Enter name of player: " + (i + 1));
@@ -41,7 +43,6 @@ public class Gamehandler {
 
         }
         controller = new GUIController(myGUI, playersgui);
-        myCardDeck = new ChanceCardDeck();
 
         myGUI.showMessage("The game vil start when you press ok");
     }

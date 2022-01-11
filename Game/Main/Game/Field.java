@@ -1,10 +1,12 @@
 public abstract class Field {
     protected String name;
     protected String Fieldtype;
+    protected Board parent;
 
-    public Field(String name, String FieldType) {
+    public Field(String name, String FieldType, Board parent) {
         this.name = name;
         this.Fieldtype = FieldType;
+        this.parent = parent;
     }
 
     public String getFieldtype() {

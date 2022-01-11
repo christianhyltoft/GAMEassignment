@@ -2,11 +2,11 @@ public class FieldChance extends Field{
 
     private ChanceCard[] chanceDeck;
 
-    public FieldChance(String name, String FieldType){
-        super(name,FieldType);
+    public FieldChance(String name, String FieldType, Board parent){
+        super(name,FieldType, parent);
     }
 
-    public void setChanceDeck(ChanceCard[] chanceDeck) {
+    public void getChanceDeck(ChanceCard[] chanceDeck) {
         this.chanceDeck = chanceDeck;
     }
 

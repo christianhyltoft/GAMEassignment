@@ -1,8 +1,8 @@
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
-    public FieldBeverage(String name, String FieldType, int buyprice, int mortgageValue) {
-        super(name, FieldType, buyprice, mortgageValue);
+    public FieldBeverage(String name, String FieldType, Board parent, int buyprice, int mortgageValue) {
+        super(name, FieldType, parent, buyprice, mortgageValue);
         this.rollAmount = rollAmount;
         this.ownedAmount = ownedAmount;
     }
