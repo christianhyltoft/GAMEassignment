@@ -33,7 +33,7 @@ public abstract class FieldPurchaseAble extends Field {
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
     }
-    
+
     public void mortgage(Player player){
         player.changeBalance(-mortgageValue);
     }
