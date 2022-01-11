@@ -68,9 +68,10 @@ public class Gamehandler {
         if (player.getPosition()<positionFromTurnBefore){
             myGUI.showMessage("You have passed START, and will therefore receive 4000 kr.");
             player.changeBalance(4000);
+            playersgui[player.getNumber()].setBalance(player.getBalance());
         }
         this.myboard.getBoardAr()[player.getPosition()].landOn(player, this.controller);
-        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") ){
+        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") || this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Ferry")||this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Beverage")){
             this.myboard.getBoardAr()[player.getPosition()].auction(player,this.players,this.controller);
 
         }
