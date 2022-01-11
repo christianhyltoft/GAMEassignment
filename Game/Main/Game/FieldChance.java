@@ -5,6 +5,15 @@ public class FieldChance extends Field{
 
     }
     @Override
+    public void landOn(Player player,GUIController gui){
+        super.landOn(player,gui);
+        gui.getMyGUI().showMessage("Pick a chance card");
+
+    }
+
+
+
+    @Override
     public String toString(){
         return "Lets test your luck... "+this.name;
     }

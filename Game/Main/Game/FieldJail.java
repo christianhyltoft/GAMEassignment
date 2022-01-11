@@ -6,7 +6,7 @@ public class FieldJail extends Field{
     }
     @Override
     public void landOn(Player player, GUIController gui){
-        System.out.println("You landed on the field "+ name+"." + Fieldtype);
+
     }
     public String toString(){
         return "You wouldnt wanna go to "+this.name + " trust me...";

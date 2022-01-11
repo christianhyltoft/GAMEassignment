@@ -11,7 +11,6 @@ public class Gamehandler {
 
     private GUI myGUI = new GUI(Settings.fields);
     private GUI_Player[] playersgui;
-    private GUI_Ownable[] gui_ownables;
 
     private Rafflecup rafflecup = new Rafflecup(2, 6);
 
