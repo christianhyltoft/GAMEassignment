@@ -12,11 +12,12 @@ public final class Settings {
     public static final int STARTING_MONEY = 30000;
 
     // Players
-    public static final int MAX_PLAYERS = 6;
     public static final int MIN_PLAYERS = 3;
+    public static final int MAX_PLAYERS = 6;
     public static final int BOARD_SIZE = 40;
 
 
+    public static final String ChanceCardDataBase2 = "ChanceCards.txt";
     public static final String[] ChanceCardDataBase = {"ChanceCardGetOutOfJail.txt", "ChanceCardMatadorGrant.txt", "ChanceCardMoveYourCharacter.txt",
                                 "ChanceCardPayBasedOnProperty.txt", "ChanceCardPayOrReceiveMoneyFromBank.txt", "ChanceCardReceiveMoneyFromPlayers.txt" };
 

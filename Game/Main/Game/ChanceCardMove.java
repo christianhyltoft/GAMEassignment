@@ -1,11 +1,11 @@
 public class ChanceCardMove extends ChanceCard{
-private Field[] myFields;
-    public ChanceCardMove(String chanceCardText, Field[] myFields) {
+
+    public ChanceCardMove(String chanceCardText) {
         super(chanceCardText);
-        this.myFields = myFields;
     }
+
     @Override
-    public void DrawCard(Player player, GUIController GUI){
+    public void DrawCard(Player player, GUIController GUI, Field[] myFields){
         String[] fieldname = chanceCardText.split("\"",2);
         // move to non-ferry property.
         for (int i = 0; i < myFields.length; i++) {
