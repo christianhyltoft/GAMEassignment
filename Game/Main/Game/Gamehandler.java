@@ -41,7 +41,7 @@ public class Gamehandler {
 
         }
         controller = new GUIController(myGUI, playersgui);
-        myCardDeck = new ChanceCardDeck(controller);
+        myCardDeck = new ChanceCardDeck();
 
         myGUI.showMessage("The game vil start when you press ok");
     }

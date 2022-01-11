@@ -2,10 +2,12 @@ import java.io.IOException;
 
 public class ChanceCardDeck {
 
+    private Field[] myFields;
     private ChanceCard[] chanceCardDeck;
     private int count;
 
-    public ChanceCardDeck() {
+    public ChanceCardDeck(Field[] myFields) {
+        this.myFields = myFields;
         count = 0;
 
         TxtReader myTxtReader = new TxtReader();
@@ -48,7 +50,7 @@ public class ChanceCardDeck {
                 text = splitText[2];
 
                 for(int i = 0; i < cardAmount; i++){
-                    chanceCardDeck[i + count] = new ChanceCardMove(text);
+                    chanceCardDeck[i + count] = new ChanceCardMove(text, myFields);
                     count++;
                 }
                 break;
