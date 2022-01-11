@@ -8,9 +8,8 @@ public class Gamehandler {
     private Player[] players;
     private int amountOfPlayers;
 
-    private GUI myGUI = new GUI();
+    private GUI myGUI = new GUI(Settings.fields);
     private GUI_Player[] playersgui;
-    private GUI_Field[] gui_fields;
     private GUI_Ownable[] gui_ownables;
 
     private Rafflecup rafflecup = new Rafflecup(2, 6);
@@ -36,7 +35,6 @@ public class Gamehandler {
             myGUI.getFields()[i].setDescription(myboard.getBoardAr()[i].toString());
 
         }
-        gui_fields = myGUI.getFields();
         controller = new GUIController(myGUI, playersgui);
 
         myGUI.showMessage("The game vil start when you press ok");
@@ -122,13 +120,6 @@ public class Gamehandler {
         this.playersgui = playersgui;
     }
 
-    public GUI_Field[] getGui_fields() {
-        return gui_fields;
-    }
-
-    public void setGui_fields(GUI_Field[] gui_fields) {
-        this.gui_fields = gui_fields;
-    }
 
     public GUIController getController() {
         return controller;
