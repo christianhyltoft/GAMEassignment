@@ -106,10 +106,10 @@ public class ChanceCardDeck {
     public ChanceCard DrawCard() {
         ChanceCard myCard = chanceCardDeck[0];
 
-        for(int i = 0; i < chanceCardDeck.length - 2; i++){
+        for(int i = 0; i < chanceCardDeck.length - 1; i++){
             chanceCardDeck[i] = chanceCardDeck[i + 1];
         }
-        chanceCardDeck[chanceCardDeck.length] = myCard;
+        chanceCardDeck[chanceCardDeck.length - 1] = myCard;
 
         return myCard;
     }
