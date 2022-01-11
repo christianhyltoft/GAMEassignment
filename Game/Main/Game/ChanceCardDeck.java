@@ -24,6 +24,8 @@ public class ChanceCardDeck {
         for(int i = 0; i < chanceCardText.length; i++){
             ChanceCardCreator(chanceCardText[i]);
         }
+
+        ShuffleDeck();
     }
 
     private void ChanceCardCreator(String cardText){
