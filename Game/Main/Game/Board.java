@@ -3,12 +3,14 @@ import java.io.IOException;
 public class Board {
 
     private Field[] boardAr;
+    private ChanceCard[] chanceDeck;
     TxtReader reader;
 
-    public Board() throws IOException {
+    public Board(ChanceCard[] chanceDeck) throws IOException {
+        this.chanceDeck = chanceDeck;
         reader = new TxtReader();
 
-        String[] generator=reader.reader("Fields.txt");
+        String[] generator = reader.reader("Fields.txt");
         boardAr = new Field[generator.length];
         for (int i = 0; i < boardAr.length; i++) {
             boardAr[i] = makeField(i, generator);
