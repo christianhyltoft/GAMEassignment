@@ -70,6 +70,10 @@ public class Gamehandler {
             player.changeBalance(4000);
         }
         this.myboard.getBoardAr()[player.getPosition()].landOn(player, controller);
+        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property")){
+
+        }
+
 
         if (rafflecup.sameFacesUpOnAllDice()) {
             myGUI.showMessage("You rolled two of a kind and now therefore get another turn");
@@ -78,6 +82,7 @@ public class Gamehandler {
 
 
     }
+
 
     private boolean detectLoser(Player players) {
         //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.

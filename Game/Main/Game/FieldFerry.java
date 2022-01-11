@@ -33,18 +33,20 @@ public class FieldFerry extends FieldPurchaseAble {
                 gui.getMyGUI().showMessage("You now own this field");
                 ownable.setRent("The rent is: " + this.rent);
                 ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
-                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyPrice);
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
 
         } else {
             if (player == owner) {
                 // Udskriv message + messageowned til GUI
                 // Temp message
-                gui.getMyGUI().showMessage("You own this field: " + name);
+                gui.getMyGUI().showMessage("You own this field: " + name+" nothing happens");
             }
             else {
                 owner.changeBalance(rent);
                 player.changeBalance(-rent);
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
             }
         }
 

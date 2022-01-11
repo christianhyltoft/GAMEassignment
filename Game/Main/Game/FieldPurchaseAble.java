@@ -34,10 +34,14 @@ public abstract class FieldPurchaseAble extends Field {
         super.landOn(player, gui);
     }
 
-    public void mortgage(Player player){
+    @Override
+    public abstract void auction();
+
+    public void mortgage(Player player) {
         player.changeBalance(-mortgageValue);
     }
-    public void buyMortgagedProperty(Player player){
+
+    public void buyMortgagedProperty(Player player) {
         player.changeBalance(mortgageValue);
     }
 }

@@ -58,6 +58,26 @@ public class FieldDeed extends FieldPurchaseAble {
 
     }
 
+    @Override
+    public void auction(Player player, Player[] players, GUIController gui) {
+        gui.getMyGUI().showMessage("This property is now up for auction");
+        GUI_Street ownable = (GUI_Street) gui.getMyGUI().getFields()[player.getPosition()];
+
+        String buyer = "";
+        while (true) {
+            buyer = gui.getMyGUI().getUserString("Figure out amongst yourselves who will buy the field and for what price and enter the player who wants to buy: ");
+            for (int i = 0; i < players.length; i++) {
+                if (players[i].getName().equals(buyer)){
+                    this.owner=players[i];
+
+                }
+
+            }
+        }
+
+
+    }
+
     public int currentRent() {
         switch (this.amountOfHouses) {
             case 0:
