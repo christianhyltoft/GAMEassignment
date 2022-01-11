@@ -57,8 +57,4 @@ public class Board {
     public ChanceCardDeck getMyDeck() {
         return myDeck;
     }
-
-    public ChanceCard DrawCardFromDeck(){
-        return ChanceCardDeck.DrawCard();
-    }
 }
