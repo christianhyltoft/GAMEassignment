@@ -13,7 +13,6 @@ public abstract class FieldPurchaseAble extends Field {
         this.buyPrice = buyPrice;
     }
 
-
     public Player getOwner() {
         return owner;
     }
@@ -33,8 +32,8 @@ public abstract class FieldPurchaseAble extends Field {
     @Override
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
-
     }
+    
     public void mortgage(Player player){
         player.changeBalance(-mortgageValue);
     }
