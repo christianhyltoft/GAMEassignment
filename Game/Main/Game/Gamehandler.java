@@ -58,20 +58,33 @@ public class Gamehandler {
 
     private void taketurn(Player player) {
         myGUI.showMessage("Roll the dice");
+        int positionFromTurnBefore = player.getPosition();
         rafflecup.roll();
         player.changePosition(rafflecup.sum());
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         myGUI.showMessage("Move your car: ");
+
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
-        this.myboard.getBoardAr()[player.getPosition()].landOn(player, controller);
+        if (player.getPosition()<positionFromTurnBefore){
+            myGUI.showMessage("You have passed START, and will therefore receive 4000 kr.");
+            player.changeBalance(4000);
+            playersgui[player.getNumber()].setBalance(player.getBalance());
+        }
+        this.myboard.getBoardAr()[player.getPosition()].landOn(player, this.controller);
+        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") || this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Ferry")||this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Beverage")){
+            this.myboard.getBoardAr()[player.getPosition()].auction(player,this.players,this.controller);
+
+        }
+
 
         if (rafflecup.sameFacesUpOnAllDice()) {
-            myGUI.showMessage("You rolled to of a kind and now therefore get another turn");
+            myGUI.showMessage("You rolled two of a kind and now therefore get another turn");
             taketurn(player);
         }
 
 
     }
+
 
     private boolean detectLoser(Player players) {
         //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.

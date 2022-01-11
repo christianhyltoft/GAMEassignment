@@ -29,4 +29,13 @@ class PlayerTest {
 
 
     }
+    @Test
+    void changeBalancetest(){
+        ptest.setBalance(-10000);
+        ptest.changeBalance(-4000);
+        assertEquals(-14000,ptest.getBalance());
+
+
+
+    }
 }

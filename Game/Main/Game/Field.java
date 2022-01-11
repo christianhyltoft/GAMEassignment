@@ -22,14 +22,23 @@ public abstract class Field {
     }
 
     public void landOn(Player player, GUIController gui) {
-        gui.getMyGUI().showMessage("You landed on"+this.name);
-    }
-
-    public String toString(){
-        return "You landed on: "+this.name;
+        gui.getMyGUI().showMessage("You landed on" + this.name);
     }
 
 
+    public String toString() {
+        return "You landed on: " + this.name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void auction(Player player, Player[] players, GUIController gui) {
+    }
+
+    ;
 }
 
 

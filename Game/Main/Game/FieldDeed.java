@@ -41,7 +41,7 @@ public class FieldDeed extends FieldPurchaseAble {
                 gui.getMyGUI().showMessage("You now own this field");
                 ownable.setRent("The rent is: " + this.rent);
                 ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
-                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyPrice);
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
         } else {
             if (player == owner) {
@@ -51,10 +51,39 @@ public class FieldDeed extends FieldPurchaseAble {
                 owner.changeBalance(rentNow);
                 player.changeBalance(-rentNow);
                 gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
-                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - currentRent());
-                gui.getMyPlayers()[this.owner.getNumber()].setBalance(gui.getMyPlayers()[this.owner.getNumber()].getBalance() + currentRent());
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
             }
         }
+
+    }
+
+    @Override
+    public void auction(Player player, Player[] players, GUIController gui) {
+        if (this.owner!=null)
+            return;
+        gui.getMyGUI().showMessage("This property is now up for auction");
+        GUI_Street ownable = (GUI_Street) gui.getMyGUI().getFields()[player.getPosition()];
+
+        String buyer = "";
+        while (true) {
+            buyer = gui.getMyGUI().getUserString("Figure out amongst yourselves who will buy the field and for what price and enter the player who wants to buy: ");
+            for (int i = 0; i < players.length; i++) {
+                if (players[i].getName().equals(buyer)){
+                    int price=gui.getMyGUI().getUserInteger("Name the price you bargained for");
+                    this.owner=players[i];
+                    players[i].changeBalance(-price);
+                    gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
+                    ownable.setOwnerName(buyer);
+                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor());
+                    gui.getMyGUI().showMessage(players[i].getName()+" now owns this field");
+                    return;
+
+                }
+
+            }
+        }
+
 
     }
 

@@ -45,6 +45,9 @@ public class Guitest {
         street.setHotel(true);
         Thread.sleep(1000);
 
+        p1.setBalance(-10000);
+
+
         street.setHouses(4);
 
 
