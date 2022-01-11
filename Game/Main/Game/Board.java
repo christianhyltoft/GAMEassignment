@@ -53,4 +53,6 @@ public class Board {
     public void setBoardAr(Field[] boardAr) {
         this.boardAr = boardAr;
     }
+
+    public ChanceCardDeck getMyDeck() { return myDeck; }
 }

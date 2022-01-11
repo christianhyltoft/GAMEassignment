@@ -13,6 +13,8 @@ public class FieldChance extends Field{
     @Override
     public void landOn(Player player,GUIController gui){
         super.landOn(player,gui);
+
+        parent.get
         gui.getMyGUI().showMessage("Pick a chance card");
 
     }
