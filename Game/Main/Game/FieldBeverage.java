@@ -17,7 +17,7 @@ public class FieldBeverage extends FieldPurchaseAble {
 
             if (yesno.equals("yes")) {
                 setOwner(player);
-                player.changeBalance(-buyprice);
+                player.changeBalance(-buyPrice);
             }
 
         } else {

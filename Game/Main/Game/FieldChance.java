@@ -2,7 +2,6 @@ public class FieldChance extends Field{
     public FieldChance(String name, String FieldType){
         super(name,FieldType);
 
-
     }
     @Override
     public void landOn(Player player,GUIController gui){
@@ -10,8 +9,6 @@ public class FieldChance extends Field{
         gui.getMyGUI().showMessage("Pick a chance card");
 
     }
-
-
 
     @Override
     public String toString(){
