@@ -4,7 +4,7 @@ public class Board {
 
     private Field[] boardAr;
     private ChanceCard[] chanceDeck;
-    TxtReader reader;
+    private TxtReader reader;
 
     public Board(ChanceCard[] chanceDeck) throws IOException {
         this.chanceDeck = chanceDeck;
