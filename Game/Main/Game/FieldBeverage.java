@@ -4,6 +4,7 @@ import gui_fields.GUI_Street;
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
+
     public FieldBeverage(String name, String FieldType, Board parent, int buyprice, int mortgageValue) {
         super(name, FieldType, parent, buyprice, mortgageValue);
         this.rollAmount = rollAmount;
@@ -42,11 +43,18 @@ public class FieldBeverage extends FieldPurchaseAble {
         }*/
 
     }
+
     @Override
-    public String toString(){
-        return "This is a danish classic, come and try a "+this.name+" and enjoy";
+    public void auction(Player player, Player[] players, GUIController gui) {
+
     }
 
+    ;
+
+    @Override
+    public String toString() {
+        return "This is a danish classic, come and try a " + this.name + " and enjoy";
+    }
 
 
 }

@@ -69,8 +69,10 @@ public class Gamehandler {
             myGUI.showMessage("You have passed START, and will therefore receive 4000 kr.");
             player.changeBalance(4000);
         }
-        this.myboard.getBoardAr()[player.getPosition()].landOn(player, controller);
-        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property")){
+        this.myboard.getBoardAr()[player.getPosition()].landOn(player, this.controller);
+        System.out.println(this.myboard.getBoardAr()[player.getPosition()].getFieldtype());
+        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") ){
+            this.myboard.getBoardAr()[player.getPosition()].auction(player,this.players,this.controller);
 
         }
 

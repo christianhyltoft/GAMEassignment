@@ -8,6 +8,10 @@ public class FieldFerry extends FieldPurchaseAble {
         super(name,FieldType, parent, buyPrice,mortgageValue);
         this.rent=rent;
     }
+    @Override
+    public  void auction(Player player, Player[] players, GUIController gui){
+
+    };
 
 
     public int getRent() {
