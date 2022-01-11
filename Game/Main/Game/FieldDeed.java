@@ -1,5 +1,7 @@
 import gui_fields.GUI_Street;
 
+import java.awt.*;
+
 public class FieldDeed extends FieldPurchaseAble {
     private int rent;
     private final int rent1;
@@ -33,14 +35,16 @@ public class FieldDeed extends FieldPurchaseAble {
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to but this field", "yes", "no");
+            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field", "yes", "no");
 
             if (buy.equals("yes")) {
                 setOwner(player);
                 ownable.setOwnerName(player.getName());
                 player.changeBalance(-this.buyprice);
                 gui.getMyGUI().showMessage("You now own this field");
-                ownable.setRent("The rent is: "+ this.rent);
+                ownable.setRent("The rent is: " + this.rent);
+                ownable.setTextColor(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
+                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyprice);
 
 
             }
@@ -56,6 +60,9 @@ public class FieldDeed extends FieldPurchaseAble {
                 int rentNow = currentRent();
                 owner.changeBalance(rentNow);
                 player.changeBalance(-rentNow);
+                gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
+                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - currentRent());
+                gui.getMyPlayers()[this.owner.getNumber()].setBalance(gui.getMyPlayers()[this.owner.getNumber()].getBalance() + currentRent());
 
 
             }
@@ -64,7 +71,7 @@ public class FieldDeed extends FieldPurchaseAble {
     }
 
     public int currentRent() {
-        switch (amountOfHouses) {
+        switch (this.amountOfHouses) {
             case 0:
                 return rent;
             case 1:
@@ -84,9 +91,8 @@ public class FieldDeed extends FieldPurchaseAble {
     public void buildHouse(Player player, GUIController gui) {
         if (this.amountOfHouses == 1) {
             gui.getMyGUI().showMessage("There is one house on this property ");
-        }
-        else {
-            gui.getMyGUI().showMessage("There are: ");
+        } else {
+            gui.getMyGUI().showMessage("There are: " + this.amountOfHouses + " houses on this property");
 
         }
 
@@ -136,8 +142,8 @@ public class FieldDeed extends FieldPurchaseAble {
         return houseprice;
     }
 
-    public String toString(){
-        return "This is the very nice "+this.name+". It is a very nice place";
+    public String toString() {
+        return "This is the very nice " + this.name + ". It is a very nice place";
     }
 
 }

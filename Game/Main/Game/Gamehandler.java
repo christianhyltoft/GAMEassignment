@@ -61,7 +61,7 @@ public class Gamehandler {
         player.changePosition(rafflecup.sum());
         myGUI.setDice(rafflecup.getCup()[0].getValue(),rafflecup.getCup()[1].getValue());
         myGUI.showMessage("Move your car: ");
-        playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[rafflecup.sum()]);
+        playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         this.myboard.getBoardAr()[player.getPosition()].landOn(player, controller);
 
 
