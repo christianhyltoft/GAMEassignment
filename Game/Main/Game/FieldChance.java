@@ -1,8 +1,12 @@
 public class FieldChance extends Field{
-    public FieldChance(String name, String FieldType){
-        super(name,FieldType);
 
+    private ChanceCard[] chanceDeck;
+
+    public FieldChance(String name, String FieldType, ChanceCard[] chanceDeck){
+        super(name,FieldType);
+        
     }
+
     @Override
     public void landOn(Player player,GUIController gui){
         super.landOn(player,gui);
