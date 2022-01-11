@@ -86,6 +86,10 @@ public class ChanceCardDeck {
                 break;
         }
     }
+
+    public ChanceCard[] getChanceCardDeck() {
+        return chanceCardDeck;
+    }
 }
 
 
