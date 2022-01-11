@@ -23,8 +23,6 @@ public class FieldDeed extends FieldPurchaseAble {
         this.rent5 = rent5;
         this.amountOfHouses = 0;
         this.houseprice = houseprice;
-
-
     }
 
     @Override
@@ -83,12 +81,9 @@ public class FieldDeed extends FieldPurchaseAble {
             gui.getMyGUI().showMessage("There is one house on this property ");
         } else {
             gui.getMyGUI().showMessage("There are: " + this.amountOfHouses + " houses on this property");
-
         }
 
         int amount = gui.getMyGUI().getUserInteger("How many houses do you want to build", 1, 5);
-
-
     }
 
     public int getRent() {
@@ -105,7 +100,6 @@ public class FieldDeed extends FieldPurchaseAble {
 
     public void setAmountOfHouses(int amountOfHouses) {
         this.amountOfHouses = amountOfHouses;
-
     }
 
     public int getRent1() {
