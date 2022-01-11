@@ -1,9 +1,12 @@
 public abstract class FieldPurchaseAble extends Field {
+
     protected Player owner;
+
     protected int buyprice;
     protected int mortgageValue;
-    protected String messageowned;
-    protected String messageunowned;
+    
+    protected String messageOwned;
+    protected String messageUnowned;
 
     public FieldPurchaseAble(String name, String FieldTpye, int buyprice, int mortgageValue) {
         super(name, FieldTpye);
