@@ -54,5 +54,7 @@ public class Board {
         this.boardAr = boardAr;
     }
 
-    public ChanceCardDeck getMyDeck() { return myDeck; }
+    public ChanceCard DrawCardFromDeck(){
+        return ChanceCardDeck.DrawCard();
+    }
 }

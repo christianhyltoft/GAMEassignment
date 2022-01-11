@@ -87,7 +87,7 @@ public class ChanceCardDeck {
         }
     }
 
-    public ChanceCard[] getChanceCardDeck() {
+    public ChanceCard DrawCard() {
         return chanceCardDeck;
     }
 }
