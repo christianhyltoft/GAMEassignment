@@ -4,7 +4,7 @@ public class FieldChance extends Field{
 
     public FieldChance(String name, String FieldType, ChanceCard[] chanceDeck){
         super(name,FieldType);
-        
+        this.chanceDeck = chanceDeck;
     }
 
     @Override
@@ -16,6 +16,6 @@ public class FieldChance extends Field{
 
     @Override
     public String toString(){
-        return "Lets test your luck... "+this.name;
+        return "Lets test your luck... " + this.name;
     }
 }
