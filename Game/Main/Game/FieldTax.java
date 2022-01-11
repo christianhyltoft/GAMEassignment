@@ -10,7 +10,7 @@ public class FieldTax extends Field{
     }
     @Override
     public void landOn(Player player, GUIController gui){
-        System.out.println("You landed on the field "+ name+"." + Fieldtype);
+        gui.getMyGUI().showMessage("You landed on the field "+ name+"." + Fieldtype);
 
         if ((player.getBalance()*taxdecimal)/100>taxAmount){
             player.changeBalance((-player.getBalance()*taxdecimal)/100);
