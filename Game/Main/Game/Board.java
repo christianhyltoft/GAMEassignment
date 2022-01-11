@@ -3,6 +3,7 @@ import java.io.IOException;
 public class Board {
 
     private Field[] boardAr;
+    private ChanceCardDeck myDeck;
     private TxtReader reader;
 
     public Board() throws IOException {
@@ -13,6 +14,8 @@ public class Board {
         for (int i = 0; i < boardAr.length; i++) {
             boardAr[i] = makeField(i, generator);
         }
+
+        myDeck = new ChanceCardDeck(boardAr);
     }
 
    private Field makeField(int i, String[] generator) {

@@ -5,8 +5,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Gamehandler {
-    private ChanceCardDeck myCardDeck;
-
     private Board myboard;
     private Player[] players;
     private int amountOfPlayers;
@@ -26,8 +24,6 @@ public class Gamehandler {
         playersgui = new GUI_Player[this.amountOfPlayers];
 
         myboard = new Board();
-        myCardDeck = new ChanceCardDeck(myboard.getBoardAr());
-
 
         for (int i = 0; i < this.amountOfPlayers; i++) {
             String input = myGUI.getUserString("Enter name of player: " + (i + 1));
