@@ -383,7 +383,4 @@ title __GAME's Class Diagram__\n
   Gamehandler o-- Board : myboard
   Gamehandler o-- Rafflecup : rafflecup
 
-
-right footer
-
 @enduml
