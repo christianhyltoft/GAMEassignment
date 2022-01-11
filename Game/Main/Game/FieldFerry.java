@@ -4,8 +4,8 @@ import gui_fields.GUI_Street;
 public class FieldFerry extends FieldPurchaseAble {
     private int rent;
 
-    public FieldFerry(String name, String FieldType, int buyprice,int moortgageValue, int rent){
-        super(name,FieldType,buyprice,moortgageValue);
+    public FieldFerry(String name, String FieldType, int buyPrice,int mortgageValue, int rent){
+        super(name,FieldType,buyPrice,mortgageValue);
         this.rent=rent;
     }
 
@@ -37,9 +37,10 @@ public class FieldFerry extends FieldPurchaseAble {
             }
 
         } else {
-
             if (player == owner) {
-                //Udskriv message+messageowned til GUI
+                // Udskriv message + messageowned til GUI
+                // Temp message
+                gui.getMyGUI().showMessage("You own this field: " + name);
             }
             else {
                 owner.changeBalance(rent);
@@ -50,6 +51,6 @@ public class FieldFerry extends FieldPurchaseAble {
     }
     @Override
     public String toString(){
-        return "Here at "+this.name + " we offer a wide variety of trips. ";
+        return "Here at " + this.name + " we offer a wide variety of trips. ";
     }
 }
