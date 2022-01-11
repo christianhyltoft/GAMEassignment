@@ -3,8 +3,8 @@ public class FieldTax extends Field {
     private final int taxAmount;
     private final int taxDecimal;
 
-    public FieldTax(String name, String FieldType, int taxAmount, int taxDecimal) {
-        super(name, FieldType);
+    public FieldTax(String name, String FieldType, Board parent, int taxAmount, int taxDecimal) {
+        super(name, FieldType, parent);
         this.taxAmount = taxAmount;
         this.taxDecimal = taxDecimal;
     }
