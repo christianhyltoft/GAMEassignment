@@ -10,6 +10,7 @@ public class FieldChance extends Field{
         gui.getMyGUI().showMessage("Pick a chance card");
 
         ChanceCard myCard = parent.getMyDeck().DrawCard();
+        myCard.DrawCard(player, gui);
     }
 
     @Override
