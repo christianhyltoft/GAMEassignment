@@ -9,7 +9,7 @@ Property-Roskildevej-2000-1000-100-600-1800-5400-8000-11000-1000
 Chance-Chancecard
 Property-Valby Langgade-2000-1000-100-600-1800-5400-8000-11000-1000
 Property-Allégade-2400-1200-150-800-2000-6000-9000-12000-1000
-Jail-På besøg-
+Jail-On visit-
 Property-Frederiksberg Allé-2800-1400-200-1000-3000-9000-12500-15000-2000
 Beverage-Squash-3000-1500
 Property-Bülowsvej-2800-1400-200-1000-3000-9000-12500-15000-2000

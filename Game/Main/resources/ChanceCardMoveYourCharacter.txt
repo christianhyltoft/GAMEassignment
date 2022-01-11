@@ -1,8 +1,7 @@
-13
+12
 2-Move three fields backwards.
 1-Move three fields forwards.
 1-Take the nearest ferry and pay the owner twice the rental he is obligated to receive. If the ferry is not yet owned by a player, you can buy it from the bank.
-*** (den 2 ovenstående er underlig. Vær opmærksom på det) ***
 1-Take the nearest ferry. If you pass START receive 4000 kr
 1-Move to "Frederiksberg Allé". If you pass START receive 4000kr.
 1-Move to "Mols-Linien", if you pass START receive 4000 kr.
