@@ -36,7 +36,7 @@ public class ChanceCardDeck {
                 String text = splitText[2];
 
                 for(int i = 0; i < cardAmount; i++){
-                    chanceCardDeck[i + count] = new ChanceCardGetOutOfJail(text);
+                    chanceCardDeck[count] = new ChanceCardGetOutOfJail(text);
                     count++;
                 }
                 break;
@@ -45,7 +45,7 @@ public class ChanceCardDeck {
                 text = splitText[3];
 
                 for(int i = 0; i < cardAmount; i++){
-                    chanceCardDeck[i + count] = new ChanceCardMatadorGrant(moneyAmount, text);
+                    chanceCardDeck[count] = new ChanceCardMatadorGrant(moneyAmount, text);
                     count++;
                 }
                 break;
@@ -53,7 +53,7 @@ public class ChanceCardDeck {
                 text = splitText[2];
 
                 for(int i = 0; i < cardAmount; i++){
-                    chanceCardDeck[i + count] = new ChanceCardMove(text, myFields);
+                    chanceCardDeck[count] = new ChanceCardMove(text, myFields);
                     count++;
                 }
                 break;
@@ -63,7 +63,7 @@ public class ChanceCardDeck {
                 text = splitText[4];
 
                 for(int i = 0; i < cardAmount; i++){
-                    chanceCardDeck[i + count] = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text);
+                    chanceCardDeck[count] = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text);
                     count++;
                 }
                 break;
@@ -74,7 +74,7 @@ public class ChanceCardDeck {
                 if (payOrReceive == "p") { moneyAmount = -moneyAmount; }
 
                 for(int i = 0; i < cardAmount; i++){
-                    chanceCardDeck[i + count] = new ChanceCardPayOrReceive(moneyAmount, text);
+                    chanceCardDeck[count] = new ChanceCardPayOrReceive(moneyAmount, text);
                     count++;
                 }
                 break;
@@ -83,7 +83,7 @@ public class ChanceCardDeck {
                 text = splitText[3];
 
                 for(int i = 0; i < cardAmount; i++){
-                    chanceCardDeck[i + count] = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text);
+                    chanceCardDeck[count] = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text);
                     count++;
                 }
                 break;
