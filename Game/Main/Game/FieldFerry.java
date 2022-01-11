@@ -1,3 +1,6 @@
+import gui_fields.GUI_Shipping;
+import gui_fields.GUI_Street;
+
 public class FieldFerry extends FieldPurchaseAble {
     private int rent;
 
@@ -18,13 +21,19 @@ public class FieldFerry extends FieldPurchaseAble {
     @Override
     public void landOn(Player player, GUIController gui){
         super.landOn(player, gui);
-        if (owner == null) {
-            String yesno = "";
-            //GUI skal spørge om man vil købe grunden eller ej
 
-            if (yesno.equals("yes")) {
+        GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
+
+        if (owner == null) {
+            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field", "yes", "no");
+
+            if (buy.equals("yes")) {
                 setOwner(player);
                 player.changeBalance(-buyprice);
+                gui.getMyGUI().showMessage("You now own this field");
+                ownable.setRent("The rent is: " + this.rent);
+                ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
+                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyprice);
             }
 
         } else {

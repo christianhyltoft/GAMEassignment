@@ -20,6 +20,9 @@ public class ChanceCardDeck {
                 e.printStackTrace();
             }
         }
+
+
+
         // Finde ud af hvor mange chancekort der er i alt. Loop inde i loop inde i loop tjekke for hvert element i inderste array incrementere min integer.
         // når jeg har længden af det kan jeg lave chancecarddeck.lenght af det.
 
