@@ -22,7 +22,7 @@ public final class Settings {
 
     public static GUI_Field[] fields = new GUI_Field[]{
 
-            new GUI_Start("Start", "Get:\n4000", "Receive: 4000,-\nwhen you pass this field", Color.RED, Color.BLACK),
+            new GUI_Start("Start", "Get: 4000", "Receive: 4000,-\nwhen you pass this field", Color.RED, Color.BLACK),
             new GUI_Street("Rødovrevej", "Cost:  1200", "Rødovrevej", "Rent:  50", new Color(75, 155, 225), Color.BLACK),
             new GUI_Chance("?", "Chance", "Take a chance card.", new Color(204, 204, 204), Color.BLACK),
             new GUI_Street("Hvidovrevej", "Cost:  1200", "Hvidovrevej", "Rent:  50", new Color(75, 155, 225), Color.BLACK),
