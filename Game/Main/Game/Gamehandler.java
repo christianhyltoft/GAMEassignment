@@ -18,7 +18,7 @@ public class Gamehandler {
 
 
     public Gamehandler() throws IOException {
-        Color[] carcolors= new Color[]{Color.cyan,Color.MAGENTA,Color.PINK};
+        Color[] carcolors = new Color[]{Color.cyan, Color.MAGENTA, Color.PINK};
         this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
@@ -60,10 +60,15 @@ public class Gamehandler {
         myGUI.showMessage("Roll the dice");
         rafflecup.roll();
         player.changePosition(rafflecup.sum());
-        myGUI.setDice(rafflecup.getCup()[0].getValue(),rafflecup.getCup()[1].getValue());
+        myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         myGUI.showMessage("Move your car: ");
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         this.myboard.getBoardAr()[player.getPosition()].landOn(player, controller);
+
+        if (rafflecup.sameFacesUpOnAllDice()) {
+            myGUI.showMessage("You rolled to of a kind and now therefore get another turn");
+            taketurn(player);
+        }
 
 
     }
