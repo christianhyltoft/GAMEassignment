@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Random;
 
 public class ChanceCardDeck {
 
@@ -85,6 +87,14 @@ public class ChanceCardDeck {
                 }
                 break;
         }
+    }
+
+    public void ShuffleDeck(){
+        Random rng = new Random();
+
+        for(int i = 0; i < 1000)
+        int card1 = rng.nextInt(chanceCardDeck.length);
+        int card2 = rng.nextInt(chanceCardDeck.length);
     }
 
     public ChanceCard DrawCard() {

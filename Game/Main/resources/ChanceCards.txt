@@ -32,5 +32,5 @@ PayOrReceiveMoneyFromBank-1-r-1000-Due to the general increase in expenses, you 
 PayOrReceiveMoneyFromBank-1-r-1000-You have sold some old furniture at an auction. Receive 1000 kr from the bank.
 PayOrReceiveMoneyFromBank-1-r-200-The value of your own backyard farm is 200 kr, which you receive from the bank.
 ReceiveMoneyFromPlayers-1-200-It is your birthday. Receive 200 kr from every other player.
-ReceiveMoneyFromPlayers-1-500-You have paid for a get-together. Oddly enough, everyone pays you back instantaneously. Receive 500 kr from all players.
-ReceiveMoneyFromPlayers-1-500-You're going to host a family-party, and receive a subsidy of 500 kr from each player.
+ReceiveMoneyFromPlayers-1-500-You have paid for a get together. Oddly enough, everyone pays you back instantaneously. Receive 500 kr from all players.
+ReceiveMoneyFromPlayers-1-500-You're going to host a family party, and receive a subsidy of 500 kr from each player.
