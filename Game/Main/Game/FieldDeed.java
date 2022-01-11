@@ -35,36 +35,26 @@ public class FieldDeed extends FieldPurchaseAble {
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field for: "+this.buyprice, "yes", "no");
-
+            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field for: " + this.buyPrice, "yes", "no");
             if (buy.equals("yes")) {
                 setOwner(player);
                 ownable.setOwnerName(player.getName());
-                player.changeBalance(-this.buyprice);
+                player.changeBalance(-this.buyPrice);
                 gui.getMyGUI().showMessage("You now own this field");
                 ownable.setRent("The rent is: " + this.rent);
                 ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
-                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyprice);
-
-
+                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyPrice);
             }
-
         } else {
-
             if (player == owner) {
                 gui.getMyGUI().showMessage("You own this field so nothing happens");
-
-
             } else {
-
                 int rentNow = currentRent();
                 owner.changeBalance(rentNow);
                 player.changeBalance(-rentNow);
                 gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
                 gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - currentRent());
                 gui.getMyPlayers()[this.owner.getNumber()].setBalance(gui.getMyPlayers()[this.owner.getNumber()].getBalance() + currentRent());
-
-
             }
         }
 
