@@ -14,7 +14,7 @@ public class FieldChance extends Field{
     public void landOn(Player player,GUIController gui){
         super.landOn(player,gui);
 
-        chanceDeck = parent.getMyDeck();
+        chanceDeck = parent.getC;
         gui.getMyGUI().showMessage("Pick a chance card");
 
     }
