@@ -4,8 +4,8 @@ import gui_fields.GUI_Street;
 public class FieldFerry extends FieldPurchaseAble {
     private int rent;
 
-    public FieldFerry(String name, String FieldType, int buyPrice,int mortgageValue, int rent){
-        super(name,FieldType,buyPrice,mortgageValue);
+    public FieldFerry(String name, String FieldType, Board parent, int buyPrice,int mortgageValue, int rent){
+        super(name,FieldType, parent, buyPrice,mortgageValue);
         this.rent=rent;
     }
 

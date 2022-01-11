@@ -1,7 +1,7 @@
 public class FieldStart extends Field{
 
-    public FieldStart(String name, String FieldType){
-        super(name, FieldType);
+    public FieldStart(String name, String FieldType, Board parent){
+        super(name, FieldType, parent);
     }
 
     @Override

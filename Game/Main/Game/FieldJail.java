@@ -1,7 +1,7 @@
 public class FieldJail extends Field{
 
-    public FieldJail(String name, String FieldType){
-        super(name, FieldType);
+    public FieldJail(String name, String FieldType, Board parent){
+        super(name, FieldType, parent);
     }
 
     @Override

@@ -1,7 +1,7 @@
 public class FieldParking extends Field{
 
-    public FieldParking(String name, String FieldType) {
-        super(name, FieldType);
+    public FieldParking(String name, String FieldType, Board parent) {
+        super(name, FieldType, parent);
     }
 
     @Override
