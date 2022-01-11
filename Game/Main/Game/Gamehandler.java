@@ -58,15 +58,21 @@ public class Gamehandler {
 
     private void taketurn(Player player) {
         myGUI.showMessage("Roll the dice");
+        int positionFromTurnBefore = player.getPosition();
         rafflecup.roll();
         player.changePosition(rafflecup.sum());
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         myGUI.showMessage("Move your car: ");
+
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
+        if (player.getPosition()<positionFromTurnBefore){
+            myGUI.showMessage("You have passed START, and will therefore receive 4000 kr.");
+            player.changeBalance(4000);
+        }
         this.myboard.getBoardAr()[player.getPosition()].landOn(player, controller);
 
         if (rafflecup.sameFacesUpOnAllDice()) {
-            myGUI.showMessage("You rolled to of a kind and now therefore get another turn");
+            myGUI.showMessage("You rolled two of a kind and now therefore get another turn");
             taketurn(player);
         }
 
