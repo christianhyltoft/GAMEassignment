@@ -132,6 +132,10 @@ public class ChanceCardDeck {
 
         return myCard;
     }
+
+    public Board getParent() {
+        return parent;
+    }
 }
 
 
