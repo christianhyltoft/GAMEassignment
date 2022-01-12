@@ -10,7 +10,7 @@ public class ChanceCardMove extends ChanceCard {
     @Override
     public void DrawCard(Player player, GUIController GUI) {
         super.DrawCard(player,GUI);
-        String[] fieldname = chanceCardText.split("\"", 2);
+        String[] fieldname = chanceCardText.split("Q", 2);
         // move to non-ferry property.
         for (int i = 0; i < myFields.length; i++) {
             if (myFields[i].getName().equals(fieldname[1])) {
