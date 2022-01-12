@@ -137,7 +137,6 @@ public class ChanceCardDeck {
 
     public ChanceCard DrawCard(GUIController gui) {
         ChanceCard myCard = chanceCardDeck[0];
-        gui.getMyGUI().displayChanceCard(myCard.getChanceCardText());
 
         for (int i = 0; i < chanceCardDeck.length - 1; i++) {
             chanceCardDeck[i] = chanceCardDeck[i + 1];

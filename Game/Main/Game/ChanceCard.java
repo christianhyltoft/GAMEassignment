@@ -10,7 +10,7 @@ public abstract class ChanceCard {
     }
 
     public void DrawCard(Player player, GUIController GUI) {
-        GUI.getMyGUI().showMessage(this.chanceCardText);
+        GUI.getMyGUI().displayChanceCard(this.chanceCardText);
     }
 
     public String getChanceCardText() {
