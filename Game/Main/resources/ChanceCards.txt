@@ -5,14 +5,14 @@ MoveBackOrForward-2-b-3-Move three fields backwards.
 MoveBackOrForward-1-f-3-Move three fields forwards.
 MoveFerry-1-Take the nearest ferry // and pay the owner twice the rental he is obligated to receive. If the ferry is not yet owned by a player, you can buy it from the bank.
 MoveFerry-1-Take the nearest ferry. // If you pass START receive 4000 kr
-MoveYourCharacter-1-Frederiksberg Allé-Move to Frederiksberg Allé. If you pass START receive 4000kr.
-MoveYourCharacter-1-Scandlines Helsingør-Move to Scandlines Helsingør, if you pass START receive 4000 kr.
-MoveYourCharacter-1-Grønningen-Move to Grønningen. If you pass START receive 4000 kr.
-MoveYourCharacter-1-Vimmelskaftet-Move to Vimmelskaftet. If you pass START receive 4000 kr.
-MoveYourCharacter-1-Strandvejen-Move to Strandvejen. If you pass START receive 4000 kr.
-MoveYourCharacter-1-Rådhuspladsen-Move to Rådhuspladsen. If you pass START receive 4000 kr.
-MoveYourCharacter-2-Start-Move to START.
-MoveYourCharacter-2-On visit-Go straight to jail. If you pass START you will NOT receive 4000 kr.
+MoveYourCharacter-1-4000-Frederiksberg Allé-Move to Frederiksberg Allé. If you pass START receive 4000kr.
+MoveYourCharacter-1-4000-Scandlines Helsingør-Move to Scandlines Helsingør, if you pass START receive 4000 kr.
+MoveYourCharacter-1-4000-Grønningen-Move to Grønningen. If you pass START receive 4000 kr.
+MoveYourCharacter-1-4000-Vimmelskaftet-Move to Vimmelskaftet. If you pass START receive 4000 kr.
+MoveYourCharacter-1-4000-Strandvejen-Move to Strandvejen. If you pass START receive 4000 kr.
+MoveYourCharacter-1-4000-Rådhuspladsen-Move to Rådhuspladsen. If you pass START receive 4000 kr.
+MoveYourCharacter-2-0-Start-Move to START.
+MoveYourCharacter-2-0-On visit-Go straight to jail. If you pass START you will NOT receive 4000 kr.
 PayBasedOnProperty-1-500-2000-Oil prices have risen, pay 500kr per. house and 2000kr per. hotel.
 PayBasedOnProperty-1-800-2300-Property tax has risen. Pay the extra expenses of: 800kr per house, 2300kr per hotel.
 PayOrReceiveMoneyFromBank-1-p-1000-You did not stop at a stop sign, pay a fine of 1000 kr.

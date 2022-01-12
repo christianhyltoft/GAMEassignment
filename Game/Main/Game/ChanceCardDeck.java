@@ -58,10 +58,11 @@ public class ChanceCardDeck {
                 break;
             case "MoveYourCharacter":
                 String goToField = splitText[2];
-                text = splitText[3];
+                int passStart = Integer.parseInt(splitText[3]);
+                text = splitText[4];
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardMove(text, goToField, myFields, this);
+                    chanceCardDeck[count] = new ChanceCardMove(text, goToField, passStart, myFields, this);
                     count++;
                 }
                 break;

@@ -2,9 +2,11 @@ public class ChanceCardMove extends ChanceCard {
 
     private Field[] myFields;
     String goToField;
+    int passStart;
 
-    public ChanceCardMove(String chanceCardText, String goToField, Field[] myFields, ChanceCardDeck parent) {
+    public ChanceCardMove(String chanceCardText, String goToField, int passStart, Field[] myFields, ChanceCardDeck parent) {
         super(chanceCardText, parent);
+        this.passStart = passStart;
         this.myFields = myFields;
         this.goToField = goToField;
     }
@@ -15,8 +17,14 @@ public class ChanceCardMove extends ChanceCard {
         // move to non-ferry property.
         for (int i = 0; i < myFields.length; i++) {
             if (myFields[i].getName().equals(goToField)) {
+                int position = player.getPosition();
                 player.setPosition(i);
                 GUI.getMyPlayers()[player.getNumber()].getCar().setPosition(GUI.getMyGUI().getFields()[i]);
+                if (position > player.getPosition()){
+                    player.changeBalance(passStart);
+                    GUI.getMyGUI().showMessage("You have passed START, and will therefore receive 4000 kr ");
+                    GUI.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                }
                 parent.getParent().getBoardAr()[i].landOn(player, GUI);
             }
         }
