@@ -17,7 +17,9 @@ public class FieldTax extends Field {
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
             if(parent.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
                 FieldPurchaseAble myField = (FieldPurchaseAble) parent.getBoardAr()[i];
-                totalValue += myField.getBuyprice();
+                if(myField.getOwner() == player){
+                    totalValue += myField.getBuyprice();
+                }
             }
         }
         totalValue = ((totalValue + player.getBalance()) / 10);
