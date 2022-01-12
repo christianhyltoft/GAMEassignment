@@ -72,7 +72,9 @@ public class Gamehandler {
     private void JailTurn(Player player) {
         myGUI.showMessage("You are jailed " + player.getName());
         if (player.getTurnsJailed() >= 2) {
-            myGUI.showMessage("You've served your jail sentence and are now released " + player.getName());
+            myGUI.showMessage("You've served your jail sentence and are now released after paying " + Settings.JAIL_RELEASE_FEE + player.getName());
+            player.changeBalance(-1000);
+            playersgui[player.getNumber()].setBalance(player.getBalance());
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
