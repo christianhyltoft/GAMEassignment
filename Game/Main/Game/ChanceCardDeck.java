@@ -5,6 +5,9 @@ import java.util.Random;
 public class ChanceCardDeck {
 
     private Field[] myFields;
+
+
+
     private ChanceCard[] chanceCardDeck;
     private int count;
     private Board parent;
@@ -135,6 +138,14 @@ public class ChanceCardDeck {
 
     public Board getParent() {
         return parent;
+    }
+
+    public ChanceCard[] getChanceCardDeck() {
+        return chanceCardDeck;
+    }
+
+    public void setChanceCardDeck(ChanceCard[] chanceCardDeck) {
+        this.chanceCardDeck = chanceCardDeck;
     }
 }
 
