@@ -63,7 +63,7 @@ public class FieldDeed extends FieldPurchaseAble {
                 }
 
                 if(propertiesOwned == properties){
-                    int rentNow = currentRent();
+                    int rentNow = currentRent() * 2;
                     owner.changeBalance(rentNow);
                     player.changeBalance(-rentNow);
                     gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());

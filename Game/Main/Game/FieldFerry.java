@@ -74,14 +74,12 @@ public class FieldFerry extends FieldPurchaseAble {
                 // Temp message
                 gui.getMyGUI().showMessage("You own this field: " + name + " nothing happens");
             } else {
-                int ferries = 0;
                 int ferriesOwned = 0;
 
                 for(int i = 0; i < 40; i++){
                     if(parent.getBoardAr()[i].getFieldtype().equals("Ferry")){
                         FieldFerry check = (FieldFerry) parent.getBoardAr()[i];
                         if(check.getPairNumber() == pairNumber){
-                            ferries++;
                             if(check.getOwner() == player){
                                 ferriesOwned++;
                             }
@@ -89,18 +87,14 @@ public class FieldFerry extends FieldPurchaseAble {
                     }
                 }
 
-                if(ferries == ferriesOwned){
-                    owner.changeBalance(rent);
-                    player.changeBalance(-rent);
-                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                    gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
+                for(int i = 0; i < ferriesOwned; i++){
+                    rent = rent * 2;
                 }
-                else{
-                    owner.changeBalance(rent);
-                    player.changeBalance(-rent);
-                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                    gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
-                }
+
+                owner.changeBalance(rent);
+                player.changeBalance(-rent);
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
             }
         }
 
