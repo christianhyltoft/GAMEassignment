@@ -12,7 +12,6 @@ public class FieldTax extends Field {
     @Override
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
-        int total = 0;
 
         int totalValue = 0;
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
@@ -21,25 +20,28 @@ public class FieldTax extends Field {
                 totalValue += myField.getBuyprice();
             }
         }
-
         totalValue = ((totalValue + player.getBalance()) / 10);
 
-        if ((player.getBalance() * taxDecimal) / 100 > taxAmount) {
-            total = (-player.getBalance() * taxDecimal) / 100;
-            gui.getMyGUI().showMessage("You are quite rich and must therefore pay: " + -total);
-            player.changeBalance(total);
-            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
-        } else {
-            total = -taxAmount;
-            player.changeBalance(-taxAmount);
-            gui.getMyGUI().showMessage("You must pay: " + taxAmount);
-            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
+        String choice = gui.getMyGUI().getUserSelection("Choose whether to pay the flat rate" + taxAmount +" or 10% of your total net worth which is " + totalValue, "Flat rate", "10%");
+
+        int pay = 0;
+
+        if(choice.equals("Flat rate")){
+            pay = taxAmount;
         }
+        else{
+            pay = totalValue;
+        }
+
+        gui.getMyGUI().showMessage("You will now pay " + pay);
+        player.changeBalance(-pay);
+        gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
 
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
             if(parent.getBoardAr()[i].getFieldtype().equals("Parking")){
                 FieldParking myParking = (FieldParking) parent.getBoardAr()[i];
-                myParking.addMoney(-total);
+                myParking.addMoney(pay);
+                gui.getMyGUI().showMessage(pay + " added to parking, total amount now " + myParking.g);
             }
         }
     }
