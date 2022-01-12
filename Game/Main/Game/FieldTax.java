@@ -14,9 +14,12 @@ public class FieldTax extends Field {
         super.landOn(player, gui);
         int total = 0;
 
-        int totalValue
+        int totalValue = 0;
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
-            
+            if(parent.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
+                FieldPurchaseAble myField = (FieldPurchaseAble) parent.getBoardAr()[i];
+                myField.getBuyprice();
+            }
         }
 
         if ((player.getBalance() * taxDecimal) / 100 > taxAmount) {
