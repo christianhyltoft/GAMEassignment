@@ -67,7 +67,7 @@ public class ChanceCardDeck {
                 }
                 break;
             case "MoveFerry":
-                text = splitText[4];
+                text = splitText[2];
 
                 for (int i = 0; i < cardAmount; i++) {
                     chanceCardDeck[count] = new ChanceCardFerry(text, myFields, this);
