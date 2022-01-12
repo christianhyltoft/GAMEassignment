@@ -173,10 +173,8 @@ public class Gamehandler {
                 for(int i = 0; i < Settings.BOARD_SIZE; i++){
                     if(myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Property")){
                         FieldDeed property = (FieldDeed) myboard.getBoardAr()[i];
-                        System.out.println("TEST");
                         if(property.getOwner() == myPlayer){
                             // Just using the auction for now, should be changed later.
-                            System.out.println("TEST2");
                             property.setOwner(null);
                             property.auction(myPlayer, players, controller);
                             choice2 = propertyName;
