@@ -10,12 +10,11 @@ public class FieldDeed extends FieldPurchaseAble {
     private final int rent4;
     private final int rent5;
     private final int houseprice;
-    private final int pairNumber;
 
     private int amountOfHouses;
 
     public FieldDeed(String name, String FieldType, Board parent, int buyprice, int mortgageValue, int rent, int rent1, int rent2, int rent3, int rent4, int rent5, int houseprice, int pairNumber) {
-        super(name, FieldType, parent, buyprice, mortgageValue);
+        super(name, FieldType, parent, buyprice, mortgageValue, pairNumber);
         this.rent = rent;
         this.rent1 = rent1;
         this.rent2 = rent2;
@@ -24,7 +23,6 @@ public class FieldDeed extends FieldPurchaseAble {
         this.rent5 = rent5;
         this.amountOfHouses = 0;
         this.houseprice = houseprice;
-        this.pairNumber = pairNumber;
     }
 
     @Override

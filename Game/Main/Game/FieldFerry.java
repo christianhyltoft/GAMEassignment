@@ -5,13 +5,10 @@ import java.awt.*;
 
 public class FieldFerry extends FieldPurchaseAble {
     private int rent;
-    private final int pairNumber;
-
 
     public FieldFerry(String name, String FieldType, Board parent, int buyPrice, int mortgageValue, int rent, int pairNumber) {
-        super(name, FieldType, parent, buyPrice, mortgageValue);
+        super(name, FieldType, parent, buyPrice, mortgageValue, pairNumber);
         this.rent = rent;
-        this.pairNumber = pairNumber;
     }
 
     @Override
