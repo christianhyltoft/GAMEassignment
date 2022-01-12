@@ -74,4 +74,28 @@ public class Player<bool> {
             this.position -= 40;
         }
     }
+
+    public boolean isJailed() {
+        return isJailed;
+    }
+
+    public int getTurnsJailed() {
+        return turnsJailed;
+    }
+
+    public int getEscapeJailCard() {
+        return escapeJailCard;
+    }
+
+    public void setJailed(boolean jailed) {
+        isJailed = jailed;
+    }
+
+    public void setTurnsJailed(int turnsJailed) {
+        this.turnsJailed = turnsJailed;
+    }
+
+    public void setEscapeJailCard(int escapeJailCard) {
+        this.escapeJailCard = escapeJailCard;
+    }
 }
