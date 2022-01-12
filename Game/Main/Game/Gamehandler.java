@@ -166,12 +166,30 @@ public class Gamehandler {
     private String GetChoice(Player myPlayer){
         String choice =  myGUI.getUserSelection("Your turn is about to end " + myPlayer.getName() + ". Pick a miscellaneous action to perform ", "Sell a property", "Pawn a property", "Sell GetOutOfJail card", "Build");
 
-        if(choice.equals("Sell a property")){
+        Boolean check = false;
+
+        if(choice.equals("Sell a property") || choice.equals("Pawn a property")){
             for(int i = 0; i < Settings.BOARD_SIZE; i++)
-            myboard.getBoardAr()[i]
+            if(myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
+                FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
+                if(playerOwnerCheck.getOwner() == myPlayer){
+                    check = true;
+                    break;
+                }
+            }
+        }
+        else if(choice.equals("Sell GetOutOfJail card")){
+            if(myPlayer.getEscapeJailCard() >= 1){
+                check = true;
+            }
         }
 
-        return choice;
+        if(!check){
+            return "Invalid";
+        }
+        else{
+            return choice;
+        }
     }
 
 
