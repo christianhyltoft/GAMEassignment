@@ -8,8 +8,11 @@ public abstract class FieldPurchaseAble extends Field {
     protected String messageOwned;
     protected String messageUnowned;
 
-    public FieldPurchaseAble(String name, String FieldType, Board parent, int buyPrice, int mortgageValue) {
+    protected final int pairNumber;
+
+    public FieldPurchaseAble(String name, String FieldType, Board parent, int buyPrice, int mortgageValue, int pairNumber) {
         super(name, FieldType, parent);
+        this.pairNumber = pairNumber;
         this.buyPrice = buyPrice;
     }
 
@@ -45,5 +48,9 @@ public abstract class FieldPurchaseAble extends Field {
 
     public void buyMortgagedProperty(Player player) {
         player.changeBalance(mortgageValue);
+    }
+
+    public int getPairNumber() {
+        return pairNumber;
     }
 }

@@ -35,8 +35,6 @@ public abstract class Field {
 
     public void auction(Player player, Player[] players, GUIController gui) {
     }
-
-    ;
 }
 
 

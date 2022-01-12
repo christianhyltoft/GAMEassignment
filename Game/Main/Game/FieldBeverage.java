@@ -8,8 +8,8 @@ public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
 
-    public FieldBeverage(String name, String FieldType, Board parent, int buyprice, int mortgageValue) {
-        super(name, FieldType, parent, buyprice, mortgageValue);
+    public FieldBeverage(String name, String FieldType, Board parent, int buyprice, int mortgageValue, int pairNumber) {
+        super(name, FieldType, parent, buyprice, mortgageValue, pairNumber);
         this.rollAmount = rollAmount;
         this.ownedAmount = ownedAmount;
     }
@@ -36,12 +36,37 @@ public class FieldBeverage extends FieldPurchaseAble {
             if (player == owner) {
                 gui.getMyGUI().showMessage("You own this field so nothing happens");
             } else {
-                int rentNow = currentRent();
-                owner.changeBalance(rentNow);
-                player.changeBalance(-rentNow);
-                gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
-                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                int beverages = 0;
+                int beveragesOwned = 0;
+
+                for(int i = 0; i < 40; i++){
+                    if(parent.getBoardAr()[i].getFieldtype().equals("Beverage")){
+                        FieldBeverage check = (FieldBeverage) parent.getBoardAr()[i];
+                        if(check.getPairNumber() == pairNumber){
+                            beverages++;
+                            if(check.getOwner() == player){
+                                beveragesOwned++;
+                            }
+                        }
+                    }
+                }
+
+                if(beverages == beveragesOwned){
+                    int rentNow = currentRent() * 2;
+                    owner.changeBalance(rentNow);
+                    player.changeBalance(-rentNow);
+                    gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.currentRent());
+                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                }
+                else{
+                    int rentNow = currentRent();
+                    owner.changeBalance(rentNow);
+                    player.changeBalance(-rentNow);
+                    gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
+                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                }
             }
         }
 
