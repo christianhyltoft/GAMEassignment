@@ -9,7 +9,11 @@ public class FieldGoToJail extends Field {
         super.landOn(player, gui);
 
         for(int i = 0; i < parent.getBoardAr().length; i++){
-
+            if(parent.getBoardAr()[i].getFieldtype().equals("JAIL")){
+                player.setPosition(i);
+                gui.getMyPlayers()[player.getNumber()].getCar().setPosition(gui.getMyGUI().getFields()[i]);
+                player.setJailed(true);
+            }
         }
     }
 
