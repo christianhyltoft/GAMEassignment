@@ -30,7 +30,7 @@ public class ChanceCardDeck {
             ChanceCardCreator(chanceCardText[i]);
         }
 
-        ShuffleDeck();
+        //ShuffleDeck();
     }
 
     private void ChanceCardCreator(String cardText) {
