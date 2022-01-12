@@ -7,8 +7,10 @@ public class ChanceCardDeck {
     private Field[] myFields;
     private ChanceCard[] chanceCardDeck;
     private int count;
+    private Board parent;
 
-    public ChanceCardDeck(Field[] myFields) {
+    public ChanceCardDeck(Board parent, Field[] myFields) {
+        this.parent = parent;
         this.chanceCardDeck = new ChanceCard[42];
         this.myFields = myFields;
         count = 0;

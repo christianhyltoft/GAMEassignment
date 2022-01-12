@@ -2,8 +2,8 @@ public class ChanceCardMove extends ChanceCard {
 
     private Field[] myFields;
 
-    public ChanceCardMove(String chanceCardText, Field[] myFields) {
-        super(chanceCardText);
+    public ChanceCardMove(String chanceCardText, Field[] myFields, ChanceCardDeck parent) {
+        super(chanceCardText, parent);
         this.myFields = myFields;
     }
 

@@ -2,8 +2,8 @@ public class ChanceCardMoveBackOrForward extends ChanceCard {
 
     private int moveAmount;
 
-    public ChanceCardMoveBackOrForward(int moveAmount, String chanceCardText) {
-        super(chanceCardText);
+    public ChanceCardMoveBackOrForward(int moveAmount, String chanceCardText, ChanceCardDeck parent) {
+        super(chanceCardText, parent);
         this.moveAmount = moveAmount;
     }
 

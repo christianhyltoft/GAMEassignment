@@ -1,8 +1,8 @@
 public class ChanceCardMatadorGrant extends ChanceCard {
     private int moneyAmount;
 
-    public ChanceCardMatadorGrant(int moneyAmount, String chanceCardText) {
-        super(chanceCardText);
+    public ChanceCardMatadorGrant(int moneyAmount, String chanceCardText, ChanceCardDeck parent) {
+        super(chanceCardText, parent);
         this.moneyAmount = moneyAmount;
     }
 

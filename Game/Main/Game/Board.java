@@ -6,7 +6,10 @@ public class Board {
     private ChanceCardDeck myDeck;
     private TxtReader reader;
 
-    public Board() throws IOException {
+    private Gamehandler parent;
+
+    public Board(Gamehandler parent) throws IOException {
+        this.parent = parent;
         reader = new TxtReader();
 
         String[] generator = reader.reader("Fields.txt");

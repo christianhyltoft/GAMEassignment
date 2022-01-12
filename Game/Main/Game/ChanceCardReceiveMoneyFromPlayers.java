@@ -2,12 +2,10 @@ public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
     private int moneyAmount;
     private Player[] players;
 
-    public ChanceCardReceiveMoneyFromPlayers(int moneyAmount, String chanceCardText) {
-
-        super(chanceCardText);
+    public ChanceCardReceiveMoneyFromPlayers(int moneyAmount, String chanceCardText, ChanceCardDeck parent) {
+        super(chanceCardText, parent);
         this.moneyAmount = moneyAmount;
         this.players = players;
-
     }
 
     @Override

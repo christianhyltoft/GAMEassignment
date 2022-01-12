@@ -3,8 +3,8 @@ public class ChanceCardPayBasedOnProperty extends ChanceCard {
     private int hotelAmount;
 
 
-    public ChanceCardPayBasedOnProperty(int houseAmount, int hotelAmount, String chanceCardText) {
-        super(chanceCardText);
+    public ChanceCardPayBasedOnProperty(int houseAmount, int hotelAmount, String chanceCardText, ChanceCardDeck parent) {
+        super(chanceCardText, parent);
         this.houseAmount = houseAmount;
         this.hotelAmount = hotelAmount;
     }
