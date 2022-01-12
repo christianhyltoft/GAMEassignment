@@ -60,4 +60,8 @@ public class Board {
     public ChanceCardDeck getMyDeck() {
         return myDeck;
     }
+
+    public Gamehandler getParent() {
+        return parent;
+    }
 }
