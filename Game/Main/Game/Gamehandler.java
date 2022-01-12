@@ -157,7 +157,21 @@ public class Gamehandler {
     }
 
     private void EndOfTurnChoice(Player myPlayer){
+        String choice = "Invalid";
+        while(choice.equals("Invalid"){
+            choice = GetChoice(myPlayer);
+        }
+    }
 
+    private String GetChoice(Player myPlayer){
+        String choice =  myGUI.getUserSelection("Your turn is about to end " + myPlayer.getName() + ". Pick a miscellaneous action to perform ", "Sell a property", "Pawn a property", "Sell GetOutOfJail card", "Build");
+
+        if(choice.equals("Sell a property")){
+            for(int i = 0; i < Settings.BOARD_SIZE; i++)
+            myboard.getBoardAr()[i]
+        }
+
+        return choice;
     }
 
 
