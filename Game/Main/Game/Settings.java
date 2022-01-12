@@ -1,11 +1,15 @@
 import gui_fields.*;
 
 import java.awt.*;
+import java.io.IOException;
 
 public final class Settings {
 
-    private Settings() {
+    private Settings() throws IOException {
 
+        TxtReader myTxtReader = new TxtReader();
+
+        gameHandlerText = myTxtReader.reader("GameText");
     }
 
     // Game Rules
@@ -18,6 +22,10 @@ public final class Settings {
 
     //Jail
     public static final int JAIL_RELEASE_FEE = 1000;
+
+    //GamehandlerText
+    public static String [] gameHandlerText;
+
 
 
     public static final String ChanceCardDataBase2 = "ChanceCards.txt";
@@ -68,8 +76,6 @@ public final class Settings {
             new GUI_Street("Rådhuspladsen", "Cost:  8000", "Rådhuspladsen", "Rent:  1000", new Color(150, 60, 150), Color.WHITE),
     };
 
-    TxtReader myTxtReader = new TxtReader();
-    String[] gameText = new String[0];
 
 
 }

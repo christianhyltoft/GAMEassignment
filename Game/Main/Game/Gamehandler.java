@@ -16,20 +16,26 @@ public class Gamehandler {
 
     private GUIController controller;
 
+
+
+
+
     public Rafflecup GetRafflecup() {
         return rafflecup;
     }
 
+
     public Gamehandler() throws IOException {
+
         Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
-        this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
+        this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection(Settings.gameHandlerText[1], "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
 
         myboard = new Board(this);
 
         for (int i = 0; i < this.amountOfPlayers; i++) {
-            String input = myGUI.getUserString("Enter name of player: " + (i + 1));
+            String input = myGUI.getUserString(Settings.gameHandlerText[2] + (i + 1));
             players[i] = new Player(Settings.STARTING_MONEY, input, 0);
             playersgui[i] = new GUI_Player(input, Settings.STARTING_MONEY);
             playersgui[i].getCar().setPrimaryColor(carcolors[i]);
@@ -42,7 +48,7 @@ public class Gamehandler {
         }
         controller = new GUIController(myGUI, playersgui);
 
-        myGUI.showMessage("The game will start when you press ok");
+        myGUI.showMessage(Settings.gameHandlerText[3]);
     }
 
     public void Playgame() {
@@ -63,16 +69,16 @@ public class Gamehandler {
         //Looking for the winner of the game
         for (int i = 0; i < players.length; i++) {
             if (!players[i].isPlayerHasLost())
-                getMyGUI().showMessage("Player: " + players[i].getName() + " has won the game");
+                getMyGUI().showMessage(Settings.gameHandlerText[4] + players[i].getName() + Settings.gameHandlerText[5]);
 
         }
 
     }
 
     private void JailTurn(Player player) {
-        myGUI.showMessage("You are jailed " + player.getName());
+        myGUI.showMessage(Settings.gameHandlerText[6] + player.getName());
         if (player.getTurnsJailed() >= 2) {
-            myGUI.showMessage("You've served your jail sentence and are now released after paying " + Settings.JAIL_RELEASE_FEE + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[7] + Settings.JAIL_RELEASE_FEE + player.getName());
             player.changeBalance(-1000);
             playersgui[player.getNumber()].setBalance(player.getBalance());
             player.setJailed(false);
@@ -81,43 +87,43 @@ public class Gamehandler {
         } else {
             String Choice = "";
             if(player.getEscapeJailCard() >= 1 && player.getBalance() >= Settings.JAIL_RELEASE_FEE){
-                Choice = myGUI.getUserSelection("Choose whether to try and roll, use a get out of jail free card, or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay", "Card");
+                Choice = myGUI.getUserSelection(Settings.gameHandlerText[8] + Settings.JAIL_RELEASE_FEE, Settings.gameHandlerText[9], Settings.gameHandlerText[10], Settings.gameHandlerText[11]);
             }
             else if(player.getEscapeJailCard() >= 1){
-                Choice = myGUI.getUserSelection("Choose whether to try and roll or use a get out of jail free card", "Roll", "Card");
+                Choice = myGUI.getUserSelection(Settings.gameHandlerText[12], Settings.gameHandlerText[9], Settings.gameHandlerText[11]);
             }
             else if(player.getBalance() >= Settings.JAIL_RELEASE_FEE){
-                Choice = myGUI.getUserSelection("Choose whether to try and roll or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay");
+                Choice = myGUI.getUserSelection(Settings.gameHandlerText[13] + Settings.JAIL_RELEASE_FEE, Settings.gameHandlerText[9], Settings.gameHandlerText[10]);
             }
 
 
-            if(Choice.equals("Pay")){
-                myGUI.showMessage("You've bribed the officials to be released, you pay " + Settings.JAIL_RELEASE_FEE + " " + player.getName());
+            if(Choice.equals(Settings.gameHandlerText[10])){
+                myGUI.showMessage(Settings.gameHandlerText[14] + Settings.JAIL_RELEASE_FEE + " " + player.getName());
                 player.changeBalance(-1000);
                 playersgui[player.getNumber()].setBalance(player.getBalance());
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 roll(player);
             }
-            if(Choice.equals("Card")){
-                myGUI.showMessage("You use your get out of jail free card to escape jail " + player.getName());
+            if(Choice.equals(Settings.gameHandlerText[12])){
+                myGUI.showMessage(Settings.gameHandlerText[15] + player.getName());
                 player.setEscapeJailCard(player.getEscapeJailCard() - 1);
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 roll(player);
             }
             else{
-                myGUI.getUserButtonPressed("Roll a pair to escape " + player.getName(),"ROLL");
+                myGUI.getUserButtonPressed(Settings.gameHandlerText[16] + player.getName(),Settings.gameHandlerText[17]);
                 rafflecup.roll();
                 myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
                 if ((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())) {
-                    myGUI.showMessage("You've rolled a pair and have escaped " + player.getName());
+                    myGUI.showMessage(Settings.gameHandlerText[18] + player.getName());
                     player.setJailed(false);
                     player.setTurnsJailed(0);
                     Taketurn(player, rafflecup);
                 } else {
-                    myGUI.showMessage("You failed to roll a pair and will stay in jail " + player.getName());
+                    myGUI.showMessage(Settings.gameHandlerText[19] + player.getName());
                     player.setTurnsJailed(player.getTurnsJailed() + 1);
                 }
             }
@@ -125,20 +131,20 @@ public class Gamehandler {
     }
 
     private void roll(Player player) {
-        myGUI.getUserButtonPressed("Roll the dice " + player.getName(),"ROLL");
+        myGUI.getUserButtonPressed(Settings.gameHandlerText[20] + player.getName(),Settings.gameHandlerText[17]);
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         Taketurn(player, rafflecup);
     }
 
     private void Taketurn(Player player, Rafflecup rafflecup) {
-        myGUI.showMessage("Move your car " + player.getName());
+        myGUI.showMessage(Settings.gameHandlerText[21] + player.getName());
         int positionFromTurnBefore = player.getPosition();
         player.changePosition(rafflecup.sum());
 
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         if (player.getPosition() < positionFromTurnBefore) {
-            myGUI.showMessage("You have passed START, and will therefore receive 4000 kr " + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[22] + player.getName());
             player.changeBalance(4000);
             playersgui[player.getNumber()].setBalance(player.getBalance());
         }
@@ -149,7 +155,7 @@ public class Gamehandler {
         }
 
         if (rafflecup.sameFacesUpOnAllDice()) {
-            myGUI.showMessage("You rolled two of a kind and now therefore get another turn " + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[23] + player.getName());
             roll(player);
         }
 
@@ -167,8 +173,8 @@ public class Gamehandler {
             if(choice.equals("Nothing")){
                 break;
             }
-            else if(choice.equals("Sell a property")){
-                String propertyName = myGUI.getUserString("Enter the name of the property to sell");
+            else if(choice.equals(Settings.gameHandlerText[24])){
+                String propertyName = myGUI.getUserString(Settings.gameHandlerText[25]);
 
                 for(int i = 0; i < Settings.BOARD_SIZE; i++){
                     if(myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Property")){
@@ -181,18 +187,18 @@ public class Gamehandler {
                             break;
                         }
                         else{
-                            myGUI.showMessage("You don't own this property");
+                            myGUI.showMessage(Settings.gameHandlerText[26]);
                         }
                     }
                 }
-            }else if(choice.equals("Sell GetOutOfJail card")){
-                String buyer=getMyGUI().getUserString("who wants to buy the card: enter name of a player of write cancel to not sell it");
-                if(buyer.equals("cancel")){
+            }else if(choice.equals(Settings.gameHandlerText[27])){
+                String buyer=getMyGUI().getUserString(Settings.gameHandlerText[28]);
+                if(buyer.equals(Settings.gameHandlerText[29])){
                     return;
                 }
                 for (int i = 0; i < players.length; i++) {
                     if (buyer.equals(players[i].getName())){
-                        int price =getMyGUI().getUserInteger("Write the amount you want to pay for the card");
+                        int price =getMyGUI().getUserInteger(Settings.gameHandlerText[30]);
                         myPlayer.changeBalance(price);
                         players[i].changeBalance(-price);
                         myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard()-1);
@@ -211,7 +217,7 @@ public class Gamehandler {
     }
 
     private String GetChoice(Player myPlayer){
-        String choice =  myGUI.getUserSelection("Your turn is about to end " + myPlayer.getName() + ". Pick a miscellaneous action to perform ", "Nothing", "Sell a property", "Pawn a property", "Sell GetOutOfJail card", "Build");
+        String choice =  myGUI.getUserSelection(Settings.gameHandlerText[31] + myPlayer.getName() + Settings.gameHandlerText[32], Settings.gameHandlerText[33], Settings.gameHandlerText[24], "Pawn a property", "Sell GetOutOfJail card", "Build");
 
         Boolean check = false;
 

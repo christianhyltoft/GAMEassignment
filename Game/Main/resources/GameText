@@ -1,4 +1,4 @@
-37
+38
 How many players do you want to play
 Enter name of player:
 The game will start when you press ok
@@ -13,7 +13,7 @@ Card
 Choose whether to try and roll or use a get out of jail free card
 Choose whether to try and roll or pay
 You've bribed the officials to be released, you pay
-You use your get out of jail free card to escape jail
+You used your get out of jail free card to escape jail
 Roll a pair to escape
 ROLL
 You've rolled a pair and have escaped
@@ -27,12 +27,12 @@ Enter the name of the property to sell
 You don't own this property
 Sell GetOutOfJail card
 who wants to buy the card: enter name of a player of write cancel to not sell it
+cancel
 Write the amount you want to pay for the card
 Your turn is about to end
 . Pick a miscellaneous action to perform
 Nothing
-Sell a property
 Pawn a property
-Sell GetOutOfJail card
+Build
 You do not own that card so you cant sell it
  has lost the game.
