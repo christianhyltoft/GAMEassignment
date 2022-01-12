@@ -80,18 +80,16 @@ public class Gamehandler {
             roll(player);
         } else {
             String Choice = "";
-            if(player.getEscapeJailCard() >= 1 && player.getBalance() >= Settings.JAIL_RELEASE_FEE){
+            if (player.getEscapeJailCard() >= 1 && player.getBalance() >= Settings.JAIL_RELEASE_FEE) {
                 Choice = myGUI.getUserSelection("Choose whether to try and roll, use a get out of jail free card, or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay", "Card");
-            }
-            else if(player.getEscapeJailCard() >= 1){
+            } else if (player.getEscapeJailCard() >= 1) {
                 Choice = myGUI.getUserSelection("Choose whether to try and roll or use a get out of jail free card", "Roll", "Card");
-            }
-            else if(player.getBalance() >= Settings.JAIL_RELEASE_FEE){
+            } else if (player.getBalance() >= Settings.JAIL_RELEASE_FEE) {
                 Choice = myGUI.getUserSelection("Choose whether to try and roll or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay");
             }
 
 
-            if(Choice.equals("Pay")){
+            if (Choice.equals("Pay")) {
                 myGUI.showMessage("You've bribed the officials to be released, you pay " + Settings.JAIL_RELEASE_FEE + " " + player.getName());
                 player.changeBalance(-1000);
                 playersgui[player.getNumber()].setBalance(player.getBalance());
@@ -99,15 +97,14 @@ public class Gamehandler {
                 player.setTurnsJailed(0);
                 roll(player);
             }
-            if(Choice.equals("Card")){
+            if (Choice.equals("Card")) {
                 myGUI.showMessage("You use your get out of jail free card to escape jail " + player.getName());
                 player.setEscapeJailCard(player.getEscapeJailCard() - 1);
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 roll(player);
-            }
-            else{
-                myGUI.getUserButtonPressed("Roll a pair to escape " + player.getName(),"ROLL");
+            } else {
+                myGUI.getUserButtonPressed("Roll a pair to escape " + player.getName(), "ROLL");
                 rafflecup.roll();
                 myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
@@ -125,7 +122,7 @@ public class Gamehandler {
     }
 
     private void roll(Player player) {
-        myGUI.getUserButtonPressed("Roll the dice " + player.getName(),"ROLL");
+        myGUI.getUserButtonPressed("Roll the dice " + player.getName(), "ROLL");
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         Taketurn(player, rafflecup);
@@ -156,49 +153,44 @@ public class Gamehandler {
         EndOfTurnChoice(player);
     }
 
-    private void EndOfTurnChoice(Player myPlayer){
+    private void EndOfTurnChoice(Player myPlayer) {
         String choice = "Invalid";
-        while(choice.equals("Invalid")){
+        while (choice.equals("Invalid")) {
             choice = GetChoice(myPlayer);
         }
 
         String choice2 = "Invalid";
-        while(choice2.equals("Invalid")){
-            if(choice.equals("Nothing")){
+        while (choice2.equals("Invalid")) {
+            if (choice.equals("Nothing")) {
                 break;
-            }
-            else if(choice.equals("Sell a property")){
+            } else if (choice.equals("Sell a property")) {
                 String propertyName = myGUI.getUserString("Enter the name of the property to sell");
 
-                for(int i = 0; i < Settings.BOARD_SIZE; i++){
-                    if(myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Property")){
-                        FieldDeed property = (FieldDeed) myboard.getBoardAr()[i];
-                        System.out.println("TEST");
-                        if(property.getOwner() == myPlayer){
+                for (int i = 0; i < Settings.BOARD_SIZE; i++) {
+                    if (myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Property") || myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Ferry") || myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Beverage")) {
+                        FieldPurchaseAble property = (FieldPurchaseAble) myboard.getBoardAr()[i];
+                        if (property.getOwner() == myPlayer) {
                             // Just using the auction for now, should be changed later.
-                            System.out.println("TEST2");
-                            property.setOwner(null);
-                            property.auction(myPlayer, players, controller);
+                            property.sell(myPlayer, players, controller);
                             choice2 = propertyName;
                             break;
-                        }
-                        else{
+                        } else {
                             myGUI.showMessage("You don't own this property");
                         }
                     }
                 }
-            }else if(choice.equals("Sell GetOutOfJail card")){
-                String buyer=getMyGUI().getUserString("who wants to buy the card: enter name of a player of write cancel to not sell it");
-                if(buyer.equals("cancel")){
+            } else if (choice.equals("Sell GetOutOfJail card")) {
+                String buyer = getMyGUI().getUserString("who wants to buy the card: enter name of a player of write cancel to not sell it");
+                if (buyer.equals("cancel")) {
                     return;
                 }
                 for (int i = 0; i < players.length; i++) {
-                    if (buyer.equals(players[i].getName())){
-                        int price =getMyGUI().getUserInteger("Write the amount you want to pay for the card");
+                    if (buyer.equals(players[i].getName())) {
+                        int price = getMyGUI().getUserInteger("Write the amount you want to pay for the card");
                         myPlayer.changeBalance(price);
                         players[i].changeBalance(-price);
-                        myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard()-1);
-                        players[i].setEscapeJailCard(players[i].getEscapeJailCard()+1);
+                        myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard() - 1);
+                        players[i].setEscapeJailCard(players[i].getEscapeJailCard() + 1);
                         getPlayersgui()[myPlayer.getNumber()].setBalance(myPlayer.getBalance());
                         getPlayersgui()[players[i].getNumber()].setBalance(players[i].getBalance());
                         break;
@@ -208,55 +200,51 @@ public class Gamehandler {
                 }
 
             }
-            choice=GetChoice(myPlayer);
+            choice = GetChoice(myPlayer);
         }
     }
 
-    private String GetChoice(Player myPlayer){
-        String choice =  myGUI.getUserSelection("Your turn is about to end " + myPlayer.getName() + ". Pick a miscellaneous action to perform ", "Nothing", "Sell a property", "Pawn a property", "Sell GetOutOfJail card", "Build");
+    private String GetChoice(Player myPlayer) {
+        String choice = myGUI.getUserSelection("Your turn is about to end " + myPlayer.getName() + ". Pick a miscellaneous action to perform ", "Nothing", "Sell a property", "Pawn a property", "Sell GetOutOfJail card", "Build");
 
         Boolean check = false;
 
-        if(choice.equals("Sell a property") || choice.equals("Pawn a property")){
-            for(int i = 0; i < Settings.BOARD_SIZE; i++){
-                if(myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
+        if (choice.equals("Sell a property") || choice.equals("Pawn a property")) {
+            for (int i = 0; i < Settings.BOARD_SIZE; i++) {
+                if (myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")) {
                     FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
-                    if(playerOwnerCheck.getOwner() == myPlayer){
+                    if (playerOwnerCheck.getOwner() == myPlayer) {
                         check = true;
 
                     }
+
                 }
             }
-        }
-        else if(choice.equals("Sell GetOutOfJail card")){
-            if(myPlayer.getEscapeJailCard() >= 1){
+        } else if (choice.equals("Sell GetOutOfJail card")) {
+            if (myPlayer.getEscapeJailCard() >= 1) {
                 check = true;
 
 
-
-            }else {
+            } else {
                 getMyGUI().showMessage("You do not own that card so you cant sell it");
             }
-        }
-        else if(choice.equals("Build")){
-            for(int i = 0; i < Settings.BOARD_SIZE; i++){
-                if(myboard.getBoardAr()[i].getFieldtype().equals("Property")){
+        } else if (choice.equals("Build")) {
+            for (int i = 0; i < Settings.BOARD_SIZE; i++) {
+                if (myboard.getBoardAr()[i].getFieldtype().equals("Property")) {
                     FieldDeed playerOwnerCheck = (FieldDeed) myboard.getBoardAr()[i];
-                    if(playerOwnerCheck.getOwner() == myPlayer){
+                    if (playerOwnerCheck.getOwner() == myPlayer) {
                         check = true;
                         break;
                     }
                 }
             }
-        }
-        else if(choice.equals("Nothing")){
+        } else if (choice.equals("Nothing")) {
             check = true;
         }
 
-        if(!check){
+        if (!check) {
             return "Invalid";
-        }
-        else{
+        } else {
             return choice;
         }
     }

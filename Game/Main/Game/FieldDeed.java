@@ -1,3 +1,4 @@
+import gui_fields.GUI_Ownable;
 import gui_fields.GUI_Street;
 
 import java.awt.*;
@@ -91,7 +92,7 @@ public class FieldDeed extends FieldPurchaseAble {
         if (this.owner != null)
             return;
         gui.getMyGUI().showMessage("This property is now up for auction");
-        GUI_Street ownable = (GUI_Street) gui.getMyGUI().getFields()[player.getPosition()];
+        GUI_Ownable ownable = (GUI_Ownable) gui.getMyGUI().getFields()[player.getPosition()];
 
         String buyer = "";
         while (true) {
