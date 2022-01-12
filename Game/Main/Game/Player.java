@@ -1,4 +1,4 @@
-public class Player {
+public class Player<bool> {
 
     private int balance;
     private String name;
@@ -8,11 +8,19 @@ public class Player {
     private int position;
     private Field[] ownedFields;
 
+    private boolean isJailed;
+    private int turnsJailed;
+
+    private int escapeJailCard;
+
     Player(int balance, String name, int position) {
         this.balance = balance;
         this.name = name;
         this.position = position;
         this.number = playernumber;
+        isJailed = false;
+        turnsJailed = 0;
+        escapeJailCard = 0;
         playernumber++;
     }
 
