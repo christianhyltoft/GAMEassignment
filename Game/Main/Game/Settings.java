@@ -61,7 +61,7 @@ public final class Settings {
             new GUI_Street("Vimmel-\nskaftet", "Cost:  6000", "Vimmelskaftet", "Rent:  550", new Color(255, 255, 50), Color.BLACK),
             new GUI_Chance("?", "Chance", "Take a chance card.", new Color(100, 100, 204), Color.BLACK),
             new GUI_Street("Nygade", "Cost:  6400", "Nygade", "Rent:  600", new Color(255, 255, 50), Color.BLACK),
-            new GUI_Shipping("default", "Scandlines Rødby", "Cost:  4000", "Scandlines Rødby", "Rent:  500", Color.WHITE, Color.BLACK),
+            new GUI_Shipping("default", "Scandlines Rødby", "Pay your tax\n10% or 4000", "Scandlines Rødby", "Rent:  500", Color.WHITE, Color.BLACK),
             new GUI_Chance("?", "Chance", "Take a chance card.", new Color(100, 100, 204), Color.BLACK),
             new GUI_Street("Frederiks-\nberggade", "Cost:  7000", "Frederiksberggade", "Rent:  700", new Color(150, 60, 150), Color.WHITE),
             new GUI_Tax("Extra-\nordinary\nStateTax", "Pay 2000", "Pay extraordinary\nStateTax: kr. 2000,-", Color.GRAY, Color.BLACK),
