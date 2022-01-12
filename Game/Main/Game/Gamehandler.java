@@ -47,13 +47,53 @@ public class Gamehandler {
     public void playGame() {
         do {
             for (int i = 0; i < players.length; i++) {
-                taketurn(players[i]);
-
+                if(players[i].isJailed()){
+                    JailTurn(players[i]);
+                }
+                else{
+                    taketurn(players[i]);
+                }
             }
 
 
         } while (true);
 
+    }
+
+    private void JailTurn(Player player){
+        myGUI.showMessage("You are jailed");
+        if(player.getTurnsJailed() >= 2){
+            myGUI.showMessage("You've served your jail sentence and are now released");
+            player.setJailed(false);
+            player.setTurnsJailed(0);
+            taketurn(player);
+        }
+        else if(player.getEscapeJailCard() >= 1){
+            myGUI.showMessage("You use your get out of jail free card to escape jail");
+            player.setEscapeJailCard(player.getEscapeJailCard() - 1);
+            player.setJailed(false);
+            player.setTurnsJailed(0);
+            taketurn(player);
+        }
+        else{
+            myGUI.showMessage("Roll a pair to escape");
+            rafflecup.roll();
+            myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
+
+            if((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())){
+                myGUI.showMessage("You've rolled a pair and have escaped");
+                player.setJailed(false);
+                player.setTurnsJailed(0);
+            }
+            else{
+                myGUI.showMessage("You failed to roll a pair and will stay in jail");
+                player.setTurnsJailed(player.getTurnsJailed() + 1);
+            }
+        }
+    }
+
+    private void roll(){
+        
     }
 
     private void taketurn(Player player) {
