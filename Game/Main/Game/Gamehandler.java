@@ -28,14 +28,14 @@ public class Gamehandler {
     public Gamehandler() throws IOException {
 
         Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
-        this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection(Settings.gameHandlerText[1], "3", "4", "5", "6"));
+        this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection(Settings.gameHandlerText[0], "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
 
         myboard = new Board(this);
 
         for (int i = 0; i < this.amountOfPlayers; i++) {
-            String input = myGUI.getUserString(Settings.gameHandlerText[2] + (i + 1));
+            String input = myGUI.getUserString(Settings.gameHandlerText[1] + (i + 1));
             players[i] = new Player(Settings.STARTING_MONEY, input, 0);
             playersgui[i] = new GUI_Player(input, Settings.STARTING_MONEY);
             playersgui[i].getCar().setPrimaryColor(carcolors[i]);
@@ -48,7 +48,7 @@ public class Gamehandler {
         }
         controller = new GUIController(myGUI, playersgui);
 
-        myGUI.showMessage(Settings.gameHandlerText[3]);
+        myGUI.showMessage(Settings.gameHandlerText[2]);
     }
 
     public void Playgame() {
@@ -69,16 +69,16 @@ public class Gamehandler {
         //Looking for the winner of the game
         for (int i = 0; i < players.length; i++) {
             if (!players[i].isPlayerHasLost())
-                getMyGUI().showMessage(Settings.gameHandlerText[4] + players[i].getName() + Settings.gameHandlerText[5]);
+                getMyGUI().showMessage(Settings.gameHandlerText[3] + players[i].getName() + Settings.gameHandlerText[4]);
 
         }
 
     }
 
     private void JailTurn(Player player) {
-        myGUI.showMessage(Settings.gameHandlerText[6] + player.getName());
+        myGUI.showMessage(Settings.gameHandlerText[5] + player.getName());
         if (player.getTurnsJailed() >= 2) {
-            myGUI.showMessage(Settings.gameHandlerText[7] + Settings.JAIL_RELEASE_FEE + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[6] + Settings.JAIL_RELEASE_FEE + player.getName());
             player.changeBalance(-1000);
             playersgui[player.getNumber()].setBalance(player.getBalance());
             player.setJailed(false);
@@ -87,43 +87,43 @@ public class Gamehandler {
         } else {
             String Choice = "";
             if(player.getEscapeJailCard() >= 1 && player.getBalance() >= Settings.JAIL_RELEASE_FEE){
-                Choice = myGUI.getUserSelection(Settings.gameHandlerText[8] + Settings.JAIL_RELEASE_FEE, Settings.gameHandlerText[9], Settings.gameHandlerText[10], Settings.gameHandlerText[11]);
+                Choice = myGUI.getUserSelection(Settings.gameHandlerText[7] + Settings.JAIL_RELEASE_FEE, Settings.gameHandlerText[8], Settings.gameHandlerText[9], Settings.gameHandlerText[10]);
             }
             else if(player.getEscapeJailCard() >= 1){
-                Choice = myGUI.getUserSelection(Settings.gameHandlerText[12], Settings.gameHandlerText[9], Settings.gameHandlerText[11]);
+                Choice = myGUI.getUserSelection(Settings.gameHandlerText[11], Settings.gameHandlerText[8], Settings.gameHandlerText[10]);
             }
             else if(player.getBalance() >= Settings.JAIL_RELEASE_FEE){
-                Choice = myGUI.getUserSelection(Settings.gameHandlerText[13] + Settings.JAIL_RELEASE_FEE, Settings.gameHandlerText[9], Settings.gameHandlerText[10]);
+                Choice = myGUI.getUserSelection(Settings.gameHandlerText[12] + Settings.JAIL_RELEASE_FEE, Settings.gameHandlerText[8], Settings.gameHandlerText[9]);
             }
 
 
-            if(Choice.equals(Settings.gameHandlerText[10])){
-                myGUI.showMessage(Settings.gameHandlerText[14] + Settings.JAIL_RELEASE_FEE + " " + player.getName());
+            if(Choice.equals(Settings.gameHandlerText[9])){
+                myGUI.showMessage(Settings.gameHandlerText[13] + Settings.JAIL_RELEASE_FEE + " " + player.getName());
                 player.changeBalance(-1000);
                 playersgui[player.getNumber()].setBalance(player.getBalance());
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 roll(player);
             }
-            if(Choice.equals(Settings.gameHandlerText[12])){
-                myGUI.showMessage(Settings.gameHandlerText[15] + player.getName());
+            if(Choice.equals(Settings.gameHandlerText[11])){
+                myGUI.showMessage(Settings.gameHandlerText[14] + player.getName());
                 player.setEscapeJailCard(player.getEscapeJailCard() - 1);
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 roll(player);
             }
             else{
-                myGUI.getUserButtonPressed(Settings.gameHandlerText[16] + player.getName(),Settings.gameHandlerText[17]);
+                myGUI.getUserButtonPressed(Settings.gameHandlerText[15] + player.getName(),Settings.gameHandlerText[16]);
                 rafflecup.roll();
                 myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
                 if ((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())) {
-                    myGUI.showMessage(Settings.gameHandlerText[18] + player.getName());
+                    myGUI.showMessage(Settings.gameHandlerText[17] + player.getName());
                     player.setJailed(false);
                     player.setTurnsJailed(0);
                     Taketurn(player, rafflecup);
                 } else {
-                    myGUI.showMessage(Settings.gameHandlerText[19] + player.getName());
+                    myGUI.showMessage(Settings.gameHandlerText[18] + player.getName());
                     player.setTurnsJailed(player.getTurnsJailed() + 1);
                 }
             }
@@ -131,20 +131,20 @@ public class Gamehandler {
     }
 
     private void roll(Player player) {
-        myGUI.getUserButtonPressed(Settings.gameHandlerText[20] + player.getName(),Settings.gameHandlerText[17]);
+        myGUI.getUserButtonPressed(Settings.gameHandlerText[19] + player.getName(),Settings.gameHandlerText[16]);
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         Taketurn(player, rafflecup);
     }
 
     private void Taketurn(Player player, Rafflecup rafflecup) {
-        myGUI.showMessage(Settings.gameHandlerText[21] + player.getName());
+        myGUI.showMessage(Settings.gameHandlerText[20] + player.getName());
         int positionFromTurnBefore = player.getPosition();
         player.changePosition(rafflecup.sum());
 
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         if (player.getPosition() < positionFromTurnBefore) {
-            myGUI.showMessage(Settings.gameHandlerText[22] + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[21] + player.getName());
             player.changeBalance(4000);
             playersgui[player.getNumber()].setBalance(player.getBalance());
         }
@@ -155,7 +155,7 @@ public class Gamehandler {
         }
 
         if (rafflecup.sameFacesUpOnAllDice()) {
-            myGUI.showMessage(Settings.gameHandlerText[23] + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[22] + player.getName());
             roll(player);
         }
 
@@ -173,8 +173,8 @@ public class Gamehandler {
             if(choice.equals("Nothing")){
                 break;
             }
-            else if(choice.equals(Settings.gameHandlerText[24])){
-                String propertyName = myGUI.getUserString(Settings.gameHandlerText[25]);
+            else if(choice.equals(Settings.gameHandlerText[23])){
+                String propertyName = myGUI.getUserString(Settings.gameHandlerText[24]);
 
                 for(int i = 0; i < Settings.BOARD_SIZE; i++){
                     if(myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Property")){
@@ -187,18 +187,18 @@ public class Gamehandler {
                             break;
                         }
                         else{
-                            myGUI.showMessage(Settings.gameHandlerText[26]);
+                            myGUI.showMessage(Settings.gameHandlerText[25]);
                         }
                     }
                 }
-            }else if(choice.equals(Settings.gameHandlerText[27])){
-                String buyer=getMyGUI().getUserString(Settings.gameHandlerText[28]);
-                if(buyer.equals(Settings.gameHandlerText[29])){
+            }else if(choice.equals(Settings.gameHandlerText[26])){
+                String buyer=getMyGUI().getUserString(Settings.gameHandlerText[27]);
+                if(buyer.equals(Settings.gameHandlerText[28])){
                     return;
                 }
                 for (int i = 0; i < players.length; i++) {
                     if (buyer.equals(players[i].getName())){
-                        int price =getMyGUI().getUserInteger(Settings.gameHandlerText[30]);
+                        int price =getMyGUI().getUserInteger(Settings.gameHandlerText[29]);
                         myPlayer.changeBalance(price);
                         players[i].changeBalance(-price);
                         myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard()-1);
@@ -217,11 +217,11 @@ public class Gamehandler {
     }
 
     private String GetChoice(Player myPlayer){
-        String choice =  myGUI.getUserSelection(Settings.gameHandlerText[31] + myPlayer.getName() + Settings.gameHandlerText[32], Settings.gameHandlerText[33], Settings.gameHandlerText[24], Settings.gameHandlerText[34], Settings.gameHandlerText[27], Settings.gameHandlerText[35]);
+        String choice =  myGUI.getUserSelection(Settings.gameHandlerText[30] + myPlayer.getName() + Settings.gameHandlerText[31], Settings.gameHandlerText[32], Settings.gameHandlerText[23], Settings.gameHandlerText[33], Settings.gameHandlerText[26], Settings.gameHandlerText[34]);
 
         Boolean check = false;
 
-        if(choice.equals(Settings.gameHandlerText[24]) || choice.equals(34)){
+        if(choice.equals(Settings.gameHandlerText[23]) || choice.equals(34)){
             for(int i = 0; i < Settings.BOARD_SIZE; i++){
                 if(myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
                     FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
@@ -232,17 +232,17 @@ public class Gamehandler {
                 }
             }
         }
-        else if(choice.equals(Settings.gameHandlerText[27])){
+        else if(choice.equals(Settings.gameHandlerText[26])){
             if(myPlayer.getEscapeJailCard() >= 1){
                 check = true;
 
 
 
             }else {
-                getMyGUI().showMessage(Settings.gameHandlerText[36]);
+                getMyGUI().showMessage(Settings.gameHandlerText[35]);
             }
         }
-        else if(choice.equals(Settings.gameHandlerText[35])){
+        else if(choice.equals(Settings.gameHandlerText[34])){
             for(int i = 0; i < Settings.BOARD_SIZE; i++){
                 if(myboard.getBoardAr()[i].getFieldtype().equals("Property")){
                     FieldDeed playerOwnerCheck = (FieldDeed) myboard.getBoardAr()[i];
@@ -253,7 +253,7 @@ public class Gamehandler {
                 }
             }
         }
-        else if(choice.equals("Nothing")){
+        else if(choice.equals(Settings.gameHandlerText[32])){
             check = true;
         }
 
@@ -270,7 +270,7 @@ public class Gamehandler {
         //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.
         if (players.getBalance() < 0) {
             players.setPlayerHasLost(true);
-            this.controller.getMyGUI().showMessage(players.getName() + Settings.gameHandlerText[37]);
+            this.controller.getMyGUI().showMessage(players.getName() + Settings.gameHandlerText[36]);
             return true;
 
         }
