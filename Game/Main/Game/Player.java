@@ -1,4 +1,4 @@
-public class Player<bool> {
+public class Player {
 
     private int balance;
     private String name;
@@ -12,6 +12,8 @@ public class Player<bool> {
     private int turnsJailed;
 
     private int escapeJailCard;
+
+    private boolean playerHasLost;
 
     Player(int balance, String name, int position) {
         this.balance = balance;
@@ -100,5 +102,13 @@ public class Player<bool> {
 
     public void setEscapeJailCard(int escapeJailCard) {
         this.escapeJailCard = escapeJailCard;
+    }
+
+    public boolean isPlayerHasLost() {
+        return playerHasLost;
+    }
+
+    public void setPlayerHasLost(boolean playerHasLost) {
+        this.playerHasLost = playerHasLost;
     }
 }

@@ -47,53 +47,58 @@ public class Gamehandler {
     public void playGame() {
         do {
             for (int i = 0; i < players.length; i++) {
-                if(players[i].isJailed()){
-                    JailTurn(players[i]);
-                }
-                else{
-                    roll(players[i]);
+                if (!players[i].isPlayerHasLost()) {
+                    if (players[i].isJailed()) {
+                        JailTurn(players[i]);
+                    } else {
+                        roll(players[i]);
+                    }
+                    detectLoser(players[i]);
                 }
             }
 
 
-        } while (true);
+        } while (detectWinner());
+        //Looking for the winner of the game
+        for (int i = 0; i < players.length; i++) {
+            if (!players[i].isPlayerHasLost())
+                getMyGUI().showMessage("Player: "+players[i].getName()+" has won the game");
+
+        }
 
     }
 
-    private void JailTurn(Player player){
+    private void JailTurn(Player player) {
         myGUI.showMessage("You are jailed " + player.getName());
-        if(player.getTurnsJailed() >= 2){
+        if (player.getTurnsJailed() >= 2) {
             myGUI.showMessage("You've served your jail sentence and are now released " + player.getName());
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
-        }
-        else if(player.getEscapeJailCard() >= 1){
+        } else if (player.getEscapeJailCard() >= 1) {
             myGUI.showMessage("You use your get out of jail free card to escape jail " + player.getName());
             player.setEscapeJailCard(player.getEscapeJailCard() - 1);
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
-        }
-        else{
+        } else {
             myGUI.showMessage("Roll a pair to escape " + player.getName());
             rafflecup.roll();
             myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
-            if((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())){
+            if ((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())) {
                 myGUI.showMessage("You've rolled a pair and have escaped " + player.getName());
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 taketurn(player, rafflecup);
-            }
-            else{
+            } else {
                 myGUI.showMessage("You failed to roll a pair and will stay in jail " + player.getName());
                 player.setTurnsJailed(player.getTurnsJailed() + 1);
             }
         }
     }
 
-    private void roll(Player player){
+    private void roll(Player player) {
         myGUI.showMessage("Roll the dice " + player.getName());
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
@@ -106,14 +111,14 @@ public class Gamehandler {
         player.changePosition(rafflecup.sum());
 
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
-        if (player.getPosition()<positionFromTurnBefore){
+        if (player.getPosition() < positionFromTurnBefore) {
             myGUI.showMessage("You have passed START, and will therefore receive 4000 kr " + player.getName());
             player.changeBalance(4000);
             playersgui[player.getNumber()].setBalance(player.getBalance());
         }
         this.myboard.getBoardAr()[player.getPosition()].landOn(player, this.controller);
-        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") || this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Ferry")||this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Beverage")){
-            this.myboard.getBoardAr()[player.getPosition()].auction(player,this.players,this.controller);
+        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") || this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Ferry") || this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Beverage")) {
+            this.myboard.getBoardAr()[player.getPosition()].auction(player, this.players, this.controller);
 
         }
 
@@ -127,7 +132,7 @@ public class Gamehandler {
     private boolean detectLoser(Player players) {
         //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.
         if (players.getBalance() < 0) {
-            players = null;
+            players.setPlayerHasLost(true);
             this.controller.getMyGUI().showMessage(players.getName() + " has lost the game.");
             return true;
 
@@ -135,8 +140,16 @@ public class Gamehandler {
         return false;
     }
 
-    //private boolean detectWinner (){
-    //}
+    private boolean detectWinner (){
+        int playersRemaining=this.players.length;
+        for (int i = 0; i < this.players.length; i++) {
+            if(players[i].isPlayerHasLost())
+                playersRemaining--;
+
+        }
+        return !(playersRemaining==1);
+
+    }
 
 
     public Board getMyboard() {
