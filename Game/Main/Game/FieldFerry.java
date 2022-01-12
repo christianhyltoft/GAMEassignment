@@ -74,30 +74,33 @@ public class FieldFerry extends FieldPurchaseAble {
                 // Temp message
                 gui.getMyGUI().showMessage("You own this field: " + name + " nothing happens");
             } else {
-                int ferriesOwned = 0;
+                if (owner.isJailed()) {
+                    gui.getMyGUI().showMessage("The owner is in jail, so you don't have to pay");
+                } else {
+                    int ferriesOwned = 0;
 
-                for(int i = 0; i < 40; i++){
-                    if(parent.getBoardAr()[i].getFieldtype().equals("Ferry")){
-                        FieldFerry check = (FieldFerry) parent.getBoardAr()[i];
-                        if(check.getPairNumber() == pairNumber){
-                            if(check.getOwner() == player){
-                                ferriesOwned++;
+                    for (int i = 0; i < 40; i++) {
+                        if (parent.getBoardAr()[i].getFieldtype().equals("Ferry")) {
+                            FieldFerry check = (FieldFerry) parent.getBoardAr()[i];
+                            if (check.getPairNumber() == pairNumber) {
+                                if (check.getOwner() == player) {
+                                    ferriesOwned++;
+                                }
                             }
                         }
                     }
-                }
 
-                for(int i = 0; i < ferriesOwned - 1; i++){
-                    rent = rent * 2;
-                }
+                    for (int i = 0; i < ferriesOwned - 1; i++) {
+                        rent = rent * 2;
+                    }
 
-                owner.changeBalance(rent);
-                player.changeBalance(-rent);
-                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
+                    owner.changeBalance(rent);
+                    player.changeBalance(-rent);
+                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                    gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
+                }
             }
         }
-
     }
 
     @Override

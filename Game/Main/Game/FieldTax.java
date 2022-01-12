@@ -12,18 +12,26 @@ public class FieldTax extends Field {
     @Override
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
+        int total = 0;
 
         if ((player.getBalance() * taxDecimal) / 100 > taxAmount) {
-            gui.getMyGUI().showMessage("You are quite rich and must therefore pay: " + (-player.getBalance() * taxDecimal) / 100);
-            player.changeBalance((-player.getBalance() * taxDecimal) / 100);
-            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - (player.getBalance() * taxDecimal / 100));
+            total = (-player.getBalance() * taxDecimal) / 100;
+            gui.getMyGUI().showMessage("You are quite rich and must therefore pay: " + -total);
+            player.changeBalance(total);
+            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
         } else {
+            total = -taxAmount;
             player.changeBalance(-taxAmount);
+            gui.getMyGUI().showMessage("You must pay: " + taxAmount);
+            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
         }
-        gui.getMyGUI().showMessage("You must pay: " + taxAmount);
 
-        gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - taxAmount);
-
+        for(int i = 0; i < Settings.BOARD_SIZE; i++){
+            if(parent.getBoardAr()[i].getFieldtype().equals("Parking")){
+                FieldParking myParking = (FieldParking) parent.getBoardAr()[i];
+                myParking.addMoney(total);
+            }
+        }
     }
 
     @Override

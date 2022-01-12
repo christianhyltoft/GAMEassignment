@@ -132,6 +132,8 @@ public class Gamehandler {
             myGUI.showMessage("You rolled two of a kind and now therefore get another turn " + player.getName());
             roll(player);
         }
+
+
     }
 
 

@@ -16,6 +16,8 @@ public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
                 GUI.getMyGUI().showMessage(myPlayers[i].getName() + " gives " + myPlayer.getName() + " " + moneyAmount);
                 myPlayer.changeBalance(moneyAmount);
                 myPlayers[i].changeBalance(-moneyAmount);
+                GUI.getMyPlayers()[i].setBalance(GUI.getMyPlayers()[i].getBalance() - moneyAmount);
+                GUI.getMyPlayers()[myPlayer.getNumber()].setBalance((GUI.getMyPlayers()[myPlayer.getNumber()].getBalance() + moneyAmount));
             }
         }
     }
