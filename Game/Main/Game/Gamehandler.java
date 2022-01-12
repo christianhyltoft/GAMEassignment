@@ -158,23 +158,52 @@ public class Gamehandler {
 
     private void EndOfTurnChoice(Player myPlayer){
         String choice = "Invalid";
-        while(choice.equals("Invalid"){
+        while(choice.equals("Invalid")){
             choice = GetChoice(myPlayer);
+        }
+
+        String choice2 = "Invalid";
+        while(choice2.equals("Invalid")){
+            if(choice.equals("Nothing")){
+                break;
+            }
+            else if(choice.equals("Sell a property")){
+                String propertyName = myGUI.getUserString("Enter the name of the property to sell");
+
+                for(int i = 0; i < Settings.BOARD_SIZE; i++){
+                    if(myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Property")){
+                        FieldDeed property = (FieldDeed) myboard.getBoardAr()[i];
+                        System.out.println("TEST");
+                        if(property.getOwner() == myPlayer){
+                            // Just using the auction for now, should be changed later.
+                            System.out.println("TEST2");
+                            property.setOwner(null);
+                            property.auction(myPlayer, players, controller);
+                            choice2 = propertyName;
+                            break;
+                        }
+                        else{
+                            myGUI.showMessage("You don't own this property");
+                        }
+                    }
+                }
+            }
         }
     }
 
     private String GetChoice(Player myPlayer){
-        String choice =  myGUI.getUserSelection("Your turn is about to end " + myPlayer.getName() + ". Pick a miscellaneous action to perform ", "Sell a property", "Pawn a property", "Sell GetOutOfJail card", "Build");
+        String choice =  myGUI.getUserSelection("Your turn is about to end " + myPlayer.getName() + ". Pick a miscellaneous action to perform ", "Nothing", "Sell a property", "Pawn a property", "Sell GetOutOfJail card", "Build");
 
         Boolean check = false;
 
         if(choice.equals("Sell a property") || choice.equals("Pawn a property")){
-            for(int i = 0; i < Settings.BOARD_SIZE; i++)
-            if(myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
-                FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
-                if(playerOwnerCheck.getOwner() == myPlayer){
-                    check = true;
-                    break;
+            for(int i = 0; i < Settings.BOARD_SIZE; i++){
+                if(myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
+                    FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
+                    if(playerOwnerCheck.getOwner() == myPlayer){
+                        check = true;
+                        break;
+                    }
                 }
             }
         }
@@ -182,6 +211,20 @@ public class Gamehandler {
             if(myPlayer.getEscapeJailCard() >= 1){
                 check = true;
             }
+        }
+        else if(choice.equals("Build")){
+            for(int i = 0; i < Settings.BOARD_SIZE; i++){
+                if(myboard.getBoardAr()[i].getFieldtype().equals("Property")){
+                    FieldDeed playerOwnerCheck = (FieldDeed) myboard.getBoardAr()[i];
+                    if(playerOwnerCheck.getOwner() == myPlayer){
+                        check = true;
+                        break;
+                    }
+                }
+            }
+        }
+        else if(choice.equals("Nothing")){
+            check = true;
         }
 
         if(!check){
