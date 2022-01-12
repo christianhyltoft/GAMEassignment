@@ -40,7 +40,7 @@ public class FieldDeed extends FieldPurchaseAble {
                 player.changeBalance(-this.buyPrice);
                 gui.getMyGUI().showMessage("You now own this field");
                 ownable.setRent("The rent is: " + this.rent);
-                ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
+                ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor(), Color.BLACK);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
         } else {
@@ -75,7 +75,7 @@ public class FieldDeed extends FieldPurchaseAble {
                     players[i].changeBalance(-price);
                     gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
                     ownable.setOwnerName(buyer);
-                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor());
+                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor(), Color.BLACK);
                     gui.getMyGUI().showMessage(players[i].getName() + " now owns this field");
                     return;
 

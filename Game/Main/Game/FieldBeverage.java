@@ -2,6 +2,8 @@ import gui_fields.GUI_Brewery;
 import gui_fields.GUI_Shipping;
 import gui_fields.GUI_Street;
 
+import java.awt.*;
+
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
@@ -27,7 +29,7 @@ public class FieldBeverage extends FieldPurchaseAble {
                 player.changeBalance(-this.buyPrice);
                 gui.getMyGUI().showMessage("You now own this field");
                 ownable.setRent("The rent is: " + this.currentRent());
-                ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
+                ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor(), Color.BLACK);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
         } else {
@@ -66,7 +68,7 @@ public class FieldBeverage extends FieldPurchaseAble {
                     players[i].changeBalance(-price);
                     gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
                     ownable.setOwnerName(buyer);
-                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor());
+                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor(), Color.BLACK);
                     gui.getMyGUI().showMessage(players[i].getName() + " now owns this field");
                     return;
 

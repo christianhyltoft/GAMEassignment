@@ -18,7 +18,7 @@ public class Gamehandler {
 
 
     public Gamehandler() throws IOException {
-        Color[] carcolors = new Color[]{Color.cyan, Color.MAGENTA, Color.PINK};
+        Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
         this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection("How many players do you want to play", "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
@@ -29,6 +29,7 @@ public class Gamehandler {
             String input = myGUI.getUserString("Enter name of player: " + (i + 1));
             players[i] = new Player(Settings.STARTING_MONEY, input, 0);
             playersgui[i] = new GUI_Player(input, Settings.STARTING_MONEY);
+            playersgui[i].getCar().setPrimaryColor(carcolors[i]);
             myGUI.addPlayer(playersgui[i]);
             playersgui[i].getCar().setPosition(myGUI.getFields()[0]);
 
