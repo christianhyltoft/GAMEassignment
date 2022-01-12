@@ -50,27 +50,26 @@ public class FieldDeed extends FieldPurchaseAble {
                 int properties = 0;
                 int propertiesOwned = 0;
 
-                for(int i = 0; i < 40; i++){
-                    if(parent.getBoardAr()[i].getFieldtype().equals("Property")){
+                for (int i = 0; i < 40; i++) {
+                    if (parent.getBoardAr()[i].getFieldtype().equals("Property")) {
                         FieldDeed check = (FieldDeed) parent.getBoardAr()[i];
-                        if(check.getPairNumber() == pairNumber){
+                        if (check.getPairNumber() == pairNumber) {
                             properties++;
-                            if(check.getOwner() == player){
+                            if (check.getOwner() == player) {
                                 propertiesOwned++;
                             }
                         }
                     }
                 }
 
-                if(propertiesOwned == properties){
+                if (propertiesOwned == properties) {
                     int rentNow = currentRent() * 2;
                     owner.changeBalance(rentNow);
                     player.changeBalance(-rentNow);
                     gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
                     gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                     gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
-                }
-                else{
+                } else {
                     int rentNow = currentRent();
                     owner.changeBalance(rentNow);
                     player.changeBalance(-rentNow);
@@ -131,14 +130,29 @@ public class FieldDeed extends FieldPurchaseAble {
     }
 
     public void buildHouse(Player player, GUIController gui) {
-        if (this.amountOfHouses == 1) {
-            gui.getMyGUI().showMessage("There is one house on this property ");
-        } else {
-            gui.getMyGUI().showMessage("There are: " + this.amountOfHouses + " houses on this property");
-        }
 
-        int amount = gui.getMyGUI().getUserInteger("How many houses do you want to build", 1, 5);
+        int properties = 0;
+        int propertiesOwned = 0;
+        FieldDeed[] series;
+
+        for (int i = 0; i < 40; i++) {
+
+            if (parent.getBoardAr()[i].getFieldtype().equals("Property")) {
+                FieldDeed check = (FieldDeed) parent.getBoardAr()[i];
+                if (check.getPairNumber() == pairNumber) {
+                    properties++;
+                    if (check.getOwner() == player) {
+                        propertiesOwned++;
+                    }
+                    if (propertiesOwned == properties){
+
+
+                    }
+                }
+            }
+        }
     }
+
 
     public int getRent() {
         return rent;
