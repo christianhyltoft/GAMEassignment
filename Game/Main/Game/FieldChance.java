@@ -7,7 +7,7 @@ public class FieldChance extends Field {
     @Override
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
-        myGUI.getUserButtonPressed("Draw a chance card", "DRAW");
+        gui.getMyGUI().getUserButtonPressed("Draw a chance card", "DRAW");
 
         ChanceCard myCard = parent.getMyDeck().DrawCard(gui);
         myCard.DrawCard(player, gui);
