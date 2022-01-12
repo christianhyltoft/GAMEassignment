@@ -15,5 +15,7 @@ public class TestingIfOneCanBuyAStreet {
         FieldDeed ftest= (FieldDeed) g2.getMyboard().getBoardAr()[3];
 
         assertTrue(ftest.getOwner()==g2.getPlayers()[1]);
+
+
     }
 }
