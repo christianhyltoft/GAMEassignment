@@ -24,6 +24,11 @@ class PlayerTest {
         ptest.changePosition(1);
         assertEquals(39,ptest.getPosition());
 
+        // Tester negative positioner på grund af chancekort der rykker tilbage
+        ptest.setPosition(1);
+        ptest.changePosition(-3);
+        assertEquals(38,ptest.getPosition());
+
 
 
 
