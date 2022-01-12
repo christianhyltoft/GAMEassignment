@@ -7,11 +7,13 @@ import java.awt.*;
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
+    private final int pairNumber;
 
-    public FieldBeverage(String name, String FieldType, Board parent, int buyprice, int mortgageValue) {
+    public FieldBeverage(String name, String FieldType, Board parent, int buyprice, int mortgageValue, int pairNumber) {
         super(name, FieldType, parent, buyprice, mortgageValue);
         this.rollAmount = rollAmount;
         this.ownedAmount = ownedAmount;
+        this.pairNumber = pairNumber;
     }
 
     @Override
