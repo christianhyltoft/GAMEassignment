@@ -43,7 +43,6 @@ public class Gamehandler {
         myGUI.showMessage("The game vil start when you press ok");
     }
 
-
     public void playGame() {
         do {
             for (int i = 0; i < players.length; i++) {

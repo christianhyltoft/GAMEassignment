@@ -19,7 +19,7 @@ public final class Settings {
 
     public static final String ChanceCardDataBase2 = "ChanceCards.txt";
     public static final String[] ChanceCardDataBase = {"ChanceCardGetOutOfJail.txt", "ChanceCardMatadorGrant.txt", "ChanceCardMoveYourCharacter.txt",
-                                "ChanceCardPayBasedOnProperty.txt", "ChanceCardPayOrReceiveMoneyFromBank.txt", "ChanceCardReceiveMoneyFromPlayers.txt" };
+            "ChanceCardPayBasedOnProperty.txt", "ChanceCardPayOrReceiveMoneyFromBank.txt", "ChanceCardReceiveMoneyFromPlayers.txt"};
 
     public static GUI_Field[] fields = new GUI_Field[]{
 

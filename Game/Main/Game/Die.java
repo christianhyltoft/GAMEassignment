@@ -27,7 +27,6 @@ public class Die {
         value = (int) (Math.random() * faceAmount + 1);
     }
 
-
     @Override
     public String toString() {
         return Integer.toString(value);

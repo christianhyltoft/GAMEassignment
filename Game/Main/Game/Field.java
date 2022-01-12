@@ -25,11 +25,9 @@ public abstract class Field {
         gui.getMyGUI().showMessage("You landed on" + this.name);
     }
 
-
     public String toString() {
         return "You landed on: " + this.name;
     }
-
 
     public void setName(String name) {
         this.name = name;

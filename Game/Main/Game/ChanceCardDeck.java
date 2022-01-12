@@ -21,23 +21,23 @@ public class ChanceCardDeck {
             e.printStackTrace();
         }
 
-        for(int i = 0; i < chanceCardText.length; i++){
+        for (int i = 0; i < chanceCardText.length; i++) {
             ChanceCardCreator(chanceCardText[i]);
         }
 
         ShuffleDeck();
     }
 
-    private void ChanceCardCreator(String cardText){
+    private void ChanceCardCreator(String cardText) {
         String[] splitText = cardText.split("-", 5);
         String chanceCardType = splitText[0];
         int cardAmount = Integer.parseInt(splitText[1]);
 
-        switch(chanceCardType){
+        switch (chanceCardType) {
             case "GetOutOfJail":
                 String text = splitText[2];
 
-                for(int i = 0; i < cardAmount; i++){
+                for (int i = 0; i < cardAmount; i++) {
                     chanceCardDeck[count] = new ChanceCardGetOutOfJail(text);
                     count++;
                 }
@@ -46,7 +46,7 @@ public class ChanceCardDeck {
                 int moneyAmount = Integer.parseInt(splitText[2]);
                 text = splitText[3];
 
-                for(int i = 0; i < cardAmount; i++){
+                for (int i = 0; i < cardAmount; i++) {
                     chanceCardDeck[count] = new ChanceCardMatadorGrant(moneyAmount, text);
                     count++;
                 }
@@ -54,7 +54,7 @@ public class ChanceCardDeck {
             case "MoveYourCharacter":
                 text = splitText[2];
 
-                for(int i = 0; i < cardAmount; i++){
+                for (int i = 0; i < cardAmount; i++) {
                     chanceCardDeck[count] = new ChanceCardMove(text, myFields);
                     count++;
                 }
@@ -64,7 +64,7 @@ public class ChanceCardDeck {
                 int hotelPrice = Integer.parseInt(splitText[3]);
                 text = splitText[4];
 
-                for(int i = 0; i < cardAmount; i++){
+                for (int i = 0; i < cardAmount; i++) {
                     chanceCardDeck[count] = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text);
                     count++;
                 }
@@ -73,9 +73,11 @@ public class ChanceCardDeck {
                 String payOrReceive = splitText[2];
                 moneyAmount = Integer.parseInt(splitText[3]);
                 text = splitText[4];
-                if (payOrReceive == "p") { moneyAmount = -moneyAmount; }
+                if (payOrReceive == "p") {
+                    moneyAmount = -moneyAmount;
+                }
 
-                for(int i = 0; i < cardAmount; i++){
+                for (int i = 0; i < cardAmount; i++) {
                     chanceCardDeck[count] = new ChanceCardPayOrReceive(moneyAmount, text);
                     count++;
                 }
@@ -84,7 +86,7 @@ public class ChanceCardDeck {
                 moneyAmount = Integer.parseInt(splitText[2]);
                 text = splitText[3];
 
-                for(int i = 0; i < cardAmount; i++){
+                for (int i = 0; i < cardAmount; i++) {
                     chanceCardDeck[count] = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text);
                     count++;
                 }
@@ -92,10 +94,10 @@ public class ChanceCardDeck {
         }
     }
 
-    public void ShuffleDeck(){
+    public void ShuffleDeck() {
         Random rng = new Random();
 
-        for(int i = 0; i < 1000; i++){
+        for (int i = 0; i < 1000; i++) {
             int card1 = rng.nextInt(chanceCardDeck.length);
             int card2 = rng.nextInt(chanceCardDeck.length);
 
@@ -108,7 +110,7 @@ public class ChanceCardDeck {
     public ChanceCard DrawCard() {
         ChanceCard myCard = chanceCardDeck[0];
 
-        for(int i = 0; i < chanceCardDeck.length - 1; i++){
+        for (int i = 0; i < chanceCardDeck.length - 1; i++) {
             chanceCardDeck[i] = chanceCardDeck[i + 1];
         }
         chanceCardDeck[chanceCardDeck.length - 1] = myCard;

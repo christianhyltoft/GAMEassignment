@@ -44,13 +44,14 @@ public class FieldBeverage extends FieldPurchaseAble {
         }
 
     }
-    private int currentRent(){
+
+    private int currentRent() {
         return 500;
     }
 
     @Override
     public void auction(Player player, Player[] players, GUIController gui) {
-        if (this.owner!=null)
+        if (this.owner != null)
             return;
         gui.getMyGUI().showMessage("This property is now up for auction");
         GUI_Brewery ownable = (GUI_Brewery) gui.getMyGUI().getFields()[player.getPosition()];
@@ -59,14 +60,14 @@ public class FieldBeverage extends FieldPurchaseAble {
         while (true) {
             buyer = gui.getMyGUI().getUserString("Figure out amongst yourselves who will buy the field and for what price and enter the player who wants to buy: ");
             for (int i = 0; i < players.length; i++) {
-                if (players[i].getName().equals(buyer)){
-                    int price=gui.getMyGUI().getUserInteger("Name the price you bargained for");
-                    this.owner=players[i];
+                if (players[i].getName().equals(buyer)) {
+                    int price = gui.getMyGUI().getUserInteger("Name the price you bargained for");
+                    this.owner = players[i];
                     players[i].changeBalance(-price);
                     gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
                     ownable.setOwnerName(buyer);
                     ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor());
-                    gui.getMyGUI().showMessage(players[i].getName()+" now owns this field");
+                    gui.getMyGUI().showMessage(players[i].getName() + " now owns this field");
                     return;
 
                 }

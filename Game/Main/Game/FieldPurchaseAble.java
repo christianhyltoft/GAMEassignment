@@ -35,9 +35,9 @@ public abstract class FieldPurchaseAble extends Field {
     }
 
     @Override
-    public  void auction(Player player, Player[] players, GUIController gui){
+    public void auction(Player player, Player[] players, GUIController gui) {
 
-    };
+    }
 
     public void mortgage(Player player) {
         player.changeBalance(-mortgageValue);

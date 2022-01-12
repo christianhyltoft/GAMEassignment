@@ -2,7 +2,7 @@ public class Player {
 
     private int balance;
     private String name;
-    private static int playernumber=0;
+    private static int playernumber = 0;
     private int number;
 
     private int position;
@@ -12,7 +12,7 @@ public class Player {
         this.balance = balance;
         this.name = name;
         this.position = position;
-        this.number=playernumber;
+        this.number = playernumber;
         playernumber++;
     }
 
@@ -47,8 +47,9 @@ public class Player {
     public void setOwnedFields(Field[] ownedFields) {
         this.ownedFields = ownedFields;
     }
-    public void changeBalance(int change){
-        this.balance+=change;
+
+    public void changeBalance(int change) {
+        this.balance += change;
     }
 
     public int getNumber() {
@@ -59,10 +60,10 @@ public class Player {
         this.number = number;
     }
 
-    public void changePosition(int move){
-        this.position+=move;
-        if (this.position>=Settings.BOARD_SIZE){
-            this.position-=40;
+    public void changePosition(int move) {
+        this.position += move;
+        if (this.position >= Settings.BOARD_SIZE) {
+            this.position -= 40;
         }
     }
 }

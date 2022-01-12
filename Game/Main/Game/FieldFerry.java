@@ -4,13 +4,14 @@ import gui_fields.GUI_Street;
 public class FieldFerry extends FieldPurchaseAble {
     private int rent;
 
-    public FieldFerry(String name, String FieldType, Board parent, int buyPrice,int mortgageValue, int rent){
-        super(name,FieldType, parent, buyPrice,mortgageValue);
-        this.rent=rent;
+    public FieldFerry(String name, String FieldType, Board parent, int buyPrice, int mortgageValue, int rent) {
+        super(name, FieldType, parent, buyPrice, mortgageValue);
+        this.rent = rent;
     }
+
     @Override
-    public  void auction(Player player, Player[] players, GUIController gui){
-        if (this.owner!=null)
+    public void auction(Player player, Player[] players, GUIController gui) {
+        if (this.owner != null)
             return;
         gui.getMyGUI().showMessage("This property is now up for auction");
         GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
@@ -19,14 +20,14 @@ public class FieldFerry extends FieldPurchaseAble {
         while (true) {
             buyer = gui.getMyGUI().getUserString("Figure out amongst yourselves who will buy the field and for what price and enter the player who wants to buy: ");
             for (int i = 0; i < players.length; i++) {
-                if (players[i].getName().equals(buyer)){
-                    int price=gui.getMyGUI().getUserInteger("Name the price you bargained for");
-                    this.owner=players[i];
+                if (players[i].getName().equals(buyer)) {
+                    int price = gui.getMyGUI().getUserInteger("Name the price you bargained for");
+                    this.owner = players[i];
                     players[i].changeBalance(-price);
                     gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
                     ownable.setOwnerName(buyer);
                     ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor());
-                    gui.getMyGUI().showMessage(players[i].getName()+" now owns this field");
+                    gui.getMyGUI().showMessage(players[i].getName() + " now owns this field");
                     return;
 
                 }
@@ -34,7 +35,9 @@ public class FieldFerry extends FieldPurchaseAble {
             }
         }
 
-    };
+    }
+
+    ;
 
 
     public int getRent() {
@@ -46,7 +49,7 @@ public class FieldFerry extends FieldPurchaseAble {
     }
 
     @Override
-    public void landOn(Player player, GUIController gui){
+    public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
 
         GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
@@ -67,9 +70,8 @@ public class FieldFerry extends FieldPurchaseAble {
             if (player == owner) {
                 // Udskriv message + messageowned til GUI
                 // Temp message
-                gui.getMyGUI().showMessage("You own this field: " + name+" nothing happens");
-            }
-            else {
+                gui.getMyGUI().showMessage("You own this field: " + name + " nothing happens");
+            } else {
                 owner.changeBalance(rent);
                 player.changeBalance(-rent);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
@@ -78,8 +80,9 @@ public class FieldFerry extends FieldPurchaseAble {
         }
 
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Here at " + this.name + " we offer a wide variety of trips. ";
     }
 }

@@ -8,7 +8,7 @@ public class GUIController {
     private GUI myGUI;
     private GUI_Player[] myPlayers;
 
-    GUIController(GUI myGUI, GUI_Player[] myPlayers){
+    GUIController(GUI myGUI, GUI_Player[] myPlayers) {
         this.myGUI = myGUI;
         this.myPlayers = myPlayers;
     }

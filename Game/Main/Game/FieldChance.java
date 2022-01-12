@@ -1,12 +1,12 @@
-public class FieldChance extends Field{
+public class FieldChance extends Field {
 
-    public FieldChance(String name, String FieldType, Board parent){
-        super(name,FieldType, parent);
+    public FieldChance(String name, String FieldType, Board parent) {
+        super(name, FieldType, parent);
     }
 
     @Override
-    public void landOn(Player player,GUIController gui){
-        super.landOn(player,gui);
+    public void landOn(Player player, GUIController gui) {
+        super.landOn(player, gui);
         gui.getMyGUI().showMessage("Pick a chance card");
 
         ChanceCard myCard = parent.getMyDeck().DrawCard();
@@ -14,7 +14,7 @@ public class FieldChance extends Field{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Lets test your luck... " + this.name;
     }
 }
