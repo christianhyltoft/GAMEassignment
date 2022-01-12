@@ -2,11 +2,13 @@ public abstract class Field {
     protected String name;
     protected String Fieldtype;
     protected Board parent;
+    protected int pairNumber;
 
-    public Field(String name, String FieldType, Board parent) {
+    public Field(String name, String FieldType, Board parent, int pairNumber) {
         this.name = name;
         this.Fieldtype = FieldType;
         this.parent = parent;
+        this.pairNumber = pairNumber;
     }
 
     public String getFieldtype() {
@@ -36,7 +38,9 @@ public abstract class Field {
     public void auction(Player player, Player[] players, GUIController gui) {
     }
 
-    ;
+    public int getPairNumber() {
+        return pairNumber;
+    }
 }
 
 
