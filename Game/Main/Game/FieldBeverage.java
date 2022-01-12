@@ -1,6 +1,4 @@
 import gui_fields.GUI_Brewery;
-import gui_fields.GUI_Shipping;
-import gui_fields.GUI_Street;
 
 import java.awt.*;
 
@@ -57,14 +55,14 @@ public class FieldBeverage extends FieldPurchaseAble {
                     }
 
                     if (beverages == beveragesOwned) {
-                        int rentNow = parent.getParent().getRafflecup().sum() * 200;
+                        int rentNow = parent.getParent().GetRafflecup().sum() * 200;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
                         gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.BigRent());
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                         gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                     } else {
-                        int rentNow = parent.getParent().getRafflecup().sum() * 100;
+                        int rentNow = parent.getParent().GetRafflecup().sum() * 100;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
                         gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());

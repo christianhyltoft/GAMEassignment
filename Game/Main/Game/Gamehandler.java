@@ -16,7 +16,7 @@ public class Gamehandler {
 
     private GUIController controller;
 
-    public Rafflecup getRafflecup() {
+    public Rafflecup GetRafflecup() {
         return rafflecup;
     }
 
@@ -45,7 +45,7 @@ public class Gamehandler {
         myGUI.showMessage("The game will start when you press ok");
     }
 
-    public void playGame() {
+    public void Playgame() {
         do {
             for (int i = 0; i < players.length; i++) {
                 if (!players[i].isPlayerHasLost()) {
@@ -115,7 +115,7 @@ public class Gamehandler {
                     myGUI.showMessage("You've rolled a pair and have escaped " + player.getName());
                     player.setJailed(false);
                     player.setTurnsJailed(0);
-                    taketurn(player, rafflecup);
+                    Taketurn(player, rafflecup);
                 } else {
                     myGUI.showMessage("You failed to roll a pair and will stay in jail " + player.getName());
                     player.setTurnsJailed(player.getTurnsJailed() + 1);
@@ -128,10 +128,10 @@ public class Gamehandler {
         myGUI.getUserButtonPressed("Roll the dice " + player.getName(),"ROLL");
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
-        taketurn(player, rafflecup);
+        Taketurn(player, rafflecup);
     }
 
-    private void taketurn(Player player, Rafflecup rafflecup) {
+    private void Taketurn(Player player, Rafflecup rafflecup) {
         myGUI.showMessage("Move your car " + player.getName());
         int positionFromTurnBefore = player.getPosition();
         player.changePosition(rafflecup.sum());
@@ -187,7 +187,28 @@ public class Gamehandler {
                         }
                     }
                 }
+            }else if(choice.equals("Sell GetOutOfJail card")){
+                String buyer=getMyGUI().getUserString("who wants to buy the card: enter name of a player of write cancel to not sell it");
+                if(buyer.equals("cancel")){
+                    return;
+                }
+                for (int i = 0; i < players.length; i++) {
+                    if (buyer.equals(players[i].getName())){
+                        int price =getMyGUI().getUserInteger("Write the amount you want to pay for the card");
+                        myPlayer.changeBalance(price);
+                        players[i].changeBalance(-price);
+                        myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard()-1);
+                        players[i].setEscapeJailCard(players[i].getEscapeJailCard()+1);
+                        getPlayersgui()[myPlayer.getNumber()].setBalance(myPlayer.getBalance());
+                        getPlayersgui()[players[i].getNumber()].setBalance(players[i].getBalance());
+                        break;
+
+                    }
+
+                }
+
             }
+            choice=GetChoice(myPlayer);
         }
     }
 
@@ -202,7 +223,7 @@ public class Gamehandler {
                     FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
                     if(playerOwnerCheck.getOwner() == myPlayer){
                         check = true;
-                        break;
+
                     }
                 }
             }
@@ -210,15 +231,8 @@ public class Gamehandler {
         else if(choice.equals("Sell GetOutOfJail card")){
             if(myPlayer.getEscapeJailCard() >= 1){
                 check = true;
-                String buyer=getMyGUI().getUserString("who wants to buy the card: enter name of a player of write cancel to not sell it");
-                for (int i = 0; i < players.length; i++) {
-                    if (buyer.equals(players[i].getName())){
-                        int price =getMyGUI().getUserInteger("Write the amount you want to pay for the card");
-                        myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard()-1);
-                        players[i].setEscapeJailCard(players[i].getEscapeJailCard()+1);
-                    }
 
-                }
+
 
             }else {
                 getMyGUI().showMessage("You do not own that card so you cant sell it");
