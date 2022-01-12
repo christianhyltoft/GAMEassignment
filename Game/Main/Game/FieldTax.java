@@ -24,7 +24,7 @@ public class FieldTax extends Field {
         }
         totalValue = ((totalValue + player.getBalance()) / 10);
 
-        String choice = gui.getMyGUI().getUserSelection("Choose whether to pay the flat rate" + taxAmount +" or 10% of your total net worth which is " + totalValue, "Flat rate", "10%");
+        String choice = gui.getMyGUI().getUserSelection("Choose whether to pay the flat rate " + taxAmount + " or 10% of your total net worth which is " + totalValue, "Flat rate", "10%");
 
         int pay = 0;
 
