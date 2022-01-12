@@ -52,7 +52,7 @@ public class FieldBeverage extends FieldPurchaseAble {
                 }
 
                 if(beverages == beveragesOwned){
-                    int rentNow = parent.getParent().get * 200;
+                    int rentNow = parent.getParent().getRafflecup().sum() * 200;
                     owner.changeBalance(rentNow);
                     player.changeBalance(-rentNow);
                     gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.currentRent());
@@ -60,7 +60,7 @@ public class FieldBeverage extends FieldPurchaseAble {
                     gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                 }
                 else{
-                    int rentNow = currentRent();
+                    int rentNow = parent.getParent().getRafflecup().sum() * 100;
                     owner.changeBalance(rentNow);
                     player.changeBalance(-rentNow);
                     gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
