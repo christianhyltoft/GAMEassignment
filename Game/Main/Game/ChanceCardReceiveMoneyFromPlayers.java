@@ -13,7 +13,7 @@ public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
 
         for (int i = 0; i < myPlayers.length; i++) {
             if (myPlayers[i] != myPlayer) {
-                GUI.getMyGUI().showMessage(myPlayers[i].getName() + " gives " + myPlayer + " " + moneyAmount);
+                GUI.getMyGUI().showMessage(myPlayers[i].getName() + " gives " + myPlayer.getName() + " " + moneyAmount);
                 myPlayer.changeBalance(moneyAmount);
                 myPlayers[i].changeBalance(-moneyAmount);
             }

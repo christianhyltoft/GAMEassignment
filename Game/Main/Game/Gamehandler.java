@@ -42,10 +42,6 @@ public class Gamehandler {
         controller = new GUIController(myGUI, playersgui);
 
         myGUI.showMessage("The game will start when you press ok");
-
-        for(int i = 0; i < Settings.BOARD_SIZE; i++){
-            System.out.println(myboard.getBoardAr()[i].getFieldtype() + " : " + myGUI.getFields()[i].getClass());
-        }
     }
 
     public void playGame() {
