@@ -52,7 +52,7 @@ public class FieldBeverage extends FieldPurchaseAble {
                 }
 
                 if(beverages == beveragesOwned){
-                    int rentNow = currentRent() * 2;
+                    int rentNow = parent.getParent().get * 200;
                     owner.changeBalance(rentNow);
                     player.changeBalance(-rentNow);
                     gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.currentRent());

@@ -16,6 +16,9 @@ public class Gamehandler {
 
     private GUIController controller;
 
+    public Rafflecup getRafflecup() {
+        return rafflecup;
+    }
 
     public Gamehandler() throws IOException {
         Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
