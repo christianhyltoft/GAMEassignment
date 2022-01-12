@@ -20,6 +20,10 @@ public class FieldParking extends Field {
         totalMoney += money;
     }
 
+    public int getTotalMoney() {
+        return totalMoney;
+    }
+
     public String toString() {
         return "Here at " + this.name + " you might get lucky with the last parking spot";
     }
