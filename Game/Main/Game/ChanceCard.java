@@ -13,4 +13,7 @@ public abstract class ChanceCard {
         GUI.getMyGUI().showMessage(this.chanceCardText);
     }
 
+    public String getChanceCardText() {
+        return chanceCardText;
+    }
 }

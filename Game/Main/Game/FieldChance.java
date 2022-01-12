@@ -9,7 +9,7 @@ public class FieldChance extends Field {
         super.landOn(player, gui);
         gui.getMyGUI().showMessage("Pick a chance card");
 
-        ChanceCard myCard = parent.getMyDeck().DrawCard();
+        ChanceCard myCard = parent.getMyDeck().DrawCard(gui);
         myCard.DrawCard(player, gui);
     }
 
