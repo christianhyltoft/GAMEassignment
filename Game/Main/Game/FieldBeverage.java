@@ -36,44 +36,52 @@ public class FieldBeverage extends FieldPurchaseAble {
             if (player == owner) {
                 gui.getMyGUI().showMessage("You own this field so nothing happens");
             } else {
-                int beverages = 0;
-                int beveragesOwned = 0;
+                if (owner.isJailed()) {
+                    gui.getMyGUI().showMessage("The owner is in jail, so you don't have to pay");
+                } else {
 
-                for(int i = 0; i < 40; i++){
-                    if(parent.getBoardAr()[i].getFieldtype().equals("Beverage")){
-                        FieldBeverage check = (FieldBeverage) parent.getBoardAr()[i];
-                        if(check.getPairNumber() == pairNumber){
-                            beverages++;
-                            if(check.getOwner() == player){
-                                beveragesOwned++;
+
+                    int beverages = 0;
+                    int beveragesOwned = 0;
+
+                    for (int i = 0; i < 40; i++) {
+                        if (parent.getBoardAr()[i].getFieldtype().equals("Beverage")) {
+                            FieldBeverage check = (FieldBeverage) parent.getBoardAr()[i];
+                            if (check.getPairNumber() == pairNumber) {
+                                beverages++;
+                                if (check.getOwner() == player) {
+                                    beveragesOwned++;
+                                }
                             }
                         }
                     }
-                }
 
-                if(beverages == beveragesOwned){
-                    int rentNow = parent.getParent().getRafflecup().sum() * 200;
-                    owner.changeBalance(rentNow);
-                    player.changeBalance(-rentNow);
-                    gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.currentRent());
-                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
-                }
-                else{
-                    int rentNow = parent.getParent().getRafflecup().sum() * 100;
-                    owner.changeBalance(rentNow);
-                    player.changeBalance(-rentNow);
-                    gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
-                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                    if (beverages == beveragesOwned) {
+                        int rentNow = parent.getParent().getRafflecup().sum() * 200;
+                        owner.changeBalance(rentNow);
+                        player.changeBalance(-rentNow);
+                        gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.BigRent());
+                        gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                    } else {
+                        int rentNow = parent.getParent().getRafflecup().sum() * 100;
+                        owner.changeBalance(rentNow);
+                        player.changeBalance(-rentNow);
+                        gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
+                        gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                    }
                 }
             }
         }
-
     }
 
-    private int currentRent() {
-        return 500;
+    private String currentRent() {
+        return "100 times the eyes on the dies rolled when landing on the field";
+    }
+
+    private String BigRent() {
+        return "100 times the eyes on the dies rolled when landing on the field";
     }
 
     @Override
