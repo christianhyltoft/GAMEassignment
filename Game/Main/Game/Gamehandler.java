@@ -65,7 +65,7 @@ public class Gamehandler {
         //Looking for the winner of the game
         for (int i = 0; i < players.length; i++) {
             if (!players[i].isPlayerHasLost())
-                getMyGUI().showMessage("Player: "+players[i].getName()+" has won the game");
+                getMyGUI().showMessage("Player: " + players[i].getName() + " has won the game");
 
         }
 
@@ -78,6 +78,9 @@ public class Gamehandler {
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
+            player.changeBalance(-1000);
+            playersgui[player.getNumber()].setBalance(player.getBalance());
+
         } else if (player.getEscapeJailCard() >= 1) {
             myGUI.showMessage("You use your get out of jail free card to escape jail " + player.getName());
             player.setEscapeJailCard(player.getEscapeJailCard() - 1);
@@ -143,14 +146,14 @@ public class Gamehandler {
         return false;
     }
 
-    private boolean detectWinner (){
-        int playersRemaining=this.players.length;
+    private boolean detectWinner() {
+        int playersRemaining = this.players.length;
         for (int i = 0; i < this.players.length; i++) {
-            if(players[i].isPlayerHasLost())
+            if (players[i].isPlayerHasLost())
                 playersRemaining--;
 
         }
-        return !(playersRemaining==1);
+        return !(playersRemaining == 1);
 
     }
 
