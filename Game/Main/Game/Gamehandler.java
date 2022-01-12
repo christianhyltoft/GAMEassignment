@@ -76,7 +76,6 @@ public class Gamehandler {
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
-
         } else if (player.getEscapeJailCard() >= 1) {
             myGUI.showMessage("You use your get out of jail free card to escape jail " + player.getName());
             player.setEscapeJailCard(player.getEscapeJailCard() - 1);
@@ -84,7 +83,13 @@ public class Gamehandler {
             player.setTurnsJailed(0);
             roll(player);
         } else {
-            String Choice = myGUI.getUserSelection("Choose whether to try and roll, or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay");
+            String Choice = "";
+            if(player.getEscapeJailCard() >= 1 && player.getBalance() >= Settings.JAIL_RELEASE_FEE){
+                Choice = myGUI.getUserSelection("Choose whether to try and roll, use a get out of jail free card, or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay");
+            }
+            else if(){
+                Choice = myGUI.getUserSelection("Choose whether to try and roll, use a get out of jail free card, or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay");
+            }
             if(Choice.equals("Pay")){
                 myGUI.showMessage("You've bribed the officials to be released, you pay " + Settings.JAIL_RELEASE_FEE + " " + player.getName());
                 player.changeBalance(-1000);

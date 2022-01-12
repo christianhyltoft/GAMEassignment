@@ -29,7 +29,7 @@ public class FieldTax extends Field {
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
             if(parent.getBoardAr()[i].getFieldtype().equals("Parking")){
                 FieldParking myParking = (FieldParking) parent.getBoardAr()[i];
-                myParking.addMoney(total);
+                myParking.addMoney(-total);
             }
         }
     }
