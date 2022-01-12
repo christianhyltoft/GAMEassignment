@@ -8,6 +8,6 @@ public class FirsteGameplayTest {
     @Test
     public void playgame() throws IOException {
         Gamehandler gtset= new Gamehandler();
-        gtset.playGame();
+        gtset.Playgame();
     }
 }
