@@ -22,7 +22,7 @@ public class FieldTax extends Field {
             }
         }
 
-        totalValue = (totalValue/10);
+        totalValue = ((totalValue + player.getBalance()) / 10);
 
         if ((player.getBalance() * taxDecimal) / 100 > taxAmount) {
             total = (-player.getBalance() * taxDecimal) / 100;
