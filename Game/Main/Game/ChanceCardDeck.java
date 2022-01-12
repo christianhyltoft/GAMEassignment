@@ -59,6 +59,19 @@ public class ChanceCardDeck {
                     count++;
                 }
                 break;
+            case "MoveBackOrForward":
+                String direction = splitText[2];
+                int moveAmount = Integer.parseInt(splitText[3]);
+                text = splitText[4];
+                if(direction == "b"){
+                    moveAmount = -moveAmount;
+                }
+
+                for (int i = 0; i < cardAmount; i++) {
+                    chanceCardDeck[count] = new ChanceCardMoveBackOrForward(moveAmount, text);
+                    count++;
+                }
+                break;
             case "PayBasedOnProperty":
                 int housePrice = Integer.parseInt(splitText[2]);
                 int hotelPrice = Integer.parseInt(splitText[3]);

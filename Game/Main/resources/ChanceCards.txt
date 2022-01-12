@@ -1,8 +1,8 @@
 35
 GetOutOfJail-2-On the occasion of the king's birthday, you are hereby pardoned for imprisonment. This card can be stored until needed, or you can sell it to another player.
 MatadorGrant-1-40000-You will receive the Matador grant of 40000kr if your total value does not exceed 15000kr.
-MoveYourCharacter-2-Move three fields backwards.
-MoveYourCharacter-1-Move three fields forwards.
+MoveBackOrForward-2-b-3-Move three fields backwards.
+MoveBackOrForward-1-f-3-Move three fields forwards.
 MoveYourCharacter-1-Take the nearest ferry and pay the owner twice the rental he is obligated to receive. If the ferry is not yet owned by a player, you can buy it from the bank.
 MoveYourCharacter-1-Take the nearest ferry. If you pass START receive 4000 kr
 MoveYourCharacter-1-Move to "Frederiksberg Allé". If you pass START receive 4000kr.
