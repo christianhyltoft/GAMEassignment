@@ -8,6 +8,7 @@ public class ChanceCardMatadorGrant extends ChanceCard {
 
     @Override
     public void DrawCard(Player myPlayer, GUIController GUI) {
+        super.DrawCard(myPlayer,GUI);
         if (myPlayer.getBalance() <= 15000) {
             myPlayer.changeBalance(moneyAmount);
         } else {

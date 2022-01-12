@@ -9,6 +9,7 @@ public class ChanceCardPayOrReceive extends ChanceCard {
 
     @Override
     public void DrawCard(Player myPlayer, GUIController GUI) {
+        super.DrawCard(myPlayer,GUI);
         myPlayer.changeBalance(moneyAmount);
         GUI.getMyPlayers()[myPlayer.getNumber()].setBalance(myPlayer.getBalance());
     }

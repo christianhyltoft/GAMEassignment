@@ -9,6 +9,7 @@ public class ChanceCardFerry extends ChanceCard {
 
     @Override
     public void DrawCard(Player player, GUIController GUI) {
+        super.DrawCard(player,GUI);
         // move to ferry property.
         for (int i = 0; i < myFields.length / 2; i++) {
             if (myFields[player.getPosition() + i].getFieldtype().equals("Ferry")){
