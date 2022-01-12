@@ -12,7 +12,7 @@ MoveYourCharacter-1-Vimmelskaftet-Move to Vimmelskaftet. If you pass START recei
 MoveYourCharacter-1-Strandvejen-Move to Strandvejen. If you pass START receive 4000 kr.
 MoveYourCharacter-1-Rådhuspladsen-Move to Rådhuspladsen. If you pass START receive 4000 kr.
 MoveYourCharacter-2-START-Move to START.
-MoveYourCharacter-2-Go straight to "jail". If you pass START you will NOT receive 4000 kr.
+MoveYourCharacter-2-Jail-Go straight to jail. If you pass START you will NOT receive 4000 kr.
 PayBasedOnProperty-1-500-2000-Oil prices have risen, pay 500kr per. house and 2000kr per. hotel.
 PayBasedOnProperty-1-800-2300-Property tax has risen. Pay the extra expenses of: 800kr per house, 2300kr per hotel.
 PayOrReceiveMoneyFromBank-1-p-1000-You did not stop at a stop sign, pay a fine of 1000 kr.
