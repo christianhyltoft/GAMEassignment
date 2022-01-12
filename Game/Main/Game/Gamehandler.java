@@ -35,8 +35,6 @@ public class Gamehandler {
             playersgui[i].getCar().setPrimaryColor(carcolors[i]);
             myGUI.addPlayer(playersgui[i]);
             playersgui[i].getCar().setPosition(myGUI.getFields()[0]);
-
-
         }
         for (int i = 0; i < myGUI.getFields().length; i++) {
             myGUI.getFields()[i].setDescription(myboard.getBoardAr()[i].toString());
