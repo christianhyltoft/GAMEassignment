@@ -1,19 +1,19 @@
 public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
     private int moneyAmount;
-    private Player[] players;
 
     public ChanceCardReceiveMoneyFromPlayers(int moneyAmount, String chanceCardText, ChanceCardDeck parent) {
         super(chanceCardText, parent);
         this.moneyAmount = moneyAmount;
-        this.players = players;
     }
 
     @Override
     public void DrawCard(Player myPlayer, GUIController GUI) {
-        for (int i = 0; i < players.length; i++) {
-            if (players[i] != myPlayer) {
+        Player[] myPlayers = parent.getParent().getParent().getPlayers();
+
+        for (int i = 0; i < myPlayers.length; i++) {
+            if (myPlayers[i] != myPlayer) {
                 myPlayer.changeBalance(moneyAmount);
-                players[i].changeBalance(-moneyAmount);
+                myPlayers[i].changeBalance(-moneyAmount);
             }
         }
     }
