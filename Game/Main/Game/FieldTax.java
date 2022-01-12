@@ -41,7 +41,7 @@ public class FieldTax extends Field {
             if(parent.getBoardAr()[i].getFieldtype().equals("Parking")){
                 FieldParking myParking = (FieldParking) parent.getBoardAr()[i];
                 myParking.addMoney(pay);
-                gui.getMyGUI().showMessage(pay + " added to parking, total amount now " + myParking.g);
+                gui.getMyGUI().showMessage(pay + " added to parking, total amount now " + myParking.getTotalMoney());
             }
         }
     }
