@@ -22,7 +22,7 @@ public abstract class Field {
     }
 
     public void landOn(Player player, GUIController gui) {
-        gui.getMyGUI().showMessage("You landed on" + this.name);
+        gui.getMyGUI().showMessage("You landed on " + this.name);
     }
 
     public String toString() {
