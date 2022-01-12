@@ -72,14 +72,12 @@ public class FieldDeed extends FieldPurchaseAble {
                         player.changeBalance(-rentNow);
                         gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + rentNow);
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                     } else {
                         int rentNow = currentRent();
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
                         gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + rentNow);
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                     }
                 }
             }
