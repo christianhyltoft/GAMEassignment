@@ -153,6 +153,10 @@ public class Gamehandler {
             roll(player);
         }
 
+        EndOfTurnChoice(player);
+    }
+
+    private void EndOfTurnChoice(Player myPlayer){
 
     }
 
