@@ -13,8 +13,8 @@ public class FieldDeed extends FieldPurchaseAble {
 
     private int amountOfHouses;
 
-    public FieldDeed(String name, String FieldType, int buyprice, int mortgageValue, int rent, int rent1, int rent2, int rent3, int rent4, int rent5, int houseprice) {
-        super(name, FieldType, buyprice, mortgageValue);
+    public FieldDeed(String name, String FieldType, Board parent, int buyprice, int mortgageValue, int rent, int rent1, int rent2, int rent3, int rent4, int rent5, int houseprice) {
+        super(name, FieldType, parent, buyprice, mortgageValue);
         this.rent = rent;
         this.rent1 = rent1;
         this.rent2 = rent2;
@@ -23,8 +23,6 @@ public class FieldDeed extends FieldPurchaseAble {
         this.rent5 = rent5;
         this.amountOfHouses = 0;
         this.houseprice = houseprice;
-
-
     }
 
     @Override
@@ -35,38 +33,57 @@ public class FieldDeed extends FieldPurchaseAble {
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field", "yes", "no");
-
+            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field for: " + this.buyPrice, "yes", "no");
             if (buy.equals("yes")) {
                 setOwner(player);
                 ownable.setOwnerName(player.getName());
-                player.changeBalance(-this.buyprice);
+                player.changeBalance(-this.buyPrice);
                 gui.getMyGUI().showMessage("You now own this field");
                 ownable.setRent("The rent is: " + this.rent);
-                ownable.setTextColor(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
-                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - this.buyprice);
-
-
+                ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor());
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
-
         } else {
-
             if (player == owner) {
                 gui.getMyGUI().showMessage("You own this field so nothing happens");
-
-
             } else {
-
                 int rentNow = currentRent();
                 owner.changeBalance(rentNow);
                 player.changeBalance(-rentNow);
                 gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
-                gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - currentRent());
-                gui.getMyPlayers()[this.owner.getNumber()].setBalance(gui.getMyPlayers()[this.owner.getNumber()].getBalance() + currentRent());
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+            }
+        }
 
+    }
+
+    @Override
+    public void auction(Player player, Player[] players, GUIController gui) {
+        if (this.owner!=null)
+            return;
+        gui.getMyGUI().showMessage("This property is now up for auction");
+        GUI_Street ownable = (GUI_Street) gui.getMyGUI().getFields()[player.getPosition()];
+
+        String buyer = "";
+        while (true) {
+            buyer = gui.getMyGUI().getUserString("Figure out amongst yourselves who will buy the field and for what price and enter the player who wants to buy: ");
+            for (int i = 0; i < players.length; i++) {
+                if (players[i].getName().equals(buyer)){
+                    int price=gui.getMyGUI().getUserInteger("Name the price you bargained for");
+                    this.owner=players[i];
+                    players[i].changeBalance(-price);
+                    gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
+                    ownable.setOwnerName(buyer);
+                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor());
+                    gui.getMyGUI().showMessage(players[i].getName()+" now owns this field");
+                    return;
+
+                }
 
             }
         }
+
 
     }
 
@@ -93,12 +110,9 @@ public class FieldDeed extends FieldPurchaseAble {
             gui.getMyGUI().showMessage("There is one house on this property ");
         } else {
             gui.getMyGUI().showMessage("There are: " + this.amountOfHouses + " houses on this property");
-
         }
 
         int amount = gui.getMyGUI().getUserInteger("How many houses do you want to build", 1, 5);
-
-
     }
 
     public int getRent() {
@@ -115,7 +129,6 @@ public class FieldDeed extends FieldPurchaseAble {
 
     public void setAmountOfHouses(int amountOfHouses) {
         this.amountOfHouses = amountOfHouses;
-
     }
 
     public int getRent1() {

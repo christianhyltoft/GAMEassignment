@@ -1,0 +1,287 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+title __GAME's Class Diagram__\n
+
+    class Board {
+        - boardAr : Field[]
+        + Board()
+        - makeField()
+    }
+
+  
+
+    abstract class ChanceCard {
+        # chanceCardAmount : int
+        # chanceCardText : String
+        + ChanceCard()
+        + DrawCard()
+    }
+
+  
+
+    class ChanceCardDeck {
+        - chanceCardDeck : ChanceCard[]
+        - count : int
+        - myFields : Field[]
+        + ChanceCardDeck()
+        + DrawCard()
+        + ShuffleDeck()
+        - ChanceCardCreator()
+    }
+
+  
+
+    class ChanceCardGetOutOfJail {
+        + ChanceCardGetOutOfJail()
+    }
+
+  
+
+    class ChanceCardMatadorGrant {
+        - moneyAmount : int
+        + ChanceCardMatadorGrant()
+        + DrawCard()
+    }
+
+  
+
+    class ChanceCardMove {
+        - myFields : Field[]
+        + ChanceCardMove()
+        + DrawCard()
+    }
+
+  
+
+    class ChanceCardPayBasedOnProperty {
+        - hotelAmount : int
+        - houseAmount : int
+        + ChanceCardPayBasedOnProperty()
+    }
+
+  
+
+    class ChanceCardPayOrReceive {
+        - moneyAmount : int
+        + ChanceCardPayOrReceive()
+        + DrawCard()
+    }
+
+  
+
+    class ChanceCardReceiveMoneyFromPlayers {
+        - moneyAmount : int
+        - players : Player[]
+        + ChanceCardReceiveMoneyFromPlayers()
+        + DrawCard()
+    }
+
+  
+
+    class Die {
+        - faceAmount : int
+        - value : int
+        + Die()
+        + roll()
+        + toString()
+    }
+
+  
+
+    abstract class Field {
+        # Fieldtype : String
+        # name : String
+        + Field()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class FieldBeverage {
+        - ownedAmount : int
+        - rollAmount : int
+        + FieldBeverage()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class FieldChance {
+        + FieldChance()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class FieldDeed {
+        - amountOfHouses : int
+        - houseprice : int
+        - rent : int
+        - rent1 : int
+        - rent2 : int
+        - rent3 : int
+        - rent4 : int
+        - rent5 : int
+        + FieldDeed()
+        + buildHouse()
+        + currentRent()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class FieldFerry {
+        - rent : int
+        + FieldFerry()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class FieldGoToJail {
+        + FieldGoToJail()
+        + toString()
+    }
+
+  
+
+    class FieldJail {
+        + FieldJail()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class FieldParking {
+        + FieldParking()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    abstract class FieldPurchaseAble {
+        # buyPrice : int
+        # messageOwned : String
+        # messageUnowned : String
+        # mortgageValue : int
+        + FieldPurchaseAble()
+        + buyMortgagedProperty()
+        + landOn()
+        + mortgage()
+    }
+
+  
+
+    class FieldStart {
+        + FieldStart()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class FieldTax {
+        - taxAmount : int
+        - taxDecimal : int
+        + FieldTax()
+        + landOn()
+        + toString()
+    }
+
+  
+
+    class GUIController {
+        - myGUI : GUI
+        - myPlayers : GUI_Player[]
+        ~ GUIController()
+    }
+
+    class Gamehandler {
+        - amountOfPlayers : int
+        - myGUI : GUI
+        - players : Player[]
+        - playersgui : GUI_Player[]
+        + Gamehandler()
+        + playGame()
+        - detectLoser()
+        - taketurn()
+    }
+
+    class Player {
+        - balance : int
+        - name : String
+        - number : int
+        - ownedFields : Field[]
+        {static} - playernumber : int
+        - position : int
+        + changeBalance()
+        + changePosition()
+        ~ Player()
+    }
+
+  
+
+    class Rafflecup {
+        - cup : Die[]
+        + Rafflecup()
+        + roll()
+        + rollar()
+        + sameFacesUpOnAllDice()
+        + sum()
+    }
+
+  
+
+    class Settings {
+        {static} + BOARD_SIZE : int
+        {static} + ChanceCardDataBase : String[]
+        {static} + ChanceCardDataBase2 : String
+        {static} + MAX_PLAYERS : int
+        {static} + MIN_PLAYERS : int
+        {static} + STARTING_MONEY : int
+        {static} + fields : GUI_Field[]
+        - Settings()
+    }
+
+  
+
+    class TxtReader {
+        + reader()
+    }
+
+  
+
+  Board"1" o-- "1"ChanceCardDeck : myDeck
+  Board"1" o-- "1"TxtReader : reader
+  ChanceCardGetOutOfJail -up-|> ChanceCard
+  ChanceCardMatadorGrant -up-|> ChanceCard
+  ChanceCardMove -up-|> ChanceCard
+  ChanceCardPayBasedOnProperty -up-|> ChanceCard
+  ChanceCardPayOrReceive -up-|> ChanceCard
+  ChanceCardReceiveMoneyFromPlayers -up-|> ChanceCard
+  Field"40" o-- "1"Board : parent
+  FieldBeverage -up-|> FieldPurchaseAble
+  FieldChance -up-|> Field
+  FieldDeed -up-|> FieldPurchaseAble
+  FieldFerry -up-|> FieldPurchaseAble
+  FieldGoToJail -up-|> Field
+  FieldJail -up-|> Field
+  FieldParking -up-|> Field
+  FieldPurchaseAble -up-|> Field
+  FieldPurchaseAble"1" o-- "0..1"Player : owner
+  FieldStart -up-|> Field
+  FieldTax -up-|> Field
+  ChanceCardDeck"1" o-- "1..*"ChanceCard
+  Gamehandler"1" o-- "1"GUIController : controller
+  Gamehandler"1" o-- "1"Board : myboard
+  Gamehandler"1" o-- "1"Rafflecup : rafflecup
+  Rafflecup"1" o-- "2"Die
+@enduml

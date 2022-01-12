@@ -1,101 +1,119 @@
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.Random;
 
 public class ChanceCardDeck {
 
-
+    private Field[] myFields;
     private ChanceCard[] chanceCardDeck;
+    private int count;
 
-    public ChanceCardDeck() {
-        TxtReader textreader = new TxtReader();
-       ChanceCard[][][] filesChanceCardsCombined = new ChanceCard[Settings.ChanceCardDataBase.length][][];
-        for (int i = 0; i < Settings.ChanceCardDataBase.length; i++) {
-            try {
-                String[] chanceCardText = textreader.reader(Settings.ChanceCardDataBase[i]);
-               filesChanceCardsCombined[i] = new ChanceCard[chanceCardText.length][];
-                for (int j = 0; j < chanceCardText.length; j++) {
-                    String chanceCardLine = chanceCardText[j];
-                    filesChanceCardsCombined[i][j] = txtReaderDivider(chanceCardLine, Settings.ChanceCardDataBase[i]);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public ChanceCardDeck(Field[] myFields) {
+        this.chanceCardDeck = new ChanceCard[42];
+        this.myFields = myFields;
+        count = 0;
+
+        TxtReader myTxtReader = new TxtReader();
+        String[] chanceCardText = new String[0];
+        try {
+            chanceCardText = myTxtReader.reader(Settings.ChanceCardDataBase2);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        // Finde ud af hvor mange chancekort der er i alt. Loop inde i loop inde i loop tjekke for hvert element i inderste array incrementere min integer.
-        // når jeg har længden af det kan jeg lave chancecarddeck.lenght af det.
 
-     //   for (Test[] ts : tss) {
-      //      for (Test t : ts) {
-      //          out[pos] = t;
-      //          pos++;
-       //    }
-       // }
+        for(int i = 0; i < chanceCardText.length; i++){
+            ChanceCardCreator(chanceCardText[i]);
+        }
+
+        ShuffleDeck();
     }
-    public ChanceCard[] txtReaderDivider(String chanceCardLine, String chanceCardTextFile) {
-        ChanceCard[] output;
-        if (chanceCardTextFile == "ChanceCardPayOrReceiveMoneyFromBank.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 4);
-            int cardAmount = Integer.parseInt(chanceCardData[0]);
-            String payOrReceive = chanceCardData[1];
-            int moneyAmount = Integer.parseInt(chanceCardData[2]);
-            String text = chanceCardData[3];
-            if (payOrReceive == "p") {
-                moneyAmount = -moneyAmount;
-            }
-            output = new ChanceCardPayOrReceive[cardAmount];
-            for (int i = 0; i < cardAmount; i++) {
-                output[i] = new ChanceCardPayOrReceive(moneyAmount, text);
-                // here we must add the chance card to the ChanceCard[] above.
-            }
-            return output;
+
+    private void ChanceCardCreator(String cardText){
+        String[] splitText = cardText.split("-", 5);
+        String chanceCardType = splitText[0];
+        int cardAmount = Integer.parseInt(splitText[1]);
+
+        switch(chanceCardType){
+            case "GetOutOfJail":
+                String text = splitText[2];
+
+                for(int i = 0; i < cardAmount; i++){
+                    chanceCardDeck[count] = new ChanceCardGetOutOfJail(text);
+                    count++;
+                }
+                break;
+            case "MatadorGrant":
+                int moneyAmount = Integer.parseInt(splitText[2]);
+                text = splitText[3];
+
+                for(int i = 0; i < cardAmount; i++){
+                    chanceCardDeck[count] = new ChanceCardMatadorGrant(moneyAmount, text);
+                    count++;
+                }
+                break;
+            case "MoveYourCharacter":
+                text = splitText[2];
+
+                for(int i = 0; i < cardAmount; i++){
+                    chanceCardDeck[count] = new ChanceCardMove(text, myFields);
+                    count++;
+                }
+                break;
+            case "PayBasedOnProperty":
+                int housePrice = Integer.parseInt(splitText[2]);
+                int hotelPrice = Integer.parseInt(splitText[3]);
+                text = splitText[4];
+
+                for(int i = 0; i < cardAmount; i++){
+                    chanceCardDeck[count] = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text);
+                    count++;
+                }
+                break;
+            case "PayOrReceiveMoneyFromBank":
+                String payOrReceive = splitText[2];
+                moneyAmount = Integer.parseInt(splitText[3]);
+                text = splitText[4];
+                if (payOrReceive == "p") { moneyAmount = -moneyAmount; }
+
+                for(int i = 0; i < cardAmount; i++){
+                    chanceCardDeck[count] = new ChanceCardPayOrReceive(moneyAmount, text);
+                    count++;
+                }
+                break;
+            case "ReceiveMoneyFromPlayers":
+                moneyAmount = Integer.parseInt(splitText[2]);
+                text = splitText[3];
+
+                for(int i = 0; i < cardAmount; i++){
+                    chanceCardDeck[count] = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text);
+                    count++;
+                }
+                break;
         }
-        if (chanceCardTextFile == "ChanceCardGetOutOfJail.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 2);
-            int cardAmount = Integer.parseInt(chanceCardData[0]);
-            String text = chanceCardData[1];
-            output = new ChanceCardGetOutOfJail[1];
-            for (int i = 0; i < cardAmount; i++) {
-                output[i] = new ChanceCardGetOutOfJail(text);
-            }
-            return output;
+    }
+
+    public void ShuffleDeck(){
+        Random rng = new Random();
+
+        for(int i = 0; i < 1000; i++){
+            int card1 = rng.nextInt(chanceCardDeck.length);
+            int card2 = rng.nextInt(chanceCardDeck.length);
+
+            ChanceCard temp = chanceCardDeck[card1];
+            chanceCardDeck[card1] = chanceCardDeck[card2];
+            chanceCardDeck[card2] = temp;
         }
-        if (chanceCardTextFile == "ChanceCardMatadorGrant.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 3);
-            int cardAmount = Integer.parseInt(chanceCardData[0]);
-            int moneyAmount = Integer.parseInt(chanceCardData[1]);
-            String text = chanceCardData[3];
-            output = new ChanceCardMatadorGrant[cardAmount];
-            for (int i = 0; i < cardAmount; i++) {
-                // here we must add the chance card to the ChanceCard[] above.
-                output[i] = new ChanceCardMatadorGrant(moneyAmount, text);
-            }
-            return output;
+    }
+
+    public ChanceCard DrawCard() {
+        ChanceCard myCard = chanceCardDeck[0];
+
+        for(int i = 0; i < chanceCardDeck.length - 1; i++){
+            chanceCardDeck[i] = chanceCardDeck[i + 1];
         }
-        if (chanceCardTextFile == "ChanceCardPayBasedOnProperty.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 4);
-            int cardAmount = Integer.parseInt(chanceCardData[0]);
-            int housePrice = Integer.parseInt(chanceCardData[1]);
-            int hotelPrice = Integer.parseInt(chanceCardData[2]);
-            String text = chanceCardData[3];
-            output = new ChanceCardPayBasedOnProperty[cardAmount];
-            for (int i = 0; i < cardAmount; i++) {
-                // here we must add the chance card to the ChanceCard[] above.
-                output[i] = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text);
-            }
-            return output;
-        }
-        if (chanceCardTextFile == "ChanceCardReceiveMoneyFromPlayers.txt") {
-            String[] chanceCardData = chanceCardLine.split("-", 3);
-            int cardAmount = Integer.parseInt(chanceCardData[0]);
-            int moneyAmount = Integer.parseInt(chanceCardData[1]);
-            String text = chanceCardData[2];
-            output = new ChanceCardReceiveMoneyFromPlayers[cardAmount];
-            for (int i = 0; i < cardAmount; i++) {
-                // here we must add the chance card to the ChanceCard[] above.
-                output[i] = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text);
-            }
-            return output;
-        }
-        return new ChanceCard[0];
+        chanceCardDeck[chanceCardDeck.length - 1] = myCard;
+
+        return myCard;
     }
 }
 

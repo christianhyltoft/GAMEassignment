@@ -1,9 +1,12 @@
 public class ChanceCardMove extends ChanceCard{
-private Field[] myFields;
+
+    private Field[] myFields;
+
     public ChanceCardMove(String chanceCardText, Field[] myFields) {
         super(chanceCardText);
         this.myFields = myFields;
     }
+
     @Override
     public void DrawCard(Player player, GUIController GUI){
         String[] fieldname = chanceCardText.split("\"",2);

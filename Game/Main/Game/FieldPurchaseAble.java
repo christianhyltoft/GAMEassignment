@@ -1,15 +1,17 @@
 public abstract class FieldPurchaseAble extends Field {
+
     protected Player owner;
-    protected int buyprice;
+
+    protected int buyPrice;
     protected int mortgageValue;
-    protected String messageowned;
-    protected String messageunowned;
 
-    public FieldPurchaseAble(String name, String FieldTpye, int buyprice, int mortgageValue) {
-        super(name, FieldTpye);
-        this.buyprice = buyprice;
+    protected String messageOwned;
+    protected String messageUnowned;
+
+    public FieldPurchaseAble(String name, String FieldType, Board parent, int buyPrice, int mortgageValue) {
+        super(name, FieldType, parent);
+        this.buyPrice = buyPrice;
     }
-
 
     public Player getOwner() {
         return owner;
@@ -20,22 +22,28 @@ public abstract class FieldPurchaseAble extends Field {
     }
 
     public int getBuyprice() {
-        return buyprice;
+        return buyPrice;
     }
 
     public void setBuyprice(int buyprice) {
-        this.buyprice = buyprice;
+        this.buyPrice = buyprice;
     }
 
     @Override
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
-
     }
-    public void mortgage(Player player){
+
+    @Override
+    public  void auction(Player player, Player[] players, GUIController gui){
+
+    };
+
+    public void mortgage(Player player) {
         player.changeBalance(-mortgageValue);
     }
-    public void buymortgagedproperty(Player player){
+
+    public void buyMortgagedProperty(Player player) {
         player.changeBalance(mortgageValue);
     }
 }
