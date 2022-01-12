@@ -41,7 +41,7 @@ public class Gamehandler {
         }
         controller = new GUIController(myGUI, playersgui);
 
-        myGUI.showMessage("The game vil start when you press ok");
+        myGUI.showMessage("The game will start when you press ok");
     }
 
     public void playGame() {
