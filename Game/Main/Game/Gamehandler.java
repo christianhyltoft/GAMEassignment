@@ -61,53 +61,53 @@ public class Gamehandler {
     }
 
     private void JailTurn(Player player){
-        myGUI.showMessage("You are jailed");
+        myGUI.showMessage("You are jailed" + player.getName());
         if(player.getTurnsJailed() >= 2){
-            myGUI.showMessage("You've served your jail sentence and are now released");
+            myGUI.showMessage("You've served your jail sentence and are now released" + player.getName());
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
         }
         else if(player.getEscapeJailCard() >= 1){
-            myGUI.showMessage("You use your get out of jail free card to escape jail");
+            myGUI.showMessage("You use your get out of jail free card to escape jail" + player.getName());
             player.setEscapeJailCard(player.getEscapeJailCard() - 1);
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
         }
         else{
-            myGUI.showMessage("Roll a pair to escape");
+            myGUI.showMessage("Roll a pair to escape" + player.getName());
             rafflecup.roll();
             myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
             if((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())){
-                myGUI.showMessage("You've rolled a pair and have escaped");
+                myGUI.showMessage("You've rolled a pair and have escaped" + player.getName());
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 taketurn(player, rafflecup);
             }
             else{
-                myGUI.showMessage("You failed to roll a pair and will stay in jail");
+                myGUI.showMessage("You failed to roll a pair and will stay in jail" + player.getName());
                 player.setTurnsJailed(player.getTurnsJailed() + 1);
             }
         }
     }
 
     private void roll(Player player){
-        myGUI.showMessage("Roll the dice");
+        myGUI.showMessage("Roll the dice " + player.getName());
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         taketurn(player, rafflecup);
     }
 
     private void taketurn(Player player, Rafflecup rafflecup) {
-        myGUI.showMessage("Move your car: ");
+        myGUI.showMessage("Move your car " + player.getName());
         int positionFromTurnBefore = player.getPosition();
         player.changePosition(rafflecup.sum());
 
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         if (player.getPosition()<positionFromTurnBefore){
-            myGUI.showMessage("You have passed START, and will therefore receive 4000 kr.");
+            myGUI.showMessage("You have passed START, and will therefore receive 4000 kr." + player.getName());
             player.changeBalance(4000);
             playersgui[player.getNumber()].setBalance(player.getBalance());
         }
@@ -119,7 +119,7 @@ public class Gamehandler {
 
 
         if (rafflecup.sameFacesUpOnAllDice()) {
-            myGUI.showMessage("You rolled two of a kind and now therefore get another turn");
+            myGUI.showMessage("You rolled two of a kind and now therefore get another turn" + player.getName());
             roll(player);
         }
 
