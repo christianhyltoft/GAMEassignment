@@ -51,7 +51,7 @@ public class Gamehandler {
                     JailTurn(players[i]);
                 }
                 else{
-                    taketurn(players[i]);
+                    roll(players[i]);
                 }
             }
 
@@ -66,14 +66,14 @@ public class Gamehandler {
             myGUI.showMessage("You've served your jail sentence and are now released");
             player.setJailed(false);
             player.setTurnsJailed(0);
-            taketurn(player);
+            roll(player);
         }
         else if(player.getEscapeJailCard() >= 1){
             myGUI.showMessage("You use your get out of jail free card to escape jail");
             player.setEscapeJailCard(player.getEscapeJailCard() - 1);
             player.setJailed(false);
             player.setTurnsJailed(0);
-            taketurn(player);
+            roll(player);
         }
         else{
             myGUI.showMessage("Roll a pair to escape");
@@ -84,6 +84,7 @@ public class Gamehandler {
                 myGUI.showMessage("You've rolled a pair and have escaped");
                 player.setJailed(false);
                 player.setTurnsJailed(0);
+                taketurn(player, rafflecup);
             }
             else{
                 myGUI.showMessage("You failed to roll a pair and will stay in jail");
@@ -92,17 +93,17 @@ public class Gamehandler {
         }
     }
 
-    private void roll(){
-        
+    private void roll(Player player){
+        myGUI.showMessage("Roll the dice");
+        rafflecup.roll();
+        myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
+        taketurn(player, rafflecup);
     }
 
-    private void taketurn(Player player) {
-        myGUI.showMessage("Roll the dice");
-        int positionFromTurnBefore = player.getPosition();
-        rafflecup.roll();
-        player.changePosition(rafflecup.sum());
-        myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
+    private void taketurn(Player player, Rafflecup rafflecup) {
         myGUI.showMessage("Move your car: ");
+        int positionFromTurnBefore = player.getPosition();
+        player.changePosition(rafflecup.sum());
 
         playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         if (player.getPosition()<positionFromTurnBefore){
@@ -119,7 +120,7 @@ public class Gamehandler {
 
         if (rafflecup.sameFacesUpOnAllDice()) {
             myGUI.showMessage("You rolled two of a kind and now therefore get another turn");
-            taketurn(player);
+            roll(player);
         }
 
 
