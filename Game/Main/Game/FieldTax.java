@@ -14,6 +14,11 @@ public class FieldTax extends Field {
         super.landOn(player, gui);
         int total = 0;
 
+        int totalValue
+        for(int i = 0; i < Settings.BOARD_SIZE; i++){
+            
+        }
+
         if ((player.getBalance() * taxDecimal) / 100 > taxAmount) {
             total = (-player.getBalance() * taxDecimal) / 100;
             gui.getMyGUI().showMessage("You are quite rich and must therefore pay: " + -total);
