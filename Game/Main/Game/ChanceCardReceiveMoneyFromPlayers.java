@@ -8,6 +8,7 @@ public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
 
     @Override
     public void DrawCard(Player myPlayer, GUIController GUI) {
+        super.DrawCard(myPlayer, GUI);
         Player[] myPlayers = parent.getParent().getParent().getPlayers();
 
         for (int i = 0; i < myPlayers.length; i++) {
