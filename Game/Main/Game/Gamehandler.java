@@ -73,8 +73,6 @@ public class Gamehandler {
         myGUI.showMessage("You are jailed " + player.getName());
         if (player.getTurnsJailed() >= 2) {
             myGUI.showMessage("You've served your jail sentence and are now released after paying a fine of -1000" + player.getName());
-            player.changeBalance(-1000);
-            playersgui[player.getNumber()].setBalance(player.getBalance());
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
@@ -86,18 +84,29 @@ public class Gamehandler {
             player.setTurnsJailed(0);
             roll(player);
         } else {
-            myGUI.showMessage("Roll a pair to escape " + player.getName());
-            rafflecup.roll();
-            myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
-
-            if ((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())) {
-                myGUI.showMessage("You've rolled a pair and have escaped " + player.getName());
+            String Choice = myGUI.getUserSelection("Choose whether to try and roll, or pay " + Settings.JAIL_RELEASE_FEE, "Roll", "Pay");
+            if(Choice.equals("Pay")){
+                myGUI.showMessage("You've bribed the officials to be released, you pay " + Settings.JAIL_RELEASE_FEE + " " + player.getName());
+                player.changeBalance(-1000);
+                playersgui[player.getNumber()].setBalance(player.getBalance());
                 player.setJailed(false);
                 player.setTurnsJailed(0);
-                taketurn(player, rafflecup);
-            } else {
-                myGUI.showMessage("You failed to roll a pair and will stay in jail " + player.getName());
-                player.setTurnsJailed(player.getTurnsJailed() + 1);
+                roll(player);
+            }
+            else{
+                myGUI.showMessage("Roll a pair to escape " + player.getName());
+                rafflecup.roll();
+                myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
+
+                if ((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())) {
+                    myGUI.showMessage("You've rolled a pair and have escaped " + player.getName());
+                    player.setJailed(false);
+                    player.setTurnsJailed(0);
+                    taketurn(player, rafflecup);
+                } else {
+                    myGUI.showMessage("You failed to roll a pair and will stay in jail " + player.getName());
+                    player.setTurnsJailed(player.getTurnsJailed() + 1);
+                }
             }
         }
     }

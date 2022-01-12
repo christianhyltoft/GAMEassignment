@@ -16,6 +16,9 @@ public final class Settings {
     public static final int MAX_PLAYERS = 6;
     public static final int BOARD_SIZE = 40;
 
+    //Jail
+    public static final int JAIL_RELEASE_FEE = 1000;
+
 
     public static final String ChanceCardDataBase2 = "ChanceCards.txt";
     public static final String[] ChanceCardDataBase = {"ChanceCardGetOutOfJail.txt", "ChanceCardMatadorGrant.txt", "ChanceCardMoveYourCharacter.txt",
