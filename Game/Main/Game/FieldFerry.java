@@ -87,7 +87,7 @@ public class FieldFerry extends FieldPurchaseAble {
                     }
                 }
 
-                for(int i = 0; i < ferriesOwned; i++){
+                for(int i = 0; i < ferriesOwned - 1; i++){
                     rent = rent * 2;
                 }
 
