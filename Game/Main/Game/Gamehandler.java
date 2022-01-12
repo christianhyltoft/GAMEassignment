@@ -217,11 +217,11 @@ public class Gamehandler {
     }
 
     private String GetChoice(Player myPlayer){
-        String choice =  myGUI.getUserSelection(Settings.gameHandlerText[31] + myPlayer.getName() + Settings.gameHandlerText[32], Settings.gameHandlerText[33], Settings.gameHandlerText[24], "Pawn a property", "Sell GetOutOfJail card", "Build");
+        String choice =  myGUI.getUserSelection(Settings.gameHandlerText[31] + myPlayer.getName() + Settings.gameHandlerText[32], Settings.gameHandlerText[33], Settings.gameHandlerText[24], Settings.gameHandlerText[34], Settings.gameHandlerText[27], Settings.gameHandlerText[35]);
 
         Boolean check = false;
 
-        if(choice.equals("Sell a property") || choice.equals("Pawn a property")){
+        if(choice.equals(Settings.gameHandlerText[24]) || choice.equals(34)){
             for(int i = 0; i < Settings.BOARD_SIZE; i++){
                 if(myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
                     FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
@@ -232,17 +232,17 @@ public class Gamehandler {
                 }
             }
         }
-        else if(choice.equals("Sell GetOutOfJail card")){
+        else if(choice.equals(Settings.gameHandlerText[27])){
             if(myPlayer.getEscapeJailCard() >= 1){
                 check = true;
 
 
 
             }else {
-                getMyGUI().showMessage("You do not own that card so you cant sell it");
+                getMyGUI().showMessage(Settings.gameHandlerText[36]);
             }
         }
-        else if(choice.equals("Build")){
+        else if(choice.equals(Settings.gameHandlerText[35])){
             for(int i = 0; i < Settings.BOARD_SIZE; i++){
                 if(myboard.getBoardAr()[i].getFieldtype().equals("Property")){
                     FieldDeed playerOwnerCheck = (FieldDeed) myboard.getBoardAr()[i];
@@ -270,7 +270,7 @@ public class Gamehandler {
         //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.
         if (players.getBalance() < 0) {
             players.setPlayerHasLost(true);
-            this.controller.getMyGUI().showMessage(players.getName() + " has lost the game.");
+            this.controller.getMyGUI().showMessage(players.getName() + Settings.gameHandlerText[37]);
             return true;
 
         }
