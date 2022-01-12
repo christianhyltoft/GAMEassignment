@@ -14,6 +14,8 @@ public class ChanceCardMove extends ChanceCard {
         for (int i = 0; i < myFields.length; i++) {
             if (myFields[i].getName().equals(fieldname[1])) {
                 player.setPosition(i);
+                GUI.getMyPlayers()[player.getNumber()].getCar().setPosition(GUI.getMyGUI().getFields()[i]);
+                parent.getParent().getBoardAr()[i].landOn(player, GUI);
             }
         }
     }
