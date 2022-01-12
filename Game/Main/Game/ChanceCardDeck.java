@@ -40,7 +40,7 @@ public class ChanceCardDeck {
                 String text = splitText[2];
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardGetOutOfJail(text);
+                    chanceCardDeck[count] = new ChanceCardGetOutOfJail(text, this);
                     count++;
                 }
                 break;
@@ -49,7 +49,7 @@ public class ChanceCardDeck {
                 text = splitText[3];
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardMatadorGrant(moneyAmount, text);
+                    chanceCardDeck[count] = new ChanceCardMatadorGrant(moneyAmount, text, this);
                     count++;
                 }
                 break;
@@ -57,7 +57,7 @@ public class ChanceCardDeck {
                 text = splitText[2];
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardMove(text, myFields);
+                    chanceCardDeck[count] = new ChanceCardMove(text, myFields, this);
                     count++;
                 }
                 break;
@@ -70,7 +70,7 @@ public class ChanceCardDeck {
                 }
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardMoveBackOrForward(moveAmount, text);
+                    chanceCardDeck[count] = new ChanceCardMoveBackOrForward(moveAmount, text, this);
                     count++;
                 }
                 break;
@@ -80,7 +80,7 @@ public class ChanceCardDeck {
                 text = splitText[4];
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text);
+                    chanceCardDeck[count] = new ChanceCardPayBasedOnProperty(housePrice, hotelPrice, text, this);
                     count++;
                 }
                 break;
@@ -93,7 +93,7 @@ public class ChanceCardDeck {
                 }
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardPayOrReceive(moneyAmount, text);
+                    chanceCardDeck[count] = new ChanceCardPayOrReceive(moneyAmount, text, this);
                     count++;
                 }
                 break;
@@ -102,7 +102,7 @@ public class ChanceCardDeck {
                 text = splitText[3];
 
                 for (int i = 0; i < cardAmount; i++) {
-                    chanceCardDeck[count] = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text);
+                    chanceCardDeck[count] = new ChanceCardReceiveMoneyFromPlayers(moneyAmount, text, this);
                     count++;
                 }
                 break;

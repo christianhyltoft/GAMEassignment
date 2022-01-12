@@ -18,7 +18,7 @@ public class Board {
             boardAr[i] = makeField(i, generator);
         }
 
-        myDeck = new ChanceCardDeck(boardAr);
+        myDeck = new ChanceCardDeck(this, boardAr);
     }
 
     private Field makeField(int i, String[] generator) {
