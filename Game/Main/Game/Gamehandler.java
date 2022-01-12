@@ -26,6 +26,7 @@ public class Gamehandler {
 
 
     public Gamehandler() throws IOException {
+        Settings.gamehandlerint();
 
         Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
         this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection(Settings.gameHandlerText[1], "3", "4", "5", "6"));

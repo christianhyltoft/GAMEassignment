@@ -7,9 +7,13 @@ public final class Settings {
 
     private Settings() throws IOException {
 
+
+    }
+    public static void gamehandlerint() throws IOException {
         TxtReader myTxtReader = new TxtReader();
 
         gameHandlerText = myTxtReader.reader("GameText");
+
     }
 
     // Game Rules
