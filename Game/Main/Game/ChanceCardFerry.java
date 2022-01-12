@@ -15,13 +15,13 @@ public class ChanceCardFerry extends ChanceCard {
             if (myFields[player.getPosition() + i].getFieldtype().equals("Ferry")){
                 player.setPosition(player.getPosition() + i);
                 GUI.getMyPlayers()[player.getNumber()].getCar().setPosition(GUI.getMyGUI().getFields()[player.getPosition() + i]);
-                parent.getParent().getBoardAr()[player.getPosition() + i].landOn(player, GUI);
+                parent.getParent().getBoardAr()[player.getPosition()].landOn(player, GUI);
                 break;
             }
             else if (myFields[player.getPosition() - i].getFieldtype().equals("Ferry")){
                 player.setPosition(player.getPosition() - i);
                 GUI.getMyPlayers()[player.getNumber()].getCar().setPosition(GUI.getMyGUI().getFields()[player.getPosition() - i]);
-                parent.getParent().getBoardAr()[player.getPosition() - i].landOn(player, GUI);
+                parent.getParent().getBoardAr()[player.getPosition()].landOn(player, GUI);
                 break;
             }
         }
