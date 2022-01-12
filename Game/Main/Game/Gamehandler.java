@@ -182,7 +182,7 @@ public class Gamehandler {
                         if(property.getOwner() == myPlayer){
                             // Just using the auction for now, should be changed later.
                             property.setOwner(null);
-                            property.auction(myPlayer, players, controller);
+                            property.sell(myPlayer, players, controller);
                             choice2 = propertyName;
                             break;
                         }
