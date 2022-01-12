@@ -11,8 +11,6 @@ public abstract class ChanceCard {
 
     public void DrawCard(Player player, GUIController GUI) {
         GUI.getMyGUI().showMessage(this.chanceCardText);
-
-        System.out.println(chanceCardText);
     }
 
 }
