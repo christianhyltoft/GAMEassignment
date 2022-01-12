@@ -23,7 +23,7 @@ public class Gamehandler {
         players = new Player[this.amountOfPlayers];
         playersgui = new GUI_Player[this.amountOfPlayers];
 
-        myboard = new Board();
+        myboard = new Board(this);
 
         for (int i = 0; i < this.amountOfPlayers; i++) {
             String input = myGUI.getUserString("Enter name of player: " + (i + 1));
