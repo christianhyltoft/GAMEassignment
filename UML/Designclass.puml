@@ -92,13 +92,13 @@ Series "1" o- "0..1" Player
 
 Series "1" o- "2..3" Deed
 Player -> Field
-ChanceCard "1" -o "1..*" ChanceField
-ChanceCardGetOutOfJail  -o ChanceCard
-ChanceCardMove -o ChanceCard
-ChanceCardPayBasedOnProperty -o ChanceCard
-ChanceCardPayOrReceive -o ChanceCard
-ChanceCardReceiveMoneyFromPlayers -o ChanceCard
-ChanecCardMatadorGrant "1" -o "*" ChanceCard
+ChanceCard "1" -|> "1..*" ChanceField
+ChanceCardGetOutOfJail  -|> ChanceCard
+ChanceCardMove -|> ChanceCard
+ChanceCardPayBasedOnProperty -|> ChanceCard
+ChanceCardPayOrReceive -|> ChanceCard
+ChanceCardReceiveMoneyFromPlayers -|> ChanceCard
+ChanecCardMatadorGrant "1" -|> "*" ChanceCard
 
 RaffleCup "1" o- "2" Die
 Gamehandler "1" o-- "1" RaffleCup
