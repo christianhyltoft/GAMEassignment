@@ -41,10 +41,12 @@ public class FieldBeverage extends FieldPurchaseAble {
 
                 for(int i = 0; i < 40; i++){
                     if(parent.getBoardAr()[i].getFieldtype().equals("Beverage")){
-                        beverages++;
                         FieldBeverage check = (FieldBeverage) parent.getBoardAr()[i];
-                        if(check.getOwner() == player){
-                            beveragesOwned++;
+                        if(check.getPairNumber() == pairNumber){
+                            beverages++;
+                            if(check.getOwner() == player){
+                                beveragesOwned++;
+                            }
                         }
                     }
                 }

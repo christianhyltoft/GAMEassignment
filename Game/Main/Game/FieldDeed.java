@@ -47,12 +47,37 @@ public class FieldDeed extends FieldPurchaseAble {
             if (player == owner) {
                 gui.getMyGUI().showMessage("You own this field so nothing happens");
             } else {
-                int rentNow = currentRent();
-                owner.changeBalance(rentNow);
-                player.changeBalance(-rentNow);
-                gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
-                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                int properties = 0;
+                int propertiesOwned = 0;
+
+                for(int i = 0; i < 40; i++){
+                    if(parent.getBoardAr()[i].getFieldtype().equals("Property")){
+                        FieldDeed check = (FieldDeed) parent.getBoardAr()[i];
+                        if(check.getPairNumber() == pairNumber){
+                            properties++;
+                            if(check.getOwner() == player){
+                                propertiesOwned++;
+                            }
+                        }
+                    }
+                }
+
+                if(propertiesOwned == properties){
+                    int rentNow = currentRent();
+                    owner.changeBalance(rentNow);
+                    player.changeBalance(-rentNow);
+                    gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
+                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                }
+                else{
+                    int rentNow = currentRent();
+                    owner.changeBalance(rentNow);
+                    player.changeBalance(-rentNow);
+                    gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
+                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                }
             }
         }
 
