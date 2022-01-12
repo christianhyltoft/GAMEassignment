@@ -26,6 +26,7 @@ public class Gamehandler {
 
 
     public Gamehandler() throws IOException {
+        Settings.gamehandlerint();
 
         Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
         this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection(Settings.gameHandlerText[0], "3", "4", "5", "6"));
@@ -182,7 +183,7 @@ public class Gamehandler {
                         if(property.getOwner() == myPlayer){
                             // Just using the auction for now, should be changed later.
                             property.setOwner(null);
-                            property.auction(myPlayer, players, controller);
+                            property.sell(myPlayer, players, controller);
                             choice2 = propertyName;
                             break;
                         }
