@@ -107,7 +107,7 @@ public class Gamehandler {
                 roll(player);
             }
             else{
-                myGUI.showMessage("Roll a pair to escape " + player.getName());
+                myGUI.getUserButtonPressed("Roll a pair to escape " + player.getName(),"ROLL");
                 rafflecup.roll();
                 myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
@@ -125,7 +125,7 @@ public class Gamehandler {
     }
 
     private void roll(Player player) {
-        myGUI.showMessage("Roll the dice " + player.getName());
+        myGUI.getUserButtonPressed("Roll the dice " + player.getName(),"ROLL");
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         taketurn(player, rafflecup);
