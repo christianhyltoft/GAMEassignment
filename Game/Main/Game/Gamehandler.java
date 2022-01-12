@@ -210,6 +210,18 @@ public class Gamehandler {
         else if(choice.equals("Sell GetOutOfJail card")){
             if(myPlayer.getEscapeJailCard() >= 1){
                 check = true;
+                String buyer=getMyGUI().getUserString("who wants to buy the card: enter name of a player of write cancel to not sell it");
+                for (int i = 0; i < players.length; i++) {
+                    if (buyer.equals(players[i].getName())){
+                        int price =getMyGUI().getUserInteger("Write the amount you want to pay for the card");
+                        myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard()-1);
+                        players[i].setEscapeJailCard(players[i].getEscapeJailCard()+1);
+                    }
+
+                }
+
+            }else {
+                getMyGUI().showMessage("You do not own that card so you cant sell it");
             }
         }
         else if(choice.equals("Build")){
