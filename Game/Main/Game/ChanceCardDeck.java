@@ -65,7 +65,7 @@ public class ChanceCardDeck {
                 String direction = splitText[2];
                 int moveAmount = Integer.parseInt(splitText[3]);
                 text = splitText[4];
-                if(direction == "b"){
+                if(direction.equals("b")){
                     moveAmount = -moveAmount;
                 }
 
@@ -88,7 +88,7 @@ public class ChanceCardDeck {
                 String payOrReceive = splitText[2];
                 moneyAmount = Integer.parseInt(splitText[3]);
                 text = splitText[4];
-                if (payOrReceive == "p") {
+                if (payOrReceive.equals("p")) {
                     moneyAmount = -moneyAmount;
                 }
 
