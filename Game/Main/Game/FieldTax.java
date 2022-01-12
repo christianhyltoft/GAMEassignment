@@ -18,12 +18,12 @@ public class FieldTax extends Field {
             total = (-player.getBalance() * taxDecimal) / 100;
             gui.getMyGUI().showMessage("You are quite rich and must therefore pay: " + -total);
             player.changeBalance(total);
-            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - (player.getBalance() * taxDecimal / 100));
+            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
         } else {
             total = -taxAmount;
             player.changeBalance(-taxAmount);
             gui.getMyGUI().showMessage("You must pay: " + taxAmount);
-            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance() - taxAmount);
+            gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
         }
 
         for(int i = 0; i < Settings.BOARD_SIZE; i++){

@@ -12,6 +12,7 @@ public class FieldParking extends Field {
         super.landOn(player, gui);
         gui.getMyGUI().showMessage("You receive " + totalMoney);
         player.changeBalance(totalMoney);
+        gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getBalance());
         totalMoney = 0;
     }
 
