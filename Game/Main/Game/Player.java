@@ -73,6 +73,9 @@ public class Player<bool> {
         if (this.position >= Settings.BOARD_SIZE) {
             this.position -= 40;
         }
+        else if(this.position < 0){
+            this.position += 40;
+        }
     }
 
     public boolean isJailed() {
