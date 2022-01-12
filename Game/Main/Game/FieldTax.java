@@ -37,7 +37,7 @@ public class FieldTax extends Field {
 
         gui.getMyGUI().showMessage("You will now pay " + pay);
         player.changeBalance(-pay);
-        gui.getMyPlayers()[player.getNumber()].setBalance(gui.getMyPlayers()[player.getNumber()].getBalance());
+        gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
 
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
             if(parent.getBoardAr()[i].getFieldtype().equals("Parking")){
