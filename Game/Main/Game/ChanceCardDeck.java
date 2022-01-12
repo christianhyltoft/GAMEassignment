@@ -66,6 +66,14 @@ public class ChanceCardDeck {
                     count++;
                 }
                 break;
+            case "MoveFerry":
+                text = splitText[4];
+
+                for (int i = 0; i < cardAmount; i++) {
+                    chanceCardDeck[count] = new ChanceCardFerry(text, myFields, this);
+                    count++;
+                }
+                break;
             case "MoveBackOrForward":
                 String direction = splitText[2];
                 int moveAmount = Integer.parseInt(splitText[3]);
