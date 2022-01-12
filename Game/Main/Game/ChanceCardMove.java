@@ -4,7 +4,7 @@ public class ChanceCardMove extends ChanceCard {
     String goToField;
     int passStart;
 
-    public ChanceCardMove(String chanceCardText, String goToField, int passStart, Field[] myFields, ChanceCardDeck parent) {
+    public ChanceCardMove(String chanceCardText, int passStart, String goToField, Field[] myFields, ChanceCardDeck parent) {
         super(chanceCardText, parent);
         this.passStart = passStart;
         this.myFields = myFields;
