@@ -51,3 +51,6 @@ public class Rafflecup {
         this.cup = cup;
     }
 }
+
+// A pure fabrication and controller class used, in this case to create an array of 2 dices with 6 sides.
+// The methods used other places are roll() and sameFacesUpOnAllDice

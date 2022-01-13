@@ -13,3 +13,6 @@ public class TxtReader {
         return ret;
     }
 }
+
+
+//A class used for reading txt files and returning a string[] og given length, the length is given by the first line in the txt file

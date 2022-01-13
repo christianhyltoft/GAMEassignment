@@ -83,3 +83,5 @@ public final class Settings {
 
 
 }
+
+// A class of information about the game so you can chance information and rules about the game in one file instead of having to go through many files.

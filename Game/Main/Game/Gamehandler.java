@@ -118,7 +118,7 @@ public class Gamehandler {
                 rafflecup.roll();
                 myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
-                if ((rafflecup.getCup()[0].getValue() == rafflecup.getCup()[1].getValue())) {
+                if (rafflecup.sameFacesUpOnAllDice()) {
                     myGUI.showMessage(Settings.gameHandlerText[18] + player.getName());
                     player.setJailed(false);
                     player.setTurnsJailed(0);
