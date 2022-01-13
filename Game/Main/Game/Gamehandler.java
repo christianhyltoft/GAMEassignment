@@ -23,7 +23,7 @@ public class Gamehandler {
 
 
     public Gamehandler() throws IOException {
-        Settings.gamehandlerint();
+        Settings.gameTextInit();
 
         Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
         this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection(Settings.gameHandlerText[0], "3", "4", "5", "6"));

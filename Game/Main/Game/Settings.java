@@ -2,14 +2,15 @@ import gui_fields.*;
 
 import java.awt.*;
 import java.io.IOException;
-
+// A class of information about the game so you can chance information and rules about the game in one file instead of having to go through many files.
 public final class Settings {
 
-    private Settings() throws IOException {
+    private Settings() {
 
 
     }
-    public static void gamehandlerint() throws IOException {
+
+    public static void gameTextInit() throws IOException {
         TxtReader myTxtReader = new TxtReader();
 
         gameHandlerText = myTxtReader.reader("GameText");
@@ -28,8 +29,7 @@ public final class Settings {
     public static final int JAIL_RELEASE_FEE = 1000;
 
     //GamehandlerText
-    public static String [] gameHandlerText;
-
+    public static String[] gameHandlerText;
 
 
     public static final String ChanceCardDataBase2 = "ChanceCards.txt";
@@ -81,7 +81,5 @@ public final class Settings {
     };
 
 
-
 }
 
-// A class of information about the game so you can chance information and rules about the game in one file instead of having to go through many files.
