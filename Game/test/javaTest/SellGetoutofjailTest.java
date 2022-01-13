@@ -8,7 +8,7 @@ public class SellGetoutofjailTest {
 
     @Test
     public void getoutofjailsellTest() throws IOException {
-        Gamehandler gtest = new Gamehandler();
+        GameHandler gtest = new GameHandler();
         gtest.getMyGUI().showMessage("Sell the getoutofjail card to the third player");
         gtest.getPlayers()[0].setEscapeJailCard(1);
         for (int i = 0; i < gtest.getPlayers().length-1; i++) {
@@ -16,7 +16,7 @@ public class SellGetoutofjailTest {
 
 
         }
-        gtest.Playgame();
+        gtest.playGame();
 
 
         assertEquals(0, gtest.getPlayers()[0].getEscapeJailCard());

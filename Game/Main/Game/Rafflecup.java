@@ -1,4 +1,3 @@
-import java.util.stream.IntStream;
 
 public class Rafflecup {
 
@@ -17,6 +16,7 @@ public class Rafflecup {
         }
     }
 
+    //Returning the value of the sum of the arrays die's values
     public int sum() {
         int sum = 0;
         for (int i = 0; i < cup.length; i++) {
@@ -25,6 +25,7 @@ public class Rafflecup {
         return sum;
     }
 
+    //Rolling the dice and returning the value
     public int[] roll() {
         int[] values = new int[this.cup.length];
         for (int i = 0; i < this.cup.length; i++) {
@@ -34,6 +35,7 @@ public class Rafflecup {
         return values;
     }
 
+    //Used to evaluate whether all the dice has the same value
     public boolean sameFacesUpOnAllDice() {
         for (int i = 0; i < cup.length - 1; i++) {
             if (cup[i].getValue() != cup[i + 1].getValue())

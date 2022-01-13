@@ -4,57 +4,54 @@ import gui_main.GUI;
 import java.awt.*;
 import java.io.IOException;
 
-public class Gamehandler {
-    final private Board myboard;
+public class GameHandler {
+    final private Board myBoard;
     private Player[] players;
     final private int amountOfPlayers;
 
     final private GUI myGUI = new GUI(Settings.fields);
-    final private GUI_Player[] playersgui;
+    final private GUI_Player[] gui_players;
 
     final private Rafflecup rafflecup = new Rafflecup(2, 6);
 
     final private GUIController controller;
 
-
-    public Rafflecup GetRafflecup() {
-        return rafflecup;
-    }
-
-
-    public Gamehandler() throws IOException {
+    //Constructing a GameHandler instance.
+    //This also initialises the txt file that takes care of game text.
+    public GameHandler() throws IOException {
         Settings.gameTextInit();
 
-        Color[] carcolors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
+        Color[] carColors = new Color[]{Color.CYAN, Color.MAGENTA, Color.PINK, Color.BLUE, Color.GREEN, Color.ORANGE};
         this.amountOfPlayers = Integer.parseInt(myGUI.getUserSelection(Settings.gameHandlerText[0], "3", "4", "5", "6"));
         players = new Player[this.amountOfPlayers];
-        playersgui = new GUI_Player[this.amountOfPlayers];
+        gui_players = new GUI_Player[this.amountOfPlayers];
 
-        myboard = new Board(this);
+        myBoard = new Board(this);
 
         for (int i = 0; i < this.amountOfPlayers; i++) {
             String input = myGUI.getUserString(Settings.gameHandlerText[1] + (i + 1));
             players[i] = new Player(Settings.STARTING_MONEY, input, 0);
-            playersgui[i] = new GUI_Player(input, Settings.STARTING_MONEY);
-            playersgui[i].getCar().setPrimaryColor(carcolors[i]);
-            myGUI.addPlayer(playersgui[i]);
-            playersgui[i].getCar().setPosition(myGUI.getFields()[0]);
+            gui_players[i] = new GUI_Player(input, Settings.STARTING_MONEY);
+            gui_players[i].getCar().setPrimaryColor(carColors[i]);
+            myGUI.addPlayer(gui_players[i]);
+            gui_players[i].getCar().setPosition(myGUI.getFields()[0]);
         }
         for (int i = 0; i < myGUI.getFields().length; i++) {
-            myGUI.getFields()[i].setDescription(myboard.getBoardAr()[i].toString());
+            myGUI.getFields()[i].setDescription(myBoard.getBoardAr()[i].toString());
 
         }
-        controller = new GUIController(myGUI, playersgui);
+        controller = new GUIController(myGUI, gui_players);
 
         myGUI.showMessage(Settings.gameHandlerText[2]);
     }
 
-    public void Playgame() {
+    //The method that is called to start the game.
+    public void playGame() {
         do {
             for (int i = 0; i < players.length; i++) {
                 if (!players[i].isPlayerHasLost()) {
                     if (players[i].isJailed()) {
-                        JailTurn(players[i]);
+                        jailTurn(players[i]);
                     } else {
                         roll(players[i]);
                     }
@@ -73,12 +70,13 @@ public class Gamehandler {
 
     }
 
-    private void JailTurn(Player player) {
+    //This method is used if the player is jailed. And is one of the two turns a player can play
+    private void jailTurn(Player player) {
         myGUI.showMessage(Settings.gameHandlerText[5] + player.getName());
         if (player.getTurnsJailed() >= 2) {
             myGUI.showMessage(Settings.gameHandlerText[6] + Settings.JAIL_RELEASE_FEE + player.getName());
             player.changeBalance(-1000);
-            playersgui[player.getNumber()].setBalance(player.getBalance());
+            gui_players[player.getNumber()].setBalance(player.getBalance());
             player.setJailed(false);
             player.setTurnsJailed(0);
             roll(player);
@@ -96,7 +94,7 @@ public class Gamehandler {
             if (Choice.equals(Settings.gameHandlerText[9])) {
                 myGUI.showMessage(Settings.gameHandlerText[13] + Settings.JAIL_RELEASE_FEE + " " + player.getName());
                 player.changeBalance(-1000);
-                playersgui[player.getNumber()].setBalance(player.getBalance());
+                gui_players[player.getNumber()].setBalance(player.getBalance());
                 player.setJailed(false);
                 player.setTurnsJailed(0);
                 roll(player);
@@ -116,7 +114,7 @@ public class Gamehandler {
                     myGUI.showMessage(Settings.gameHandlerText[17] + player.getName());
                     player.setJailed(false);
                     player.setTurnsJailed(0);
-                    Taketurn(player, rafflecup);
+                    takeTurn(player, rafflecup);
                 } else {
                     myGUI.showMessage(Settings.gameHandlerText[18] + player.getName());
                     player.setTurnsJailed(player.getTurnsJailed() + 1);
@@ -125,27 +123,32 @@ public class Gamehandler {
         }
     }
 
+    //The first method being called upon each player this roll the dice.
+    //This method also calls the takeTurn() to keep the players turn going.
+    //This the other option of how a turn can play out.
     private void roll(Player player) {
         myGUI.getUserButtonPressed(Settings.gameHandlerText[19] + player.getName(), Settings.gameHandlerText[16]);
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
-        Taketurn(player, rafflecup);
+        takeTurn(player, rafflecup);
     }
 
-    private void Taketurn(Player player, Rafflecup rafflecup) {
+    //This is used to take the rest of the players turn after rolling the dice.
+    //This is here the landOn method gets called and the player reacts to the outcome.
+    private void takeTurn(Player player, Rafflecup rafflecup) {
         myGUI.showMessage(Settings.gameHandlerText[20] + player.getName());
         int positionFromTurnBefore = player.getPosition();
         player.changePosition(rafflecup.sum());
 
-        playersgui[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
+        gui_players[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         if (player.getPosition() < positionFromTurnBefore) {
             myGUI.showMessage(Settings.gameHandlerText[21] + player.getName());
             player.changeBalance(4000);
-            playersgui[player.getNumber()].setBalance(player.getBalance());
+            gui_players[player.getNumber()].setBalance(player.getBalance());
         }
-        this.myboard.getBoardAr()[player.getPosition()].landOn(player, this.controller);
-        if (this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") || this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Ferry") || this.myboard.getBoardAr()[player.getPosition()].getFieldtype().equals("Beverage")) {
-            this.myboard.getBoardAr()[player.getPosition()].auction(player, this.players, this.controller);
+        this.myBoard.getBoardAr()[player.getPosition()].landOn(player, this.controller);
+        if (this.myBoard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") || this.myBoard.getBoardAr()[player.getPosition()].getFieldtype().equals("Ferry") || this.myBoard.getBoardAr()[player.getPosition()].getFieldtype().equals("Beverage")) {
+            this.myBoard.getBoardAr()[player.getPosition()].auction(player, this.players, this.controller);
 
         }
 
@@ -154,13 +157,14 @@ public class Gamehandler {
             roll(player);
         }
 
-        EndOfTurnChoice(player);
+        endOfTurnChoice(player);
     }
 
-    private void EndOfTurnChoice(Player myPlayer) {
+    //Is used in the end of a players turn for miscellaneous.
+    private void endOfTurnChoice(Player myPlayer) {
         String choice = "Invalid";
         while (choice.equals("Invalid")) {
-            choice = GetChoice(myPlayer);
+            choice = getChoice(myPlayer);
         }
 
         String choice2 = "Invalid";
@@ -171,8 +175,8 @@ public class Gamehandler {
                 String propertyName = myGUI.getUserString(Settings.gameHandlerText[24]);
 
                 for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                    if (myboard.getBoardAr()[i].getName().equals(propertyName) && myboard.getBoardAr()[i].getFieldtype().equals("Property")) {
-                        FieldDeed property = (FieldDeed) myboard.getBoardAr()[i];
+                    if (myBoard.getBoardAr()[i].getName().equals(propertyName) && myBoard.getBoardAr()[i].getFieldtype().equals("Property")) {
+                        FieldDeed property = (FieldDeed) myBoard.getBoardAr()[i];
                         if (property.getOwner() == myPlayer) {
                             // Just using the auction for now, should be changed later.
                             property.setOwner(null);
@@ -196,8 +200,8 @@ public class Gamehandler {
                         players[i].changeBalance(-price);
                         myPlayer.setEscapeJailCard(myPlayer.getEscapeJailCard() - 1);
                         players[i].setEscapeJailCard(players[i].getEscapeJailCard() + 1);
-                        getPlayersgui()[myPlayer.getNumber()].setBalance(myPlayer.getBalance());
-                        getPlayersgui()[players[i].getNumber()].setBalance(players[i].getBalance());
+                        getgui_players()[myPlayer.getNumber()].setBalance(myPlayer.getBalance());
+                        getgui_players()[players[i].getNumber()].setBalance(players[i].getBalance());
                         break;
 
                     }
@@ -205,19 +209,21 @@ public class Gamehandler {
                 }
 
             }
-            choice = GetChoice(myPlayer);
+            choice = getChoice(myPlayer);
         }
     }
 
-    private String GetChoice(Player myPlayer) {
+    //This method is a help method to endOfTurnChoice.
+    //This method asks the player what he wants to do and calculates whether the player is able to do the action or not.
+    private String getChoice(Player myPlayer) {
         String choice = myGUI.getUserSelection(Settings.gameHandlerText[30] + myPlayer.getName() + Settings.gameHandlerText[31], Settings.gameHandlerText[32], Settings.gameHandlerText[23], Settings.gameHandlerText[33], Settings.gameHandlerText[26], Settings.gameHandlerText[34]);
 
         boolean check = false;
 
         if (choice.equals(Settings.gameHandlerText[23]) || choice.equals(34)) {
             for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                if (myboard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")) {
-                    FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myboard.getBoardAr()[i];
+                if (myBoard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")) {
+                    FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myBoard.getBoardAr()[i];
                     if (playerOwnerCheck.getOwner() == myPlayer) {
                         check = true;
 
@@ -234,8 +240,8 @@ public class Gamehandler {
             }
         } else if (choice.equals(Settings.gameHandlerText[34])) {
             for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                if (myboard.getBoardAr()[i].getFieldtype().equals("Property")) {
-                    FieldDeed playerOwnerCheck = (FieldDeed) myboard.getBoardAr()[i];
+                if (myBoard.getBoardAr()[i].getFieldtype().equals("Property")) {
+                    FieldDeed playerOwnerCheck = (FieldDeed) myBoard.getBoardAr()[i];
                     if (playerOwnerCheck.getOwner() == myPlayer) {
                         check = true;
                         break;
@@ -253,9 +259,9 @@ public class Gamehandler {
         }
     }
 
-
+    //A method which checks whether a player has lost or not if the player has lost he will not take turns anymore.
     private void detectLoser(Player players) {
-        //En metode der tjekker når man har tabt spillet. Hvis en spiller har under 0 kr i spillet skal der vurderes at spilleren har tabt.
+
         if (players.getBalance() < 0) {
             players.setPlayerHasLost(true);
             this.controller.getMyGUI().showMessage(players.getName() + Settings.gameHandlerText[36]);
@@ -263,6 +269,7 @@ public class Gamehandler {
         }
     }
 
+    //A method checking whether there is only one player remaining this is used to stop the game, when it should be stopped.
     private boolean detectWinner() {
         int playersRemaining = this.players.length;
         for (int i = 0; i < this.players.length; i++) {
@@ -275,10 +282,9 @@ public class Gamehandler {
     }
 
 
-    public Board getMyboard() {
-        return myboard;
+    public Board getmyBoard() {
+        return myBoard;
     }
-
 
     public Player[] getPlayers() {
         return players;
@@ -292,19 +298,20 @@ public class Gamehandler {
         return myGUI;
     }
 
-
     public int getAmountOfPlayers() {
         return amountOfPlayers;
     }
 
-
-    public GUI_Player[] getPlayersgui() {
-        return playersgui;
+    public GUI_Player[] getgui_players() {
+        return gui_players;
     }
-
 
     public GUIController getController() {
         return controller;
+    }
+
+    public Rafflecup GetRafflecup() {
+        return rafflecup;
     }
 
 

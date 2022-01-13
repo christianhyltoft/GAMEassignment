@@ -1,5 +1,5 @@
 public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
-    private int moneyAmount;
+    private final int moneyAmount;
 
     public ChanceCardReceiveMoneyFromPlayers(int moneyAmount, String chanceCardText, ChanceCardDeck parent) {
         super(chanceCardText, parent);

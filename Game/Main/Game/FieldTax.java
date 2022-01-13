@@ -26,7 +26,7 @@ public class FieldTax extends Field {
 
         String choice = gui.getMyGUI().getUserSelection(Settings.gameHandlerText[37] + taxAmount + Settings.gameHandlerText[38] + totalValue, Settings.gameHandlerText[39], "10%");
 
-        int pay = 0;
+        int pay;
 
         if(choice.equals(Settings.gameHandlerText[39])){
             pay = taxAmount;
