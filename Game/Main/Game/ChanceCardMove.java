@@ -1,6 +1,6 @@
 public class ChanceCardMove extends ChanceCard {
 
-    private Field[] myFields;
+    private final Field[] myFields;
     String goToField;
     int passStart;
 

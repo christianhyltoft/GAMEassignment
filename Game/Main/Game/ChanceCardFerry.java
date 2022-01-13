@@ -1,6 +1,6 @@
 public class ChanceCardFerry extends ChanceCard {
 
-    private Field[] myFields;
+    private final Field[] myFields;
 
     public ChanceCardFerry(String chanceCardText, Field[] myFields, ChanceCardDeck parent) {
         super(chanceCardText, parent);

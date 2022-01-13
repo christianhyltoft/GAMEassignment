@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class Board {
 
-    private Field[] boardAr;
+    private final Field[] boardAr;
     final private ChanceCardDeck myDeck;
 
     final private Gamehandler parent;
