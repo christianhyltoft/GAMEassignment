@@ -173,13 +173,28 @@ public class GameHandler {
                 break;
             } else if (choice.equals(Settings.gameHandlerText[23])) {
                 String propertyName = myGUI.getUserString(Settings.gameHandlerText[24]);
+                boolean canSell = true;
 
                 for (int i = 0; i < Settings.BOARD_SIZE; i++) {
                     if (myBoard.getBoardAr()[i].getName().equals(propertyName) && myBoard.getBoardAr()[i].getFieldType().matches("Property|Ferry|Beverage")) {
                         FieldPurchaseAble property = (FieldPurchaseAble) myBoard.getBoardAr()[i];
                         if (property.getOwner() == myPlayer) {
-                            // Just using the auction for now, should be changed later.
-                            property.sell(myPlayer, players, controller);
+                            //Im putting in a test for whether there is a house on there property or not. And then not letting the player sell if there is
+                            try {
+                                FieldDeed deed = (FieldDeed) myBoard.getBoardAr()[i];
+                                if (deed.getAmountOfHouses() > 0) {
+                                    getMyGUI().showMessage("You cant build sell a property with a house on it");
+                                    canSell = false;
+
+                                }
+
+                            } catch (Exception e) {
+
+
+                            }
+
+                            if (canSell)
+                                property.sell(myPlayer, players, controller);
                             choice2 = propertyName;
                             break;
                         } else {
@@ -207,12 +222,12 @@ public class GameHandler {
 
                 }
 
-            } else if(Settings.gameHandlerText[34].equals(choice)) {
-                String property=getMyGUI().getUserString("Enter the property you want to build on");
+            } else if (Settings.gameHandlerText[34].equals(choice)) {
+                String property = getMyGUI().getUserString("Enter the property you want to build on");
                 for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                    if (this.myBoard.getBoardAr()[i].getName().equals(property)){
-                        FieldDeed field=(FieldDeed) this.myBoard.getBoardAr()[i];
-                        field.buildHouse(myPlayer,this.controller);
+                    if (this.myBoard.getBoardAr()[i].getName().equals(property)) {
+                        FieldDeed field = (FieldDeed) this.myBoard.getBoardAr()[i];
+                        field.buildHouse(myPlayer, this.controller);
 
                     }
 
