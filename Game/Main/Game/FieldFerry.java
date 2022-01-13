@@ -1,5 +1,4 @@
 import gui_fields.GUI_Shipping;
-import gui_fields.GUI_Street;
 
 import java.awt.*;
 
@@ -80,7 +79,7 @@ public class FieldFerry extends FieldPurchaseAble {
                     int ferriesOwned = 0;
 
                     for (int i = 0; i < 40; i++) {
-                        if (parent.getBoardAr()[i].getFieldtype().equals("Ferry")) {
+                        if (parent.getBoardAr()[i].getFieldType().equals("Ferry")) {
                             FieldFerry check = (FieldFerry) parent.getBoardAr()[i];
                             if (check.getPairNumber() == pairNumber) {
                                 if (check.getOwner() == player) {

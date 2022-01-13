@@ -147,7 +147,7 @@ public class GameHandler {
             gui_players[player.getNumber()].setBalance(player.getBalance());
         }
         this.myBoard.getBoardAr()[player.getPosition()].landOn(player, this.controller);
-        if (this.myBoard.getBoardAr()[player.getPosition()].getFieldtype().equals("Property") || this.myBoard.getBoardAr()[player.getPosition()].getFieldtype().equals("Ferry") || this.myBoard.getBoardAr()[player.getPosition()].getFieldtype().equals("Beverage")) {
+        if (this.myBoard.getBoardAr()[player.getPosition()].getFieldType().equals("Property") || this.myBoard.getBoardAr()[player.getPosition()].getFieldType().equals("Ferry") || this.myBoard.getBoardAr()[player.getPosition()].getFieldType().equals("Beverage")) {
             this.myBoard.getBoardAr()[player.getPosition()].auction(player, this.players, this.controller);
 
         }
@@ -175,7 +175,7 @@ public class GameHandler {
                 String propertyName = myGUI.getUserString(Settings.gameHandlerText[24]);
 
                 for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                    if (myBoard.getBoardAr()[i].getName().equals(propertyName) && myBoard.getBoardAr()[i].getFieldtype().equals("Property")) {
+                    if (myBoard.getBoardAr()[i].getName().equals(propertyName) && myBoard.getBoardAr()[i].getFieldType().equals("Property")) {
                         FieldDeed property = (FieldDeed) myBoard.getBoardAr()[i];
                         if (property.getOwner() == myPlayer) {
                             // Just using the auction for now, should be changed later.
@@ -222,7 +222,7 @@ public class GameHandler {
 
         if (choice.equals(Settings.gameHandlerText[23]) || choice.equals(34)) {
             for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                if (myBoard.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")) {
+                if (myBoard.getBoardAr()[i].getFieldType().matches("Property|Ferry|Beverage")) {
                     FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myBoard.getBoardAr()[i];
                     if (playerOwnerCheck.getOwner() == myPlayer) {
                         check = true;
@@ -240,7 +240,7 @@ public class GameHandler {
             }
         } else if (choice.equals(Settings.gameHandlerText[34])) {
             for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                if (myBoard.getBoardAr()[i].getFieldtype().equals("Property")) {
+                if (myBoard.getBoardAr()[i].getFieldType().equals("Property")) {
                     FieldDeed playerOwnerCheck = (FieldDeed) myBoard.getBoardAr()[i];
                     if (playerOwnerCheck.getOwner() == myPlayer) {
                         check = true;

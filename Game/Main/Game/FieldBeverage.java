@@ -1,7 +1,6 @@
 import gui_fields.GUI_Brewery;
 
 import java.awt.*;
-
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
@@ -43,7 +42,7 @@ public class FieldBeverage extends FieldPurchaseAble {
                     int beveragesOwned = 0;
 
                     for (int i = 0; i < 40; i++) {
-                        if (parent.getBoardAr()[i].getFieldtype().equals("Beverage")) {
+                        if (parent.getBoardAr()[i].getFieldType().equals("Beverage")) {
                             FieldBeverage check = (FieldBeverage) parent.getBoardAr()[i];
                             if (check.getPairNumber() == pairNumber) {
                                 beverages++;
@@ -109,7 +108,7 @@ public class FieldBeverage extends FieldPurchaseAble {
         }
     }
 
-    ;
+
 
     @Override
     public String toString() {

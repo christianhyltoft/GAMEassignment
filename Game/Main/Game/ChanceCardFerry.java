@@ -12,13 +12,13 @@ public class ChanceCardFerry extends ChanceCard {
         super.DrawCard(player,GUI);
         // move to ferry property.
         for (int i = 0; i < myFields.length / 2; i++) {
-            if (myFields[player.getPosition() + i].getFieldtype().equals("Ferry")){
+            if (myFields[player.getPosition() + i].getFieldType().equals("Ferry")){
                 player.setPosition(player.getPosition() + i);
                 GUI.getMyPlayers()[player.getNumber()].getCar().setPosition(GUI.getMyGUI().getFields()[player.getPosition()]);
                 parent.getParent().getBoardAr()[player.getPosition()].landOn(player, GUI);
                 break;
             }
-            else if (myFields[player.getPosition() - i].getFieldtype().equals("Ferry")){
+            else if (myFields[player.getPosition() - i].getFieldType().equals("Ferry")){
                 player.setPosition(player.getPosition() - i);
                 GUI.getMyPlayers()[player.getNumber()].getCar().setPosition(GUI.getMyGUI().getFields()[player.getPosition()]);
                 parent.getParent().getBoardAr()[player.getPosition()].landOn(player, GUI);

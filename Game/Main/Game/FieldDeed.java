@@ -56,7 +56,7 @@ public class FieldDeed extends FieldPurchaseAble {
                     int propertiesOwned = 0;
 
                     for (int i = 0; i < 40; i++) {
-                        if (parent.getBoardAr()[i].getFieldtype().equals("Property")) {
+                        if (parent.getBoardAr()[i].getFieldType().equals("Property")) {
                             FieldDeed check = (FieldDeed) parent.getBoardAr()[i];
                             if (check.getPairNumber() == pairNumber) {
                                 properties++;
@@ -142,7 +142,7 @@ public class FieldDeed extends FieldPurchaseAble {
 
         for (int i = 0; i < 40; i++) {
 
-            if (parent.getBoardAr()[i].getFieldtype().equals("Property")) {
+            if (parent.getBoardAr()[i].getFieldType().equals("Property")) {
                 FieldDeed check = (FieldDeed) parent.getBoardAr()[i];
                 if (check.getPairNumber() == pairNumber) {
                     properties++;

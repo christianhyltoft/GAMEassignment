@@ -15,7 +15,7 @@ public class FieldTax extends Field {
 
         int totalValue = 0;
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
-            if(parent.getBoardAr()[i].getFieldtype().matches("Property|Ferry|Beverage")){
+            if(parent.getBoardAr()[i].getFieldType().matches("Property|Ferry|Beverage")){
                 FieldPurchaseAble myField = (FieldPurchaseAble) parent.getBoardAr()[i];
                 if(myField.getOwner() == player){
                     totalValue += myField.getBuyprice();
@@ -40,7 +40,7 @@ public class FieldTax extends Field {
         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
 
         for(int i = 0; i < Settings.BOARD_SIZE; i++){
-            if(parent.getBoardAr()[i].getFieldtype().equals("Parking")){
+            if(parent.getBoardAr()[i].getFieldType().equals("Parking")){
                 FieldParking myParking = (FieldParking) parent.getBoardAr()[i];
                 myParking.addMoney(pay);
                 gui.getMyGUI().showMessage(pay + Settings.gameHandlerText[41] + myParking.getTotalMoney());
