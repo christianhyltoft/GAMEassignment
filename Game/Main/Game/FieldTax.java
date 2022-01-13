@@ -24,18 +24,18 @@ public class FieldTax extends Field {
         }
         totalValue = ((totalValue + player.getBalance()) / 10);
 
-        String choice = gui.getMyGUI().getUserSelection("Choose whether to pay the flat rate " + taxAmount + " or 10% of your total net worth which is " + totalValue, "Flat rate", "10%");
+        String choice = gui.getMyGUI().getUserSelection(Settings.gameHandlerText[37] + taxAmount + Settings.gameHandlerText[38] + totalValue, Settings.gameHandlerText[39], "10%");
 
         int pay = 0;
 
-        if(choice.equals("Flat rate")){
+        if(choice.equals(Settings.gameHandlerText[39])){
             pay = taxAmount;
         }
         else{
             pay = totalValue;
         }
 
-        gui.getMyGUI().showMessage("You will now pay " + pay);
+        gui.getMyGUI().showMessage(Settings.gameHandlerText[40] + pay);
         player.changeBalance(-pay);
         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
 
@@ -43,13 +43,13 @@ public class FieldTax extends Field {
             if(parent.getBoardAr()[i].getFieldtype().equals("Parking")){
                 FieldParking myParking = (FieldParking) parent.getBoardAr()[i];
                 myParking.addMoney(pay);
-                gui.getMyGUI().showMessage(pay + " added to parking, total amount now " + myParking.getTotalMoney());
+                gui.getMyGUI().showMessage(pay + Settings.gameHandlerText[41] + myParking.getTotalMoney());
             }
         }
     }
 
     @Override
     public String toString() {
-        return this.name + " If you land on this field, you will feel the wrath of the danish tax authorities!";
+        return this.name + Settings.gameHandlerText[42];
     }
 }
