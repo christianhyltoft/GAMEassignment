@@ -8,6 +8,8 @@ Player<--System: Return result
 Player<-System: Move player
 Player->System: Take action when landing on field
 Player<-System: Return given action and inform player about result
+Player-> System: Do extra action
+Player<-- System: Confirm extra action has been executed
 
 
 @enduml
