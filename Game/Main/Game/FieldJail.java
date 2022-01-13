@@ -1,4 +1,4 @@
-//This field is only really made to
+//This field is only really made, so you can initialise the field.
 public class FieldJail extends Field {
 
     public FieldJail(String name, String FieldType, Board parent) {

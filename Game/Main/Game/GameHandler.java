@@ -175,11 +175,10 @@ public class GameHandler {
                 String propertyName = myGUI.getUserString(Settings.gameHandlerText[24]);
 
                 for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-                    if (myBoard.getBoardAr()[i].getName().equals(propertyName) && myBoard.getBoardAr()[i].getFieldType().equals("Property")) {
-                        FieldDeed property = (FieldDeed) myBoard.getBoardAr()[i];
+                    if (myBoard.getBoardAr()[i].getName().equals(propertyName) && myBoard.getBoardAr()[i].getFieldType().matches("Property|Ferry|Beverage")) {
+                        FieldPurchaseAble property = (FieldPurchaseAble) myBoard.getBoardAr()[i];
                         if (property.getOwner() == myPlayer) {
                             // Just using the auction for now, should be changed later.
-                            property.setOwner(null);
                             property.sell(myPlayer, players, controller);
                             choice2 = propertyName;
                             break;
