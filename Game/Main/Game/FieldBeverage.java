@@ -19,22 +19,22 @@ public class FieldBeverage extends FieldPurchaseAble {
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field for: " + this.buyPrice, "yes", "no");
-            if (buy.equals("yes")) {
+            String buy = gui.getMyGUI().getUserButtonPressed(Settings.gameHandlerText[47] + this.buyPrice, Settings.gameHandlerText[48], Settings.gameHandlerText[49]);
+            if (buy.equals(Settings.gameHandlerText[48])) {
                 setOwner(player);
                 ownable.setOwnerName(player.getName());
                 player.changeBalance(-this.buyPrice);
-                gui.getMyGUI().showMessage("You now own this field");
-                ownable.setRent("The rent is: " + this.currentRent());
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[50]);
+                ownable.setRent(Settings.gameHandlerText[51] + this.currentRent());
                 ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor(), Color.BLACK);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
         } else {
             if (player == owner) {
-                gui.getMyGUI().showMessage("You own this field so nothing happens");
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[52]);
             } else {
                 if (owner.isJailed()) {
-                    gui.getMyGUI().showMessage("The owner is in jail, so you don't have to pay");
+                    gui.getMyGUI().showMessage(Settings.gameHandlerText[53]);
                 } else {
 
 
@@ -57,14 +57,14 @@ public class FieldBeverage extends FieldPurchaseAble {
                         int rentNow = parent.getParent().GetRafflecup().sum() * 200;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.BigRent());
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[54] + this.BigRent());
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                         gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                     } else {
                         int rentNow = parent.getParent().GetRafflecup().sum() * 100;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] + this.currentRent());
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                         gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                     }
@@ -74,11 +74,11 @@ public class FieldBeverage extends FieldPurchaseAble {
     }
 
     private String currentRent() {
-        return "100 times the eyes on the dies rolled when landing on the field";
+        return Settings.gameHandlerText[56];
     }
 
     private String BigRent() {
-        return "100 times the eyes on the dies rolled when landing on the field";
+        return Settings.gameHandlerText[56];
     }
 
     @Override

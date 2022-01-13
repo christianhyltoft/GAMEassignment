@@ -15,7 +15,7 @@ public abstract class Field {
 
     //Methods used in all fields for what happens when the player lands on a given field
     public void landOn(Player player, GUIController gui) {
-        gui.getMyGUI().showMessage("You landed on " + this.name);
+        gui.getMyGUI().showMessage(Settings.gameHandlerText[46] + this.name);
     }
 
     //Auction method in the parent class even though it should probably first be defined in PurchaseAbleField.
@@ -38,7 +38,7 @@ public abstract class Field {
 
 
     public String toString() {
-        return "You landed on: " + this.name;
+        return Settings.gameHandlerText[46] + this.name;
     }
 
     public void setName(String name) {

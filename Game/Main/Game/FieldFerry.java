@@ -56,13 +56,13 @@ public class FieldFerry extends FieldPurchaseAble {
         GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
 
         if (owner == null) {
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field", "yes", "no");
+            String buy = gui.getMyGUI().getUserButtonPressed(Settings.gameHandlerText[47], Settings.gameHandlerText[48], Settings.gameHandlerText[49]);
 
-            if (buy.equals("yes")) {
+            if (buy.equals(Settings.gameHandlerText[48])) {
                 setOwner(player);
                 player.changeBalance(-buyPrice);
-                gui.getMyGUI().showMessage("You now own this field");
-                ownable.setRent("The rent is: " + this.rent);
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[50]);
+                ownable.setRent(Settings.gameHandlerText[51] + this.rent);
                 ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor(), Color.BLACK);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
@@ -71,10 +71,10 @@ public class FieldFerry extends FieldPurchaseAble {
             if (player == owner) {
                 // Udskriv message + messageowned til GUI
                 // Temp message
-                gui.getMyGUI().showMessage("You own this field: " + name + " nothing happens");
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[58] + name + Settings.gameHandlerText[59]);
             } else {
                 if (owner.isJailed()) {
-                    gui.getMyGUI().showMessage("The owner is in jail, so you don't have to pay");
+                    gui.getMyGUI().showMessage(Settings.gameHandlerText[53]);
                 } else {
                     int ferriesOwned = 0;
 
@@ -104,6 +104,6 @@ public class FieldFerry extends FieldPurchaseAble {
 
     @Override
     public String toString() {
-        return "Here at " + this.name + " we offer a wide variety of trips. ";
+        return Settings.gameHandlerText[60] + this.name + Settings.gameHandlerText[61];
     }
 }

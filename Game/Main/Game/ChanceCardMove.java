@@ -22,7 +22,7 @@ public class ChanceCardMove extends ChanceCard {
                 GUI.getMyPlayers()[player.getNumber()].getCar().setPosition(GUI.getMyGUI().getFields()[i]);
                 if (position > player.getPosition()){
                     player.changeBalance(passStart);
-                    GUI.getMyGUI().showMessage("Settings.gameHandlerText[43]");
+                    GUI.getMyGUI().showMessage(Settings.gameHandlerText[43]);
                     GUI.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                 }
                 parent.getParent().getBoardAr()[i].landOn(player, GUI);
