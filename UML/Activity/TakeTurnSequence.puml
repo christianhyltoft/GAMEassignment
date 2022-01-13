@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+Main1 -> Gamehandler :playGame()
+
+loop do
+activate Gamehandler #FFBBBB
+
+loop players.length
+
+Gamehandler -> Player: isPlayerHasLost()
+Player -> Gamehandler: return playerHasLost
+alt players[i].isPlayerHasLost()
+
+
+Gamehandler -> Player: isJailed()
+alt players[i].isJailed()
+Gamehandler -> Gamehandler: jailTurn()
+
+else
+
+Gamehandler -> Gamehandler: roll()
+Gamehandler -> Rafflecup: roll()
+Rafflecup -> Gamehandler: return roll
+Gamehandler -> Rafflecup: takeTurn()
+
+end
+
+Gamehandler -> Rafflecup: detectLoser()
+Rafflecup -> Gamehandler: return Loser
+end
+deactivate
+end
+
+
+Gamehandler -> Gamehandler: detectWinner()
+end
+
+
+
+
+
+@enduml
