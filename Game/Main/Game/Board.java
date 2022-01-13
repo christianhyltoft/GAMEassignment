@@ -3,14 +3,13 @@ import java.io.IOException;
 public class Board {
 
     private Field[] boardAr;
-    private ChanceCardDeck myDeck;
-    private TxtReader reader;
+    final private ChanceCardDeck myDeck;
 
-    private Gamehandler parent;
+    final private Gamehandler parent;
 
     public Board(Gamehandler parent) throws IOException {
         this.parent = parent;
-        reader = new TxtReader();
+        TxtReader reader = new TxtReader();
 
         String[] generator = reader.reader("Fields.txt");
         boardAr = new Field[generator.length];
@@ -53,9 +52,7 @@ public class Board {
         return boardAr;
     }
 
-    public void setBoardAr(Field[] boardAr) {
-        this.boardAr = boardAr;
-    }
+
 
     public ChanceCardDeck getMyDeck() {
         return myDeck;
