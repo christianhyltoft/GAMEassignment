@@ -18,6 +18,6 @@ public class FieldGoToJail extends Field {
     }
 
     public String toString() {
-        return this.name + " could be your worst nightmare :o ";
+        return this.name + Settings.gameHandlerText[68];
     }
 }

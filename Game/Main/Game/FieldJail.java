@@ -11,7 +11,7 @@ public class FieldJail extends Field {
     }
 
     public String toString() {
-        return "You wouldn't wanna go to " + this.name + " trust me...";
+        return Settings.gameHandlerText[69] + this.name + Settings.gameHandlerText[70];
     }
 
 }

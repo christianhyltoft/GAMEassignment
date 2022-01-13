@@ -6,10 +6,10 @@ public class FieldStart extends Field {
 
     @Override
     public void landOn(Player player, GUIController gui) {
-        gui.getMyGUI().showMessage("You landed on the field " + name + "." + fieldType);
+        gui.getMyGUI().showMessage(Settings.gameHandlerText[77] + name + "." + fieldType);
     }
 
     public String toString() {
-        return "This is the " + this.name + " and it all starts here.";
+        return Settings.gameHandlerText[78] + this.name + Settings.gameHandlerText[79];
     }
 }

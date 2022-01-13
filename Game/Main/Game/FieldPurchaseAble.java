@@ -47,15 +47,15 @@ public abstract class FieldPurchaseAble extends Field {
     }
 
     public void sell(Player player, Player[] players, GUIController gui) {
-        gui.getMyGUI().showMessage("This property is now being sold by "+player.getName());
+        gui.getMyGUI().showMessage(Settings.gameHandlerText[74] +player.getName());
         GUI_Ownable ownable;
         for (int i = 0; i < gui.getMyGUI().getFields().length; i++) {
             if (gui.getMyGUI().getFields()[i].getTitle().equals(this.name)) {
                 ownable = (GUI_Ownable) gui.getMyGUI().getFields()[i];
-                String buyer = gui.getMyGUI().getUserString("Enter name of the player who wants to buy the field: ");
+                String buyer = gui.getMyGUI().getUserString(Settings.gameHandlerText[75]);
                 for (int j = 0; j < players.length; j++) {
                     if (players[j].getName().equals(buyer)){
-                        int price=gui.getMyGUI().getUserInteger("Name the price you bargained for: ");
+                        int price=gui.getMyGUI().getUserInteger(Settings.gameHandlerText[76]);
                         this.owner.changeBalance(price);
                         gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                         this.owner=players[j];
