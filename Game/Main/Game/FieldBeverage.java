@@ -89,7 +89,7 @@ public class FieldBeverage extends FieldPurchaseAble {
         gui.getMyGUI().showMessage("This property is now up for auction");
         GUI_Brewery ownable = (GUI_Brewery) gui.getMyGUI().getFields()[player.getPosition()];
 
-        String buyer = "";
+        String buyer;
         while (true) {
             buyer = gui.getMyGUI().getUserString("Figure out amongst yourselves who will buy the field and for what price and enter the player who wants to buy: ");
             for (int i = 0; i < players.length; i++) {
