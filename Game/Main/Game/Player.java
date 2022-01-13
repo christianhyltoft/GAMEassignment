@@ -11,11 +11,12 @@ public class Player {
     //These to values are used to describe the players jail situation and handle the rule of only being able to be jailed for three turns
     private boolean isJailed;
     private int turnsJailed;
-//This values responsibility is to
+    //This values responsibility is to keep track of the amount of get out of jail card the player has
     private int escapeJailCard;
-
+    //This value tracks whether a player has lost or not
     private boolean playerHasLost;
 
+    // Constructor with the standard information and initialising other variables
     Player(int balance, String name, int position) {
         this.balance = balance;
         this.name = name;
@@ -27,17 +28,13 @@ public class Player {
         playerNumber++;
     }
 
-
+    //Method that changes the players current balance with an integer
     public void changeBalance(int change) {
         this.balance += change;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-
-
+    //Game specific method chaining position based on board length.
+    //This method is responsible for avoiding array out of by making sure the players position is always confined within the boards' length.
     public void changePosition(int move) {
         this.position += move;
         if (this.position >= Settings.BOARD_SIZE) {
@@ -47,6 +44,7 @@ public class Player {
         }
     }
 
+    //Standard getters and setters used throughout the program
     public boolean isJailed() {
         return isJailed;
     }
@@ -101,6 +99,10 @@ public class Player {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public int getNumber() {
+        return number;
     }
 
     public Field[] getOwnedFields() {

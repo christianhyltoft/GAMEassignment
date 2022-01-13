@@ -1,12 +1,11 @@
 import gui_fields.*;
 import gui_main.GUI;
 
-import java.awt.*;
 
 public class GUIController {
 
-    private GUI myGUI;
-    private GUI_Player[] myPlayers;
+    final private GUI myGUI;
+    final private GUI_Player[] myPlayers;
 
     GUIController(GUI myGUI, GUI_Player[] myPlayers) {
         this.myGUI = myGUI;
