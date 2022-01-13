@@ -11,6 +11,7 @@ public class FieldDeed extends FieldPurchaseAble {
     private final int rent4;
     private final int rent5;
     private final int houseprice;
+    private final int pairnumber;
 
     private int amountOfHouses;
 
@@ -24,6 +25,7 @@ public class FieldDeed extends FieldPurchaseAble {
         this.rent5 = rent5;
         this.amountOfHouses = 0;
         this.houseprice = houseprice;
+        this.pairnumber = pairNumber;
     }
 
     @Override
@@ -94,7 +96,7 @@ public class FieldDeed extends FieldPurchaseAble {
         gui.getMyGUI().showMessage(Settings.gameHandlerText[64]);
         GUI_Ownable ownable = (GUI_Ownable) gui.getMyGUI().getFields()[player.getPosition()];
 
-        String buyer = "";
+        String buyer;
         while (true) {
             buyer = gui.getMyGUI().getUserString(Settings.gameHandlerText[65]);
             for (int i = 0; i < players.length; i++) {
@@ -135,6 +137,21 @@ public class FieldDeed extends FieldPurchaseAble {
     }
 
     public void buildHouse(Player player, GUIController gui) {
+        if(this.amountOfHouses>=5){
+            gui.getMyGUI().showMessage("You already have 5 houses there");
+            return;
+        }
+
+
+        GUI_Street ownable = null;
+        for (int i = 0; i < Settings.BOARD_SIZE; i++) {
+            if (parent.getBoardAr()[i].getName().equals(this.name)) {
+                ownable = (GUI_Street) gui.getMyGUI().getFields()[i];
+
+            }
+
+        }
+
 
         int properties = 0;
         int propertiesOwned = 0;
@@ -146,16 +163,58 @@ public class FieldDeed extends FieldPurchaseAble {
                 FieldDeed check = (FieldDeed) parent.getBoardAr()[i];
                 if (check.getPairNumber() == pairNumber) {
                     properties++;
+
                     if (check.getOwner() == player) {
                         propertiesOwned++;
                     }
-                    if (propertiesOwned == properties){
 
-
-                    }
                 }
             }
         }
+        if (propertiesOwned == properties) {
+            series = new FieldDeed[properties];
+            int arrCount = 0;
+            for (int i = 0; i < 40; i++) {
+                try {
+                    FieldDeed temp = (FieldDeed) parent.getBoardAr()[i];
+                    if (temp.pairnumber == this.pairnumber) {
+                        series[arrCount] = temp;
+                        arrCount++;
+
+                    }
+
+
+                } catch (Exception e) {
+
+                }
+
+
+            }
+            int averagehouses = 0;
+            for (int i = 0; i < series.length; i++) {
+                averagehouses += series[i].amountOfHouses;
+
+            }
+            averagehouses = averagehouses/series.length;
+            if (averagehouses >= this.amountOfHouses) {
+                gui.getMyGUI().showMessage("You you now built one house for the price of: " + this.houseprice);
+                this.amountOfHouses++;
+                if (this.amountOfHouses == 5) {
+                    ownable.setHotel(true);
+
+                } else {
+                    ownable.setHouses(this.amountOfHouses);
+                }
+
+            } else {
+                gui.getMyGUI().showMessage("You have to build evenly");
+            }
+
+
+        } else {
+            gui.getMyGUI().showMessage("You do not have all the properties in that series");
+        }
+        ownable.setRent("the rent is now: "+currentRent());
     }
 
 

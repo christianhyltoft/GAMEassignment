@@ -207,6 +207,17 @@ public class GameHandler {
 
                 }
 
+            } else if(Settings.gameHandlerText[34].equals(choice)) {
+                String property=getMyGUI().getUserString("Enter the property you want to build on");
+                for (int i = 0; i < Settings.BOARD_SIZE; i++) {
+                    if (this.myBoard.getBoardAr()[i].getName().equals(property)){
+                        FieldDeed field=(FieldDeed) this.myBoard.getBoardAr()[i];
+                        field.buildHouse(myPlayer,this.controller);
+
+                    }
+
+                }
+
             }
             choice = getChoice(myPlayer);
         }
