@@ -30,14 +30,13 @@ end
 Gamehandler -> Rafflecup: detectLoser()
 Rafflecup -> Gamehandler: return Loser
 end
-deactivate
+deactivate Gamehandler
+
 end
 
-
+activate Gamehandler
 Gamehandler -> Gamehandler: detectWinner()
 end
-
-
 
 
 
