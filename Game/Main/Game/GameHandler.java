@@ -136,7 +136,7 @@ public class GameHandler {
     //This is used to take the rest of the players turn after rolling the dice.
     //This is here the landOn method gets called and the player reacts to the outcome.
     private void takeTurn(Player player, Rafflecup rafflecup) {
-        myGUI.showMessage(Settings.gameHandlerText[20] + player.getName());
+        myGUI.showMessage(Settings.gameHandlerText[20]+" " + player.getName());
         int positionFromTurnBefore = player.getPosition();
         player.changePosition(rafflecup.sum());
 
