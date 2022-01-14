@@ -199,6 +199,9 @@ public class FieldDeed extends FieldPurchaseAble {
             averagehouses = averagehouses/series.length;
             if (averagehouses >= this.amountOfHouses) {
                 gui.getMyGUI().showMessage("You you now built one house for the price of: " + this.houseprice);
+                player.changeBalance(-this.houseprice);
+                gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+
                 this.amountOfHouses++;
                 if (this.amountOfHouses == 5) {
                     ownable.setHotel(true);
