@@ -126,6 +126,8 @@ title __GAME's Class Diagram__\n
         - rent3 : int
         - rent4 : int
         - rent5 : int
+        -parinumber: int
+
         + FieldDeed()
         + buildHouse()
         + currentRent()
@@ -276,7 +278,6 @@ title __GAME's Class Diagram__\n
   FieldJail -up-|> Field
   FieldParking -up-|> Field
   FieldPurchaseAble -up-|> Field
-  FieldPurchaseAble"1" o-- "0..1"Player : owner
   FieldStart -up-|> Field
   FieldTax -up-|> Field
   ChanceCardDeck"1" o-- "1..*"ChanceCard
