@@ -106,7 +106,7 @@ public class GameHandler {
                 player.setTurnsJailed(0);
                 roll(player);
             } else {
-                myGUI.getUserButtonPressed(Settings.gameHandlerText[15] + player.getName(), Settings.gameHandlerText[16]);
+                myGUI.getUserButtonPressed(Settings.gameHandlerText[15] + " " + player.getName(), Settings.gameHandlerText[16]);
                 rafflecup.roll();
                 myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
 
@@ -116,7 +116,7 @@ public class GameHandler {
                     player.setTurnsJailed(0);
                     takeTurn(player, rafflecup);
                 } else {
-                    myGUI.showMessage(Settings.gameHandlerText[18] + player.getName());
+                    myGUI.showMessage(Settings.gameHandlerText[18] + " " + player.getName());
                     player.setTurnsJailed(player.getTurnsJailed() + 1);
                 }
             }
@@ -127,7 +127,7 @@ public class GameHandler {
     //This method also calls the takeTurn() to keep the players turn going.
     //This the other option of how a turn can play out.
     private void roll(Player player) {
-        myGUI.getUserButtonPressed(Settings.gameHandlerText[19] + player.getName(), Settings.gameHandlerText[16]);
+        myGUI.getUserButtonPressed(Settings.gameHandlerText[19] + " " + player.getName(), Settings.gameHandlerText[16]);
         rafflecup.roll();
         myGUI.setDice(rafflecup.getCup()[0].getValue(), rafflecup.getCup()[1].getValue());
         takeTurn(player, rafflecup);
@@ -136,13 +136,13 @@ public class GameHandler {
     //This is used to take the rest of the players turn after rolling the dice.
     //This is here the landOn method gets called and the player reacts to the outcome.
     private void takeTurn(Player player, Rafflecup rafflecup) {
-        myGUI.showMessage(Settings.gameHandlerText[20]+" " + player.getName());
+        myGUI.showMessage(Settings.gameHandlerText[20]+ " " + player.getName());
         int positionFromTurnBefore = player.getPosition();
         player.changePosition(rafflecup.sum());
 
         gui_players[player.getNumber()].getCar().setPosition(myGUI.getFields()[player.getPosition()]);
         if (player.getPosition() < positionFromTurnBefore) {
-            myGUI.showMessage(Settings.gameHandlerText[21] + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[21] + " " + player.getName());
             player.changeBalance(4000);
             gui_players[player.getNumber()].setBalance(player.getBalance());
         }
@@ -153,7 +153,7 @@ public class GameHandler {
         }
 
         if (rafflecup.sameFacesUpOnAllDice()) {
-            myGUI.showMessage(Settings.gameHandlerText[22] + player.getName());
+            myGUI.showMessage(Settings.gameHandlerText[22] + " " + player.getName());
             roll(player);
         }
 
@@ -241,7 +241,7 @@ public class GameHandler {
     //This method is a help method to endOfTurnChoice.
     //This method asks the player what he wants to do and calculates whether the player is able to do the action or not.
     private String getChoice(Player myPlayer) {
-        String choice = myGUI.getUserSelection(Settings.gameHandlerText[30] + myPlayer.getName() + Settings.gameHandlerText[31], Settings.gameHandlerText[32], Settings.gameHandlerText[23], Settings.gameHandlerText[33], Settings.gameHandlerText[26], Settings.gameHandlerText[34]);
+        String choice = myGUI.getUserSelection(Settings.gameHandlerText[30] + " " + myPlayer.getName() + Settings.gameHandlerText[31], Settings.gameHandlerText[32], Settings.gameHandlerText[23], Settings.gameHandlerText[33], Settings.gameHandlerText[26], Settings.gameHandlerText[34]);
 
         boolean check = false;
 

@@ -73,7 +73,7 @@ public class FieldDeed extends FieldPurchaseAble {
                         int rentNow = currentRent() * 2;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] + rentNow);
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] + " " + rentNow);
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                         gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                         ownable.setRent("Rent: "+rentNow);
@@ -81,7 +81,7 @@ public class FieldDeed extends FieldPurchaseAble {
                         int rentNow = currentRent();
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] + rentNow);
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] + " " + rentNow);
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                         gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                     }
