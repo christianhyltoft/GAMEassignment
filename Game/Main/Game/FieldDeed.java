@@ -69,13 +69,14 @@ public class FieldDeed extends FieldPurchaseAble {
                         }
                     }
 
-                    if (propertiesOwned == properties) {
+                    if (propertiesOwned == properties && this.amountOfHouses==0) {
                         int rentNow = currentRent() * 2;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
                         gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] + rentNow);
                         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                         gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                        ownable.setRent("Rent: "+rentNow);
                     } else {
                         int rentNow = currentRent();
                         owner.changeBalance(rentNow);
