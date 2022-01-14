@@ -241,7 +241,7 @@ public class GameHandler {
     //This method is a help method to endOfTurnChoice.
     //This method asks the player what he wants to do and calculates whether the player is able to do the action or not.
     private String getChoice(Player myPlayer) {
-        String choice = myGUI.getUserSelection(Settings.gameHandlerText[30] + myPlayer.getName() + Settings.gameHandlerText[31], Settings.gameHandlerText[32], Settings.gameHandlerText[23], Settings.gameHandlerText[33], Settings.gameHandlerText[26], Settings.gameHandlerText[34]);
+        String choice = myGUI.getUserSelection(Settings.gameHandlerText[30] + "" + myPlayer.getName() + Settings.gameHandlerText[31], Settings.gameHandlerText[32], Settings.gameHandlerText[23], Settings.gameHandlerText[33], Settings.gameHandlerText[26], Settings.gameHandlerText[34]);
 
         boolean check = false;
 
