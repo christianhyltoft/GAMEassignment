@@ -81,20 +81,23 @@ public class FieldFerry extends FieldPurchaseAble {
                     for (int i = 0; i < 40; i++) {
                         if (parent.getBoardAr()[i].getFieldType().equals("Ferry")) {
                             FieldFerry check = (FieldFerry) parent.getBoardAr()[i];
+
                             if (check.getPairNumber() == pairNumber) {
-                                if (check.getOwner() == player) {
+                                if (check.getOwner() == this.owner) {
                                     ferriesOwned++;
                                 }
                             }
                         }
                     }
+                    int temprent = this.rent;
 
                     for (int i = 0; i < ferriesOwned - 1; i++) {
-                        rent = rent * 2;
+                        temprent *= 2;
                     }
 
-                    owner.changeBalance(rent);
-                    player.changeBalance(-rent);
+                    owner.changeBalance(temprent);
+                    player.changeBalance(-temprent);
+                    gui.getMyGUI().showMessage("You must pay: " + temprent + "Since: " + this.owner.getName() + " owns " + ferriesOwned + " " + this.fieldType);
                     gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                     gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
                 }

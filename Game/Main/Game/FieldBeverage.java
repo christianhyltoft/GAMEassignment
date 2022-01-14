@@ -46,28 +46,27 @@ public class FieldBeverage extends FieldPurchaseAble {
                             FieldBeverage check = (FieldBeverage) parent.getBoardAr()[i];
                             if (check.getPairNumber() == pairNumber) {
                                 beverages++;
-                                if (check.getOwner() == player) {
+                                if (check.getOwner() == this.owner) {
                                     beveragesOwned++;
                                 }
                             }
                         }
                     }
 
+                    int rentNow;
                     if (beverages == beveragesOwned) {
-                        int rentNow = parent.getParent().GetRafflecup().sum() * 200;
+                        rentNow = parent.getParent().GetRafflecup().sum() * 200;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[54] + this.BigRent());
-                        gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[54] +" "+ this.BigRent());
                     } else {
-                        int rentNow = parent.getParent().GetRafflecup().sum() * 100;
+                        rentNow = parent.getParent().GetRafflecup().sum() * 100;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] + this.currentRent());
-                        gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] +" "+ this.currentRent());
                     }
+                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                 }
             }
         }
