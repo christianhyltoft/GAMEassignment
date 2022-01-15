@@ -183,7 +183,7 @@ public class GameHandler {
                             try {
                                 FieldDeed deed = (FieldDeed) myBoard.getBoardAr()[i];
                                 if (deed.getAmountOfHouses() > 0) {
-                                    getMyGUI().showMessage("You cant build sell a property with a house on it");
+                                    getMyGUI().showMessage(Settings.gameHandlerText[80]);
                                     canSell = false;
 
                                 }
@@ -223,7 +223,7 @@ public class GameHandler {
                 }
 
             } else if (Settings.gameHandlerText[34].equals(choice)) {
-                String property = getMyGUI().getUserString("Enter the property you want to build on");
+                String property = getMyGUI().getUserString(Settings.gameHandlerText[81]);
                 for (int i = 0; i < Settings.BOARD_SIZE; i++) {
                     if (this.myBoard.getBoardAr()[i].getName().equals(property)) {
                         FieldDeed field = (FieldDeed) this.myBoard.getBoardAr()[i];
