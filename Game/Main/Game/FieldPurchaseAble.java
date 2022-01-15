@@ -75,13 +75,13 @@ public abstract class FieldPurchaseAble extends Field {
             bidder = myIterator.next();
 
             if(bidder == highestBidder){
-                gui.getMyGUI().showMessage(bidder.getName() + Settings.gameHandlerText[84]);
+                gui.getMyGUI().showMessage(bidder.getName() + Settings.gameHandlerText[82]);
                 break;
             }
 
-            int playerBid = Integer.parseInt(gui.getMyGUI().getUserString(bidder.getName() +  Settings.gameHandlerText[85] + price));
+            int playerBid = Integer.parseInt(gui.getMyGUI().getUserString(bidder.getName() +  Settings.gameHandlerText[83] + " " + price));
             if(playerBid < price){
-                gui.getMyGUI().showMessage(bidder.getName() + Settings.gameHandlerText[86]);
+                gui.getMyGUI().showMessage(bidder.getName() + " " + Settings.gameHandlerText[84]);
                 myIterator.remove();
             }
             else{
