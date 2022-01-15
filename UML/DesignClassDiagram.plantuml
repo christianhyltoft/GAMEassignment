@@ -35,7 +35,15 @@ title __GAME's Class Diagram__\n
     class ChanceCardGetOutOfJail {
         + ChanceCardGetOutOfJail()
     }
-class ChanceCardFerry {
+
+    class ChanceCardMoveBackOrForward {
+    -moveAmount: int
+    + ChanceCardMoveBackOrForward()
+    + DrawCard()
+
+        }
+
+    class ChanceCardFerry {
         - myFields: Field[]
         + ChanceCardFerry()
         + DrawCard()
@@ -271,19 +279,20 @@ class ChanceCardFerry {
   ChanceCardMatadorGrant -up-|> ChanceCard
   ChanceCardMove -up-|> ChanceCard
   ChanceCardFerry -|> ChanceCard
+  ChanceCardMoveBackOrForward -|> ChanceCard
   ChanceCardPayBasedOnProperty -up-|> ChanceCard
   ChanceCardPayOrReceive -up-|> ChanceCard
   ChanceCardReceiveMoneyFromPlayers -up-|> ChanceCard
-  Field"40" o-- "1"Board : parent
+  Field"40" --o "1"Board
   FieldBeverage -up-|> FieldPurchaseAble
   FieldChance -up-|> Field
   FieldDeed -up-|> FieldPurchaseAble
   FieldFerry -up-|> FieldPurchaseAble
-  FieldGoToJail -up-|> Field
-  FieldJail -up-|> Field
+  Field <|- FieldGoToJail
+  FieldJail -|> Field
   FieldParking -up-|> Field
   FieldPurchaseAble -up-|> Field
-  FieldStart -up-|> Field
+  FieldStart -|> Field
   FieldTax -up-|> Field
   ChanceCardDeck"1" o-- "1..*"ChanceCard
   Gamehandler"1" o-- "1"GUIController : controller
