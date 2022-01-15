@@ -1,5 +1,5 @@
 public class ChanceCardPayBasedOnProperty extends ChanceCard {
-    private int houseAmount;
+    private final int houseAmount;
     private int hotelAmount;
 
 

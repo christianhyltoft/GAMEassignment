@@ -10,7 +10,7 @@ public class FieldParking extends Field {
     @Override
     public void landOn(Player player, GUIController gui) {
         super.landOn(player, gui);
-        gui.getMyGUI().showMessage("You receive " + totalMoney);
+        gui.getMyGUI().showMessage(Settings.gameHandlerText[71] + totalMoney);
         player.changeBalance(totalMoney);
         gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
         totalMoney = 0;
@@ -25,6 +25,6 @@ public class FieldParking extends Field {
     }
 
     public String toString() {
-        return "Here at " + this.name + " you might get lucky with the last parking spot";
+        return Settings.gameHandlerText[72] + this.name + Settings.gameHandlerText[73];
     }
 }

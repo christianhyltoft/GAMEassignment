@@ -36,6 +36,18 @@ title __GAME's Class Diagram__\n
         + ChanceCardGetOutOfJail()
     }
 
+    class ChanceCardMoveBackOrForward {
+    -moveAmount: int
+    + ChanceCardMoveBackOrForward()
+    + DrawCard()
+
+        }
+
+    class ChanceCardFerry {
+        - myFields: Field[]
+        + ChanceCardFerry()
+        + DrawCard()
+    }
   
 
     class ChanceCardMatadorGrant {
@@ -126,6 +138,8 @@ title __GAME's Class Diagram__\n
         - rent3 : int
         - rent4 : int
         - rent5 : int
+        -parinumber: int
+
         + FieldDeed()
         + buildHouse()
         + currentRent()
@@ -261,27 +275,29 @@ title __GAME's Class Diagram__\n
 
   Board"1" o-- "1"ChanceCardDeck : myDeck
   Board"1" o-- "1"TxtReader : reader
-  ChanceCardGetOutOfJail -up-|> ChanceCard
+  ChanceCard <|- ChanceCardGetOutOfJail
   ChanceCardMatadorGrant -up-|> ChanceCard
   ChanceCardMove -up-|> ChanceCard
+  ChanceCardFerry -|> ChanceCard
+  ChanceCardMoveBackOrForward -|> ChanceCard
   ChanceCardPayBasedOnProperty -up-|> ChanceCard
   ChanceCardPayOrReceive -up-|> ChanceCard
   ChanceCardReceiveMoneyFromPlayers -up-|> ChanceCard
-  Field"40" o-- "1"Board : parent
+  Field"40" --o "1"Board
   FieldBeverage -up-|> FieldPurchaseAble
   FieldChance -up-|> Field
   FieldDeed -up-|> FieldPurchaseAble
   FieldFerry -up-|> FieldPurchaseAble
-  FieldGoToJail -up-|> Field
-  FieldJail -up-|> Field
+  Field <|- FieldGoToJail
+  FieldJail -|> Field
   FieldParking -up-|> Field
   FieldPurchaseAble -up-|> Field
-  FieldPurchaseAble"1" o-- "0..1"Player : owner
-  FieldStart -up-|> Field
+  FieldStart -|> Field
   FieldTax -up-|> Field
   ChanceCardDeck"1" o-- "1..*"ChanceCard
   Gamehandler"1" o-- "1"GUIController : controller
   Gamehandler"1" o-- "1"Board : myboard
   Gamehandler"1" o-- "1"Rafflecup : rafflecup
   Rafflecup"1" o-- "2"Die
+  Gamehandler"1" o-- "3..6"Player
 @enduml

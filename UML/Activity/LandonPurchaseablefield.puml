@@ -6,7 +6,7 @@ if "owned" then
    --> [true] "Pay the owner "
    -down->(*)
 else
--->[false]  "Do you want to buy this ferry?"
+-->[false]  "Do you want to buy this field?"
 if ""
 --> [no] "ok"
 ->(*)

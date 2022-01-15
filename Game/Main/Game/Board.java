@@ -1,16 +1,17 @@
 import java.io.IOException;
 
+//This class is a creator class used for creating the board that the game is played on.
+// This class is having both all the fields and the deck of chance-cards.
 public class Board {
+//The two important values being stored in this class
+    private final Field[] boardAr;
+    final private ChanceCardDeck myDeck;
 
-    private Field[] boardAr;
-    private ChanceCardDeck myDeck;
-    private TxtReader reader;
+    final private GameHandler parent;
 
-    private Gamehandler parent;
-
-    public Board(Gamehandler parent) throws IOException {
+    public Board(GameHandler parent) throws IOException {
         this.parent = parent;
-        reader = new TxtReader();
+        TxtReader reader = new TxtReader();
 
         String[] generator = reader.reader("Fields.txt");
         boardAr = new Field[generator.length];
@@ -21,6 +22,7 @@ public class Board {
         myDeck = new ChanceCardDeck(this, boardAr);
     }
 
+    //This method creates the fields used to play the game and puts them boardAr[]
     private Field makeField(int i, String[] generator) {
         String[] generate1field = generator[i].split("-");
         switch (generate1field[0]) {
@@ -49,19 +51,16 @@ public class Board {
 
     }
 
+    //Standard getter methods
     public Field[] getBoardAr() {
         return boardAr;
-    }
-
-    public void setBoardAr(Field[] boardAr) {
-        this.boardAr = boardAr;
     }
 
     public ChanceCardDeck getMyDeck() {
         return myDeck;
     }
 
-    public Gamehandler getParent() {
+    public GameHandler getParent() {
         return parent;
     }
 }

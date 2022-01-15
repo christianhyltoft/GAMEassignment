@@ -1,16 +1,15 @@
 import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.util.Random;
 
 public class ChanceCardDeck {
 
-    private Field[] myFields;
+    private final Field[] myFields;
 
 
 
     private ChanceCard[] chanceCardDeck;
     private int count;
-    private Board parent;
+    private final Board parent;
 
     public ChanceCardDeck(Board parent, Field[] myFields) {
         this.parent = parent;

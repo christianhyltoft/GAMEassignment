@@ -1,9 +1,6 @@
 import gui_fields.GUI_Brewery;
-import gui_fields.GUI_Shipping;
-import gui_fields.GUI_Street;
 
 import java.awt.*;
-
 public class FieldBeverage extends FieldPurchaseAble {
     private int rollAmount;
     private int ownedAmount;
@@ -22,22 +19,22 @@ public class FieldBeverage extends FieldPurchaseAble {
 
         if (owner == null) {
             //GUI skal spørge om man vil købe grunden eller ej
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field for: " + this.buyPrice, "yes", "no");
-            if (buy.equals("yes")) {
+            String buy = gui.getMyGUI().getUserButtonPressed(Settings.gameHandlerText[47] + this.buyPrice, Settings.gameHandlerText[48], Settings.gameHandlerText[49]);
+            if (buy.equals(Settings.gameHandlerText[48])) {
                 setOwner(player);
                 ownable.setOwnerName(player.getName());
                 player.changeBalance(-this.buyPrice);
-                gui.getMyGUI().showMessage("You now own this field");
-                ownable.setRent("The rent is: " + this.currentRent());
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[50]);
+                ownable.setRent(Settings.gameHandlerText[51] + this.currentRent());
                 ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor(), Color.BLACK);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
         } else {
             if (player == owner) {
-                gui.getMyGUI().showMessage("You own this field so nothing happens");
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[52]);
             } else {
                 if (owner.isJailed()) {
-                    gui.getMyGUI().showMessage("The owner is in jail, so you don't have to pay");
+                    gui.getMyGUI().showMessage(Settings.gameHandlerText[53]);
                 } else {
 
 
@@ -45,64 +42,63 @@ public class FieldBeverage extends FieldPurchaseAble {
                     int beveragesOwned = 0;
 
                     for (int i = 0; i < 40; i++) {
-                        if (parent.getBoardAr()[i].getFieldtype().equals("Beverage")) {
+                        if (parent.getBoardAr()[i].getFieldType().equals("Beverage")) {
                             FieldBeverage check = (FieldBeverage) parent.getBoardAr()[i];
                             if (check.getPairNumber() == pairNumber) {
                                 beverages++;
-                                if (check.getOwner() == player) {
+                                if (check.getOwner() == this.owner) {
                                     beveragesOwned++;
                                 }
                             }
                         }
                     }
 
+                    int rentNow;
                     if (beverages == beveragesOwned) {
-                        int rentNow = parent.getParent().getRafflecup().sum() * 200;
+                        rentNow = parent.getParent().GetRafflecup().sum() * 200;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + " owns all the beverages, you now owe him " + this.BigRent());
-                        gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[54] +" "+ this.BigRent());
                     } else {
-                        int rentNow = parent.getParent().getRafflecup().sum() * 100;
+                        rentNow = parent.getParent().GetRafflecup().sum() * 100;
                         owner.changeBalance(rentNow);
                         player.changeBalance(-rentNow);
-                        gui.getMyGUI().showMessage(this.owner.getName() + " owns this field, you now owe him " + this.currentRent());
-                        gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
-                        gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
+                        gui.getMyGUI().showMessage(this.owner.getName() + Settings.gameHandlerText[55] +" "+ this.currentRent());
                     }
+                    gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
+                    gui.getMyPlayers()[this.owner.getNumber()].setBalance(this.owner.getBalance());
                 }
             }
         }
     }
 
     private String currentRent() {
-        return "100 times the eyes on the dies rolled when landing on the field";
+        return Settings.gameHandlerText[56];
     }
 
     private String BigRent() {
-        return "100 times the eyes on the dies rolled when landing on the field";
+        return Settings.gameHandlerText[56];
     }
 
     @Override
     public void auction(Player player, Player[] players, GUIController gui) {
         if (this.owner != null)
             return;
-        gui.getMyGUI().showMessage("This property is now up for auction");
+        gui.getMyGUI().showMessage(Settings.gameHandlerText[64]);
         GUI_Brewery ownable = (GUI_Brewery) gui.getMyGUI().getFields()[player.getPosition()];
 
-        String buyer = "";
+        String buyer;
         while (true) {
-            buyer = gui.getMyGUI().getUserString("Figure out amongst yourselves who will buy the field and for what price and enter the player who wants to buy: ");
+            buyer = gui.getMyGUI().getUserString(Settings.gameHandlerText[65]);
             for (int i = 0; i < players.length; i++) {
                 if (players[i].getName().equals(buyer)) {
-                    int price = gui.getMyGUI().getUserInteger("Name the price you bargained for");
+                    int price = gui.getMyGUI().getUserInteger(Settings.gameHandlerText[66]);
                     this.owner = players[i];
                     players[i].changeBalance(-price);
                     gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
                     ownable.setOwnerName(buyer);
                     ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor(), Color.BLACK);
-                    gui.getMyGUI().showMessage(players[i].getName() + " now owns this field");
+                    gui.getMyGUI().showMessage(players[i].getName() + Settings.gameHandlerText[67]);
                     return;
 
                 }
@@ -111,11 +107,11 @@ public class FieldBeverage extends FieldPurchaseAble {
         }
     }
 
-    ;
+
 
     @Override
     public String toString() {
-        return "This is a danish classic, come and try a " + this.name + " and enjoy";
+        return Settings.gameHandlerText[62] + this.name + Settings.gameHandlerText[63];
     }
 
 

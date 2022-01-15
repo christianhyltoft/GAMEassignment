@@ -9,7 +9,7 @@ public class FieldGoToJail extends Field {
         super.landOn(player, gui);
 
         for(int i = 0; i < parent.getBoardAr().length; i++){
-            if(parent.getBoardAr()[i].getFieldtype().equals("Jail")){
+            if(parent.getBoardAr()[i].getFieldType().equals("Jail")){
                 player.setPosition(i);
                 gui.getMyPlayers()[player.getNumber()].getCar().setPosition(gui.getMyGUI().getFields()[i]);
                 player.setJailed(true);
@@ -18,6 +18,6 @@ public class FieldGoToJail extends Field {
     }
 
     public String toString() {
-        return this.name + " could be your worst nightmare :o ";
+        return this.name + Settings.gameHandlerText[68];
     }
 }

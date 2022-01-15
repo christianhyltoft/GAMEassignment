@@ -7,7 +7,7 @@ public class FirsteGameplayTest {
 
     @Test
     public void playgame() throws IOException {
-        Gamehandler gtset= new Gamehandler();
+        GameHandler gtset= new GameHandler();
         gtset.playGame();
     }
 }

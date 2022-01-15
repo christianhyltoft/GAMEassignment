@@ -1,5 +1,5 @@
 public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
-    private int moneyAmount;
+    private final int moneyAmount;
 
     public ChanceCardReceiveMoneyFromPlayers(int moneyAmount, String chanceCardText, ChanceCardDeck parent) {
         super(chanceCardText, parent);
@@ -13,7 +13,7 @@ public class ChanceCardReceiveMoneyFromPlayers extends ChanceCard {
 
         for (int i = 0; i < myPlayers.length; i++) {
             if (myPlayers[i] != myPlayer) {
-                GUI.getMyGUI().showMessage(myPlayers[i].getName() + " gives " + myPlayer.getName() + " " + moneyAmount);
+                GUI.getMyGUI().showMessage(myPlayers[i].getName() + Settings.gameHandlerText[45] + myPlayer.getName() + " " + moneyAmount);
                 myPlayer.changeBalance(moneyAmount);
                 myPlayers[i].changeBalance(-moneyAmount);
                 GUI.getMyPlayers()[i].setBalance(myPlayer.getBalance());

@@ -1,6 +1,5 @@
 public abstract class ChanceCard {
 
-    protected int chanceCardAmount;
     protected String chanceCardText;
     protected ChanceCardDeck parent;
 

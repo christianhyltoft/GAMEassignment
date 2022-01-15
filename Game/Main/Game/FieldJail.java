@@ -1,3 +1,4 @@
+//This field is only really made, so you can initialise the field.
 public class FieldJail extends Field {
 
     public FieldJail(String name, String FieldType, Board parent) {
@@ -10,7 +11,7 @@ public class FieldJail extends Field {
     }
 
     public String toString() {
-        return "You wouldnt wanna go to " + this.name + " trust me...";
+        return Settings.gameHandlerText[69] + this.name + Settings.gameHandlerText[70];
     }
 
 }

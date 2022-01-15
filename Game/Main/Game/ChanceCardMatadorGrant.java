@@ -1,5 +1,5 @@
 public class ChanceCardMatadorGrant extends ChanceCard {
-    private int moneyAmount;
+    private final int moneyAmount;
 
     public ChanceCardMatadorGrant(int moneyAmount, String chanceCardText, ChanceCardDeck parent) {
         super(chanceCardText, parent);
@@ -12,7 +12,7 @@ public class ChanceCardMatadorGrant extends ChanceCard {
         if (myPlayer.getBalance() <= 15000) {
             myPlayer.changeBalance(moneyAmount);
         } else {
-            System.out.println("your total value exceeds 15000kr, therefore you will not receive the Matador grant of 40000kr. What a shame");
+            GUI.getMyGUI().showMessage(Settings.gameHandlerText[44]);
         }
     }
 }

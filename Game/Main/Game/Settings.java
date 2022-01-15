@@ -1,10 +1,19 @@
 import gui_fields.*;
 
 import java.awt.*;
-
+import java.io.IOException;
+// A class of information about the game so you can chance information and rules about the game in one file instead of having to go through many files.
 public final class Settings {
 
     private Settings() {
+
+
+    }
+
+    public static void gameTextInit() throws IOException {
+        TxtReader myTxtReader = new TxtReader();
+
+        gameHandlerText = myTxtReader.reader("GameText");
 
     }
 
@@ -18,6 +27,9 @@ public final class Settings {
 
     //Jail
     public static final int JAIL_RELEASE_FEE = 1000;
+
+    //GamehandlerText
+    public static String[] gameHandlerText;
 
 
     public static final String ChanceCardDataBase2 = "ChanceCards.txt";
@@ -67,4 +79,7 @@ public final class Settings {
             new GUI_Tax("Extra-\nordinary\nStateTax", "Pay your tax\n10% or 2000", "Pay extraordinary\nStateTax: kr. 2000,-", Color.GRAY, Color.BLACK),
             new GUI_Street("Rådhuspladsen", "Cost:  8000", "Rådhuspladsen", "Rent:  1000", new Color(150, 60, 150), Color.WHITE),
     };
+
+
 }
+

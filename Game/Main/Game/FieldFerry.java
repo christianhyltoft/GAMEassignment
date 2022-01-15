@@ -1,5 +1,4 @@
 import gui_fields.GUI_Shipping;
-import gui_fields.GUI_Street;
 
 import java.awt.*;
 
@@ -13,8 +12,33 @@ public class FieldFerry extends FieldPurchaseAble {
 
     @Override
     public void auction(Player player, Player[] players, GUIController gui) {
-        super.auction(player, players, gui);
+        if (this.owner != null)
+            return;
+        gui.getMyGUI().showMessage(Settings.gameHandlerText[64]);
+        GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
+
+        String buyer = "";
+        while (true) {
+            buyer = gui.getMyGUI().getUserString(Settings.gameHandlerText[65]);
+            for (int i = 0; i < players.length; i++) {
+                if (players[i].getName().equals(buyer)) {
+                    int price = gui.getMyGUI().getUserInteger(Settings.gameHandlerText[66]);
+                    this.owner = players[i];
+                    players[i].changeBalance(-price);
+                    gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
+                    ownable.setOwnerName(buyer);
+                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor(), Color.BLACK);
+                    gui.getMyGUI().showMessage(players[i].getName() + Settings.gameHandlerText[67]);
+                    return;
+
+                }
+
+            }
+        }
+
     }
+
+    ;
 
 
     public int getRent() {
@@ -32,13 +56,13 @@ public class FieldFerry extends FieldPurchaseAble {
         GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
 
         if (owner == null) {
-            String buy = gui.getMyGUI().getUserButtonPressed("Do you want to buy this field", "yes", "no");
+            String buy = gui.getMyGUI().getUserButtonPressed(Settings.gameHandlerText[47], Settings.gameHandlerText[48], Settings.gameHandlerText[49]);
 
-            if (buy.equals("yes")) {
+            if (buy.equals(Settings.gameHandlerText[48])) {
                 setOwner(player);
                 player.changeBalance(-buyPrice);
-                gui.getMyGUI().showMessage("You now own this field");
-                ownable.setRent("The rent is: " + this.rent);
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[50]);
+                ownable.setRent(Settings.gameHandlerText[51] + this.rent);
                 ownable.setBorder(gui.getMyPlayers()[player.getNumber()].getPrimaryColor(), Color.BLACK);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
             }
@@ -47,30 +71,33 @@ public class FieldFerry extends FieldPurchaseAble {
             if (player == owner) {
                 // Udskriv message + messageowned til GUI
                 // Temp message
-                gui.getMyGUI().showMessage("You own this field: " + name + " nothing happens");
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[58] + name + Settings.gameHandlerText[59]);
             } else {
                 if (owner.isJailed()) {
-                    gui.getMyGUI().showMessage("The owner is in jail, so you don't have to pay");
+                    gui.getMyGUI().showMessage(Settings.gameHandlerText[53]);
                 } else {
                     int ferriesOwned = 0;
 
                     for (int i = 0; i < 40; i++) {
-                        if (parent.getBoardAr()[i].getFieldtype().equals("Ferry")) {
+                        if (parent.getBoardAr()[i].getFieldType().equals("Ferry")) {
                             FieldFerry check = (FieldFerry) parent.getBoardAr()[i];
+
                             if (check.getPairNumber() == pairNumber) {
-                                if (check.getOwner() == player) {
+                                if (check.getOwner() == this.owner) {
                                     ferriesOwned++;
                                 }
                             }
                         }
                     }
+                    int temprent = this.rent;
 
                     for (int i = 0; i < ferriesOwned - 1; i++) {
-                        rent = rent * 2;
+                        temprent *= 2;
                     }
 
-                    owner.changeBalance(rent);
-                    player.changeBalance(-rent);
+                    owner.changeBalance(temprent);
+                    player.changeBalance(-temprent);
+                    gui.getMyGUI().showMessage("You must pay: " + temprent + "Since: " + this.owner.getName() + " owns " + ferriesOwned + " " + this.fieldType);
                     gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
                     gui.getMyPlayers()[owner.getNumber()].setBalance(this.owner.getBalance());
                 }
@@ -80,6 +107,6 @@ public class FieldFerry extends FieldPurchaseAble {
 
     @Override
     public String toString() {
-        return "Here at " + this.name + " we offer a wide variety of trips. ";
+        return Settings.gameHandlerText[60] + this.name + Settings.gameHandlerText[61];
     }
 }
