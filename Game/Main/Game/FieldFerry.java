@@ -14,10 +14,7 @@ public class FieldFerry extends FieldPurchaseAble {
     public void auction(Player player, Player[] players, GUIController gui) {
         super.auction(player, players, gui);
     }
-
-    ;
-
-
+    
     public int getRent() {
         return rent;
     }
@@ -84,6 +81,6 @@ public class FieldFerry extends FieldPurchaseAble {
 
     @Override
     public String toString() {
-        return Settings.gameHandlerText[60] + this.name + Settings.gameHandlerText[61];
+        return Settings.gameHandlerText[60] + " " + this.name + Settings.gameHandlerText[61];
     }
 }
