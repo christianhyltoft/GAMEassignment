@@ -1,4 +1,4 @@
-80
+82
 How many players do you want to play
 Enter name of player:
 The game will start when you press ok
@@ -79,3 +79,5 @@ Name the price you bargained for:
 You landed on the field
 This is the
  and it all starts here.
+You cant sell a property with a house on it
+Enter the property you want to build on
