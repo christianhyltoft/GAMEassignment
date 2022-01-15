@@ -285,4 +285,5 @@ title __GAME's Class Diagram__\n
   Gamehandler"1" o-- "1"Board : myboard
   Gamehandler"1" o-- "1"Rafflecup : rafflecup
   Rafflecup"1" o-- "2"Die
+  Gamehandler"1" o-- "3..6"Player
 @enduml
