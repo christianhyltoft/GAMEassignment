@@ -1,7 +1,10 @@
+import com.sun.tools.javac.util.List;
 import gui_fields.GUI_Ownable;
 import gui_fields.GUI_Shipping;
 
 import java.awt.*;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public abstract class FieldPurchaseAble extends Field {
 
@@ -46,27 +49,44 @@ public abstract class FieldPurchaseAble extends Field {
     public void auction(Player player, Player[] players, GUIController gui) {
         if (this.owner != null)
             return;
+
         gui.getMyGUI().showMessage(Settings.gameHandlerText[64]);
-        GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
+        GUI_Ownable auctionField = (GUI_Ownable) gui.getMyGUI().getFields()[player.getPosition()];
 
-        String buyer = "";
-        while (true) {
-            buyer = gui.getMyGUI().getUserString(Settings.gameHandlerText[65]);
-            for (int i = 0; i < players.length; i++) {
-                if (players[i].getName().equals(buyer)) {
-                    int price = gui.getMyGUI().getUserInteger(Settings.gameHandlerText[66]);
-                    this.owner = players[i];
-                    players[i].changeBalance(-price);
-                    gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
-                    ownable.setOwnerName(buyer);
-                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor(), Color.BLACK);
-                    gui.getMyGUI().showMessage(players[i].getName() + Settings.gameHandlerText[67]);
-                    return;
+        LinkedList<Player> biddingPlayers = new LinkedList<Player>();
 
-                }
-
+        for(int i = 0; i < players.length; i++){
+            if(players[i] != player){
+                biddingPlayers.add(players[i]);
             }
         }
+
+        int price = 0;
+        Player highestBidder = null;
+        Iterator<Player> myIterator = biddingPlayers.iterator();
+        while(true){
+            Player bidder = myIterator.next();
+
+            if(bidder == highestBidder){
+                gui.getMyGUI().showMessage(bidder + "Your bid was the biggest and you have won the property");
+                break;
+            }
+
+            int playerBid = Integer.parseInt(gui.getMyGUI().getUserString(bidder + "Your turn to bid. Current bid is, " + price));
+            if(playerBid < price){
+                gui.getMyGUI().showMessage("Your bid was smaller than the current bid, and you are thus out of the bidding process");
+            }
+            else{
+                highestBidder = bidder;
+                price = playerBid;
+            }
+        }
+
+        highestBidder.changeBalance(-price);
+        gui.getMyPlayers()[highestBidder.getNumber()].setBalance(highestBidder.getBalance());
+        this.owner = highestBidder;
+        auctionField.setOwnerName(highestBidder.getName());
+        auctionField.setBorder(gui.getMyPlayers()[highestBidder.getNumber()].getPrimaryColor(), Color.BLACK);
     }
 
     public void sell(Player player, Player[] players, GUIController gui) {
