@@ -1,10 +1,10 @@
-import com.sun.tools.javac.util.List;
 import gui_fields.GUI_Ownable;
 import gui_fields.GUI_Shipping;
 
 import java.awt.*;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public abstract class FieldPurchaseAble extends Field {
 
@@ -63,18 +63,26 @@ public abstract class FieldPurchaseAble extends Field {
 
         int price = 0;
         Player highestBidder = null;
-        Iterator<Player> myIterator = biddingPlayers.iterator();
+        ListIterator<Player> myIterator = biddingPlayers.listIterator();
         while(true){
-            Player bidder = myIterator.next();
+            Player bidder = null;
+            if(!myIterator.hasNext()){
+                while(myIterator.hasPrevious()){
+                    myIterator.previous();
+                }
+            }
+
+            bidder = myIterator.next();
 
             if(bidder == highestBidder){
-                gui.getMyGUI().showMessage(bidder + "Your bid was the biggest and you have won the property");
+                gui.getMyGUI().showMessage(bidder.getName() + Settings.gameHandlerText[84]);
                 break;
             }
 
-            int playerBid = Integer.parseInt(gui.getMyGUI().getUserString(bidder + "Your turn to bid. Current bid is, " + price));
+            int playerBid = Integer.parseInt(gui.getMyGUI().getUserString(bidder.getName() +  Settings.gameHandlerText[85] + price));
             if(playerBid < price){
-                gui.getMyGUI().showMessage("Your bid was smaller than the current bid, and you are thus out of the bidding process");
+                gui.getMyGUI().showMessage(bidder.getName() + Settings.gameHandlerText[86]);
+                myIterator.remove();
             }
             else{
                 highestBidder = bidder;
@@ -107,12 +115,9 @@ public abstract class FieldPurchaseAble extends Field {
                         ownable.setBorder(gui.getMyPlayers()[j].getPrimaryColor(), Color.black);
 
                     }
-
-
                 }
             }
         }
-
     }
 
     public void mortgage(Player player) {
