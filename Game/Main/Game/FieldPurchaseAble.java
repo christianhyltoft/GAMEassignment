@@ -79,7 +79,7 @@ public abstract class FieldPurchaseAble extends Field {
                 break;
             }
 
-            int playerBid = Integer.parseInt(gui.getMyGUI().getUserString(bidder.getName() +  Settings.gameHandlerText[83] + " " + price));
+            int playerBid = gui.getMyGUI().getUserInteger(bidder.getName() +  Settings.gameHandlerText[83] + " " + price);
             if(playerBid < price){
                 gui.getMyGUI().showMessage(bidder.getName() + " " + Settings.gameHandlerText[84]);
                 myIterator.remove();
