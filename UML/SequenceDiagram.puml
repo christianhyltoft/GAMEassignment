@@ -10,7 +10,7 @@ System -> Player: askPlayerAmount();
 Player --> System: playerAmount
 
 
-loop 3..6
+loop playerAmount
 System -> Player : askPlayerName();
 Player --> System: name
 System -> System: createPlayer
@@ -25,7 +25,7 @@ loop find winner
 Player -> System: detectWinner();
 
 
-loop  3..6
+loop  playerAmount
 System -> Player: roll();
 System -> Player: takeTurn();
 Player --> System: void();
