@@ -35,7 +35,11 @@ title __GAME's Class Diagram__\n
     class ChanceCardGetOutOfJail {
         + ChanceCardGetOutOfJail()
     }
-
+class ChanceCardFerry {
+        - myFields: Field[]
+        + ChanceCardFerry()
+        + DrawCard()
+    }
   
 
     class ChanceCardMatadorGrant {
@@ -263,9 +267,10 @@ title __GAME's Class Diagram__\n
 
   Board"1" o-- "1"ChanceCardDeck : myDeck
   Board"1" o-- "1"TxtReader : reader
-  ChanceCardGetOutOfJail -up-|> ChanceCard
+  ChanceCard <|- ChanceCardGetOutOfJail
   ChanceCardMatadorGrant -up-|> ChanceCard
   ChanceCardMove -up-|> ChanceCard
+  ChanceCardFerry -|> ChanceCard
   ChanceCardPayBasedOnProperty -up-|> ChanceCard
   ChanceCardPayOrReceive -up-|> ChanceCard
   ChanceCardReceiveMoneyFromPlayers -up-|> ChanceCard
