@@ -1,7 +1,7 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-title __GAME's Class Diagram__\n
+title __GAME's Design Class Diagram__\n
 
     class Board {
         - boardAr : Field[]
