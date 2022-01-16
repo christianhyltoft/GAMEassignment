@@ -2,7 +2,7 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
-
+actor Player
 Player -> System: Start program
 Player <- System: Ask about amount of players
 Player -> System: Enter amount of players(numberOfPlayers)

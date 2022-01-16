@@ -294,7 +294,7 @@ title __GAME's Class Diagram__\n
   FieldPurchaseAble -up-|> Field
   FieldStart -|> Field
   FieldTax -up-|> Field
-  ChanceCardDeck"1" o-- "1..*"ChanceCard
+  ChanceCardDeck "1" o-- "1..*"ChanceCard
   Gamehandler"1" o-- "1"GUIController : controller
   Gamehandler"1" o-- "1"Board : myboard
   Gamehandler"1" o-- "1"Rafflecup : rafflecup

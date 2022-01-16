@@ -14,7 +14,7 @@ public class FieldFerry extends FieldPurchaseAble {
     public void auction(Player player, Player[] players, GUIController gui) {
         super.auction(player, players, gui);
     }
-    
+
     public int getRent() {
         return rent;
     }
@@ -43,7 +43,7 @@ public class FieldFerry extends FieldPurchaseAble {
 
         } else {
             if (player == owner) {
-                // Udskriv message + messageowned til GUI
+                // print message + messageowned til GUI
                 // Temp message
                 gui.getMyGUI().showMessage(Settings.gameHandlerText[58] + name + Settings.gameHandlerText[59]);
             } else {
