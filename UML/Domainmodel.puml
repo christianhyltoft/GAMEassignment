@@ -1,50 +1,19 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-
-object Board {
-}
-object Bank {
-}
-object Player{
-}
-object Account {
-}
-object Game {
-}
-object ChanceCard {
-}
-object Die {
-}
-object Ferry{
-}
-object Deed{
-
-}
-object GoToJail
-object JailField
-object ChanceCardField
-object BeverageCompany
-object StartField
-object Tax
-
-Player "3..6" -- "1" Bank
-Player "1" o-- "1" Account
-Die "2" -- "1" Game
-Game "1" -- "3..6" Player
-Game "1" -- "1" Board
-ChanceCard "*" -- "1" ChanceCardField
-Board "1" o-- "4" Ferry
-Board "1" o-- "2"BeverageCompany
-Board "1" o-- "6" ChanceCardField
-Board "1" o-- "1" JailField
-Board "1" o-- "1" GoToJail
-Board "1" o-- "1" StartField
-Board "1" o-- "2" Tax
-Board "1" o-- "25" Deed
+object Board
+object MatadorGame
+object Field
+object Player
+object Die
+object ChanceCards
 
 
 
-
-
+Board"1"--"1"MatadorGame: Played with
+Board"1"--"40"Field
+Player"3..6"--"1"MatadorGame: played by
+Die"2"--"1"MatadorGame: Uses
+Board"1"--"0..*"ChanceCards: Has
+Field"1"--"0.1"Player: can own
 @enduml
