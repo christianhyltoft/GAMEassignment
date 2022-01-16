@@ -2,6 +2,7 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
+actor Player
 ->Player: Take turn
 Player->System: Roll die
 Player<--System: Return result

@@ -115,7 +115,7 @@ public class FieldDeed extends FieldPurchaseAble {
 
     public void buildHouse(Player player, GUIController gui) {
         if(this.amountOfHouses>=5){
-            gui.getMyGUI().showMessage("You already have 5 houses there");
+            gui.getMyGUI().showMessage(Settings.gameHandlerText[86]);
             return;
         }
 
@@ -174,7 +174,7 @@ public class FieldDeed extends FieldPurchaseAble {
             }
             averagehouses = averagehouses/series.length;
             if (averagehouses >= this.amountOfHouses) {
-                gui.getMyGUI().showMessage("You you now built one house for the price of: " + this.houseprice);
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[87]+" " + this.houseprice);
                 player.changeBalance(-this.houseprice);
                 gui.getMyPlayers()[player.getNumber()].setBalance(player.getBalance());
 
@@ -187,14 +187,14 @@ public class FieldDeed extends FieldPurchaseAble {
                 }
 
             } else {
-                gui.getMyGUI().showMessage("You have to build evenly");
+                gui.getMyGUI().showMessage(Settings.gameHandlerText[88]);
             }
 
 
         } else {
-            gui.getMyGUI().showMessage("You do not have all the properties in that series");
+            gui.getMyGUI().showMessage(Settings.gameHandlerText[89]);
         }
-        ownable.setRent("the rent is now: "+currentRent());
+        ownable.setRent(Settings.gameHandlerText[90]+" "+currentRent());
     }
 
 
@@ -239,7 +239,7 @@ public class FieldDeed extends FieldPurchaseAble {
     }
 
     public String toString() {
-        return "This is the very nice " + this.name + ". It is a very nice place";
+        return Settings.gameHandlerText[91]+" " + this.name + Settings.gameHandlerText[92];
     }
 
 }

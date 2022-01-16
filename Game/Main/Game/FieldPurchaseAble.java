@@ -84,6 +84,10 @@ public abstract class FieldPurchaseAble extends Field {
                 gui.getMyGUI().showMessage(bidder.getName() + " " + Settings.gameHandlerText[84]);
                 myIterator.remove();
             }
+            else if(playerBid > bidder.getBalance()){
+                gui.getMyGUI().showMessage(bidder.getName() + " " + Settings.gameHandlerText[85]);
+                myIterator.remove();
+            }
             else{
                 highestBidder = bidder;
                 price = playerBid;
