@@ -1,4 +1,4 @@
-86
+93
 How many players do you want to play
 Enter name of player:
 The game will start when you press ok
@@ -85,3 +85,10 @@ Enter the property you want to build on
  your turn to bid (Bid less than current bid to give up). Current bid is
  your bid was smaller than the current bid, and you are thus out of the bidding process
  your bid was larger than your balance, and you are thus out of the bidding process
+You already have 5 houses there
+You you now built one house for the price of:
+You have to build evenly
+You do not have all the properties in that series
+the rent is now:
+This is the very nice
+. It is a very nice place
