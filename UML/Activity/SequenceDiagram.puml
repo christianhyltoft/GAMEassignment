@@ -29,8 +29,15 @@ Fields --> Gamehandler :
 Gamehandler -> Players : player.changePosition(rafflecup.sum());
 Players --> Gamehandler :
 Gamehandler --> Gamehandler : private void takeTurn
+Gamehandler -> Players :  endOfTurnChoice(player)
+activate Players
 
+Players -> Gamehandler : choice = getChoice(myPlayer);
 
+Gamehandler -> Players : private void detectLoser(Player players) {
+Players -> Gamehandler
+deactivate Players
+Gamehandler -> Gamehandler : private boolean detectWinner()
 
 Participant RaffleCup
 Participant Board
