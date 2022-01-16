@@ -291,6 +291,18 @@ public class GameHandler {
             players.setPlayerHasLost(true);
             this.controller.getMyGUI().showMessage(players.getName() + Settings.gameHandlerText[36]);
 
+            for(int i = 0; i < Settings.BOARD_SIZE; i++){
+                if (myBoard.getBoardAr()[i].getFieldType().matches("Property|Ferry|Beverage")) {
+                    FieldPurchaseAble playerOwnerCheck = (FieldPurchaseAble) myBoard.getBoardAr()[i];
+                    if (playerOwnerCheck.getOwner() == players) {
+                        playerOwnerCheck.owner = null;
+                        GUI_Ownable guiField = (GUI_Ownable) myGUI.getFields()[i];
+                        guiField.setOwnerName("");
+                        guiField.setBorder(Color.BLACK);
+                    }
+                }
+            }
+
         }
     }
 
