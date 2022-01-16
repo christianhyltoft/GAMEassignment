@@ -12,35 +12,9 @@ public class FieldFerry extends FieldPurchaseAble {
 
     @Override
     public void auction(Player player, Player[] players, GUIController gui) {
-        if (this.owner != null)
-            return;
-        gui.getMyGUI().showMessage(Settings.gameHandlerText[64]);
-        GUI_Shipping ownable = (GUI_Shipping) gui.getMyGUI().getFields()[player.getPosition()];
-
-        String buyer = "";
-        while (true) {
-            buyer = gui.getMyGUI().getUserString(Settings.gameHandlerText[65]);
-            for (int i = 0; i < players.length; i++) {
-                if (players[i].getName().equals(buyer)) {
-                    int price = gui.getMyGUI().getUserInteger(Settings.gameHandlerText[66]);
-                    this.owner = players[i];
-                    players[i].changeBalance(-price);
-                    gui.getMyPlayers()[players[i].getNumber()].setBalance(players[i].getBalance());
-                    ownable.setOwnerName(buyer);
-                    ownable.setBorder(gui.getMyPlayers()[players[i].getNumber()].getPrimaryColor(), Color.BLACK);
-                    gui.getMyGUI().showMessage(players[i].getName() + Settings.gameHandlerText[67]);
-                    return;
-
-                }
-
-            }
-        }
-
+        super.auction(player, players, gui);
     }
-
-    ;
-
-
+    
     public int getRent() {
         return rent;
     }
@@ -107,6 +81,6 @@ public class FieldFerry extends FieldPurchaseAble {
 
     @Override
     public String toString() {
-        return Settings.gameHandlerText[60] + this.name + Settings.gameHandlerText[61];
+        return Settings.gameHandlerText[60] + " " + this.name + Settings.gameHandlerText[61];
     }
 }

@@ -1,4 +1,4 @@
-82
+86
 How many players do you want to play
 Enter name of player:
 The game will start when you press ok
@@ -81,3 +81,7 @@ This is the
  and it all starts here.
 You cant sell a property with a house on it
 Enter the property you want to build on
+ your bid was the biggest and you have won the property
+ your turn to bid (Bid less than current bid to give up). Current bid is
+ your bid was smaller than the current bid, and you are thus out of the bidding process
+ your bid was larger than your balance, and you are thus out of the bidding process
