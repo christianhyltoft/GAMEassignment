@@ -1,38 +1,57 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autonumber
 
-actor Player
-System -> Player: playGame();
-System <- Player: startingGame();
-System -> Player: askPlayerAmount();
-Player --> System: playerAmount
+Actor Player
+Player -> Main1 : Start game
+activate Main1
 
+Main1 -> Gamehandler : game.playGame();
+loop detectWinner
+loop detectLoser
+activate Gamehandler
+activate Settings
+Gamehandler -> Settings : Settings.gameTextInit();
+Settings -> TXTReaders : gameHandlerText = myTxtReader.reader("GameText");
+activate TXTReaders
 
-loop playerAmount
-System -> Player : askPlayerName();
-Player --> System: name
-System -> System: createPlayer
+TXTReaders -> Settings : GameText.txt
+deactivate TXTReaders
+Settings -> Gamehandler
+deactivate Settings
+Gamehandler -> RaffleCup: private void roll(Player player)
+activate RaffleCup
+RaffleCup -> Gamehandler : public Rafflecup(int diceAmount, int faceAmount)
+deactivate RaffleCup
+
+Gamehandler -> Board :  public Board getmyBoard()
+activate Board
+Board -> Chancecards : final private ChanceCardDeck myDeck;
+Chancecards -> Board : return myDeck
+Board -> Fields : public void landOn(Player player, GUIController gui)
+Fields --> Gamehandler :
+deactivate Board
+Gamehandler -> Players : player.changePosition(rafflecup.sum());
+Players --> Gamehandler :
+Gamehandler --> Gamehandler : private void takeTurn
+Gamehandler -> Players :  endOfTurnChoice(player)
+activate Players
+
+Players -> Gamehandler : choice = getChoice(myPlayer);
+
+Gamehandler -> Players : private void detectLoser(Player players) {
+Players -> Gamehandler
+deactivate Players
+end
 end
 
+Participant RaffleCup
+Participant Board
+Participant Players
+Participant Settings
+Collections Fields
+Collections Chancecards
+Collections TXTReaders
 
-loop no winner
-Player -> System: detectLoser();
-
-
-loop find winner
-Player -> System: detectWinner();
-
-
-loop  playerAmount
-System -> Player: roll();
-System -> Player: takeTurn();
-Player --> System: void();
-
-
-end
-end
-end
 
 @enduml
