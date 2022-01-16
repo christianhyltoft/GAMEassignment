@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Player
+System -> Player: playGame();
+System <- Player: startingGame();
+System -> Player: askPlayerAmount();
+Player --> System: playerAmount
+
+
+loop playerAmount
+System -> Player : askPlayerName();
+Player --> System: name
+System -> System: createPlayer
+end
+
+
+loop no winner
+Player -> System: detectLoser();
+
+
+loop find winner
+Player -> System: detectWinner();
+
+
+loop  playerAmount
+System -> Player: roll();
+System -> Player: takeTurn();
+Player --> System: void();
+
+
+end
+end
+end
+
+@enduml
